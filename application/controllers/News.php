@@ -20,7 +20,7 @@ Class News extends CI_Controller {
             'post_date' => $data[0]['post_date'],
             'post_time' => $data[0]['post_time']
         );
-        $this->load->view('news_contents',$data);
+        $this->load->view('user/news/news_contents',$data);
     }
     /* ------------------------------- All news -------------------------------- */    
     function allnews(){
@@ -30,7 +30,7 @@ Class News extends CI_Controller {
             $data['data'] = $this->db->select('*')->from('news')->where('status',1)->limit($limit)->order_by('id','ASC')->get()->result();  // limit fot FAST query
             $data['news_count'] = count($this->db->select('*')->from('news')->get()->result());
             $data['pagi_active'] = 1;
-            $this->load->view('news_all_contents',$data);
+            $this->load->view('user/news/news_all_contents',$data);
         }        
         //----- 1 Controller pagination ------- 
         else{  
@@ -40,7 +40,7 @@ Class News extends CI_Controller {
             $data['data'] = $this->db->select('*')->from('news')->where('status',1)->limit($limit,$offset_d)->get()->result();
             $data['news_count'] = count($this->db->select('*')->from('news')->get()->result());
             $data['pagi_active'] = $page;
-            $this->load->view('news_all_contents',$data);
+            $this->load->view('user/news/news_all_contents',$data);
         }     
     }
     /* --------------------------------------------------------- News Search ---------------------------------------------------------- */
@@ -66,7 +66,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where(" title LIKE '%$text%' ")->get()->result();
                 $data['news_count'] = count($data['data']);
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = 1;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }
             // 010
             if($month == '00' && $year != '00' && $text == null){
@@ -75,7 +75,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' ")->get()->result();
                 $data['news_count'] = count($data['data']);            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = 1;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }       
             // 011
             if($month == '00' && $year != '00' && $text != null){
@@ -84,7 +84,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' AND title LIKE '%$text%' ")->get()->result();
                 $data['news_count'] = count($data['data']);            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = 1;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }     
             // 100
             if($month != '00' && $year == '00' && $text == null){
@@ -94,7 +94,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' ")->get()->result();
                 $data['news_count'] = count($data['data']);            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = 1;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }
             // 101
             if($month != '00' && $year == '00' && $text != null){
@@ -104,7 +104,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' AND title LIKE '%$text%' ")->get()->result();
                 $data['news_count'] = count($data['data']);            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = 1;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }
             // 110
             if($month != '00' && $year != '00' && $text == null){
@@ -113,7 +113,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' ")->get()->result();
                 $data['news_count'] = count($data['data']);            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = 1;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }
             // 111
             if($month != '00' && $year != '00' && $text != null){
@@ -122,7 +122,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' AND title LIKE '%$text%' ")->get()->result();
                 $data['news_count'] = count($data['data']);            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = 1;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }
 
             
@@ -134,7 +134,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where(" title LIKE '%$text%' ")->limit($limit,$offset)->get()->result();
                 $data['news_count'] = count($this->db->select('*')->from('news')->where(" title LIKE '%$text%' ")->get()->result());
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = $page;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }           
             // 010
             if($month == '00' && $year != '00' && $text == null){
@@ -143,7 +143,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' ")->limit($limit,$offset)->get()->result();
                 $data['news_count'] = count($this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' ")->get()->result());            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = $page;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }
             // 011
             if($month == '00' && $year != '00' && $text != null){
@@ -152,7 +152,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' AND title LIKE '%$text%' ")->limit($limit,$offset)->get()->result();
                 $data['news_count'] = count($this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' AND title LIKE '%$text%' ")->get()->result());            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = $page;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             } 
             // 100
             if($month != '00' && $year == '00' && $text == null){
@@ -162,7 +162,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' ")->limit($limit,$offset)->get()->result();
                 $data['news_count'] = count($this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' ")->get()->result()); 
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = $page;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }
             // 101
             if($month != '00' && $year == '00' && $text != null){
@@ -172,7 +172,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' AND title LIKE '%$text%' ")->limit($limit,$offset)->get()->result();
                 $data['news_count'] = count($this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' AND title LIKE '%$text%' ")->get()->result());            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = $page;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }
             // 110
             if($month != '00' && $year != '00' && $text == null){
@@ -181,7 +181,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' ")->limit($limit,$offset)->get()->result();
                 $data['news_count'] = count($this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' ")->get()->result());            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = $page;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }
             // 111
             if($month != '00' && $year != '00' && $text != null){
@@ -190,7 +190,7 @@ Class News extends CI_Controller {
                 $data['data'] = $this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' AND title LIKE '%$text%' ")->limit($limit,$offset)->get()->result();
                 $data['news_count'] = count($this->db->select('*')->from('news')->where("post_date BETWEEN '$month_start' AND '$month_end' AND title LIKE '%$text%' ")->get()->result());            
                 $data['m'] = $month; $data['y'] = $year; $data['t'] = $text; $data['pagi_active'] = $page;
-                $this->load->view('news_all_filter',$data);
+                $this->load->view('user/news/news_all_filter',$data);
             }            
         }
     }
@@ -199,7 +199,7 @@ Class News extends CI_Controller {
         if(!isset($_GET['grp'])){
             $data['files'] = $this->db->select('*')->from('pdf_file')->get()->result();
             $data['group_data'] = $this->db->select('*')->from('pdf_category')->get()->result();
-            $this->load->view('news_download',$data);
+            $this->load->view('user/news/news_download',$data);
         }else{
             $grp = $this->input->get('grp');
             if($grp == '0'){
@@ -208,7 +208,7 @@ Class News extends CI_Controller {
             $data['files'] = $this->db->select('*')->from('pdf_file')->where(" category LIKE '%$grp%' ")->get()->result();
             $data['group_data'] = $this->db->select('*')->from('pdf_category')->get()->result();
             $data['fil_default'] = $grp;
-            $this->load->view('news_download',$data);                    
+            $this->load->view('user/news/news_download',$data);                    
         }       
         
     }

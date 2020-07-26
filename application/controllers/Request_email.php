@@ -7,7 +7,7 @@ class request_email extends CI_Controller
        $this->load->library('form_validation');
     }
     public function index(){
-        $this->load->view("request_email");
+        $this->load->view("user/request/request_email");
     }
     public function error(){        
         // CHECK        

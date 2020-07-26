@@ -8,27 +8,22 @@ class ad_item extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		if($this->session->userdata('username') == ''){
 			redirect(base_url().'ad_login');
-		} 
-		
+		} 		
     }
 	function index() {
-		if ($this->session->userdata('username') != '') {
-			$this->ad_item_order();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+		$this->ad_item_order();
 	}
 	/////////////////////////////////////////////////////////// ORDER ////////////////////////////////////////////////////////
 	public function ad_item_order() {					
 		$data['item_order'] = $this->ad_item_model->fecth_item_order();
-		$this->load->view('ad_item_order',$data);		
+		$this->load->view('admin/item/ad_item_order',$data);		
 	}
 	public function report_item_order(){			
 		$id = $this->input->post('id');			
 		$data = $this->ad_item_model->fetch_item_report($id);
 		$data['item_list'] = $this->ad_item_model->report_item_list($id);
 		$data['product_id'] = $this->ad_item_model->report_item_list_pd_id($id);
-		$this->load->view('report_item_order',$data);							
+		$this->load->view('admin/item/report_item_order',$data);							
 	}
 	//------------ query เลขครุภัณฑ์ ------------
 	/*public function report_item_order_product_id(){

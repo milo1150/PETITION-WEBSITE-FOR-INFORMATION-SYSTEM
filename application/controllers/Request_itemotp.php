@@ -9,7 +9,7 @@ class request_itemotp extends CI_Controller
        $this->load->library('form_validation');
     }
     public function index(){
-        $this->load->view("request_itemotp");
+        $this->load->view("user/request/request_itemotp");
     }
     /* ------------------------------------------------ Check Edit Html (item select only) ------------------------------------------------ */
     public function item_v(){

@@ -9,6 +9,6 @@ class request extends CI_Controller{
 	   $this->load->library('form_validation');
     }
 	function index (){
-		$this->load->view('request');
+		$this->load->view('user/request/request');
 	}
 }

@@ -9,7 +9,7 @@ class request_item extends CI_Controller
        $this->load->library('form_validation');
     }
     public function index(){
-        $this->load->view("request_item");
+        $this->load->view("user/request/request_item");
     }
     /* ------------------------------------------------ Check Edit Html (item select only) ------------------------------------------------ */
     public function item_v(){

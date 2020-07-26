@@ -7,7 +7,7 @@ class request_finger extends CI_Controller
         $this->load->library('form_validation');
     }
     public function index(){
-        $this->load->view("request_finger");
+        $this->load->view("user/request/request_finger");
     }
     public function error(){      
         // CHECK        

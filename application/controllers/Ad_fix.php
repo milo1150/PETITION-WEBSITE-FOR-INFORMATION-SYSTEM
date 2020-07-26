@@ -9,21 +9,17 @@ class ad_fix extends CI_Controller {
 		} 
     }
 	function index() {
-		if ($this->session->userdata('username') != '') {
-			$this->ad_fix_order();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+		$this->ad_fix_order();
 	}
 	/////////////////////////////////////////////////////////// ORDER ////////////////////////////////////////////////////////
 	public function ad_fix_order() {								
 		$data['fix_order'] = $this->ad_fix_model->fecth_fix_order();
-			$this->load->view('ad_fix_order',$data);	
+			$this->load->view('admin/fix/ad_fix_order',$data);	
 	}
 	public function report_fix_order(){	
 		$id = $this->input->post('id');			 
 		$data = $this->ad_fix_model->fetch_fix_report($id);	
-		$this->load->view('report_fix_order',$data);	
+		$this->load->view('admin/fix/report_fix_order',$data);	
 	}
 	
 	/////////////////////////////////////////////////////// ACCEPT ORDER ////////////////////////////////////////////////////////
@@ -86,12 +82,12 @@ class ad_fix extends CI_Controller {
 	/////////////////////////////////////////////////////////// INPROC ////////////////////////////////////////////////////////
 	public function ad_fix_inproc() {						
 		$data['fix_inproc'] = $this->ad_fix_model->fecth_fix_inproc();
-		$this->load->view('ad_fix_inproc',$data);		
+		$this->load->view('admin/fix/ad_fix_inproc',$data);		
 	}
 	public function report_fix_inproc(){
 		$id = $this->input->post('id');			
 		$data = $this->ad_fix_model->fetch_fix_report_inproc($id);	
-		$this->load->view('report_fix_inproc',$data);	
+		$this->load->view('admin/fix/report_fix_inproc',$data);	
 	}
 	
 	/////////////////////////////////////////////////////// CLOSING ORDER ////////////////////////////////////////////////////////
@@ -158,23 +154,23 @@ class ad_fix extends CI_Controller {
 	/////////////////////////////////////////////////////////// COMPLETE ////////////////////////////////////////////////////////
 	public function ad_fix_com() {						
 		$data['fix_com'] = $this->ad_fix_model->fecth_fix_com();
-		$this->load->view('ad_fix_com',$data);		
+		$this->load->view('admin/fix/ad_fix_com',$data);		
 	}
 	public function report_fix_com(){
 		$id = $this->input->post('id');			
 		$data = $this->ad_fix_model->fetch_fix_report_com($id);	
-		$this->load->view('report_fix_com',$data);	
+		$this->load->view('admin/fix/report_fix_com',$data);	
 	}
 	/////////////////////////////////////////////////////////// CANCLE ORDER ////////////////////////////////////////////////////////
 	/*-------------------- REPORT --------------------*/
 	public function ad_fix_cancle(){					
 		$data['fix_order'] = $this->ad_fix_model->fecth_fix_cancle();
-		$this->load->view('ad_fix_cancle',$data);		
+		$this->load->view('admin/fix/ad_fix_cancle',$data);		
 	}			
 	public function report_fix_cancle(){		
 		$id = $this->input->post('id');								
 		$data = $this->ad_fix_model->fetch_fix_order_cancle($id);	
-		$this->load->view('report_fix_cancle',$data);	
+		$this->load->view('admin/fix/report_fix_cancle',$data);	
 	}
 	/*-------------------- Function -------------------*/
 	public function cancle_order(){	
@@ -248,7 +244,7 @@ class ad_fix extends CI_Controller {
 		$data['room'] = "";		
 
 		//print_r($data);
-		$this->load->view('ad_fix_alldata',$data);
+		$this->load->view('admin/fix/ad_fix_alldata',$data);
 	}
 	public function filter_serch(){
 		$data = array();
@@ -284,7 +280,7 @@ class ad_fix extends CI_Controller {
 				
 
 		//print_r($data);
-		$this->load->view('ad_fix_alldata',$data);	
+		$this->load->view('admin/fix/ad_fix_alldata',$data);	
 		
 	}
 	

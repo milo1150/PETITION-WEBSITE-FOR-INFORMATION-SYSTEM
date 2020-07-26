@@ -16,7 +16,7 @@ class request_fix extends CI_Controller
     }
     public function index(){
         $data = $this->get_db_val();
-        $this->load->view("request_fix",$data);
+        $this->load->view("user/request/request_fix",$data);
     }
     // public function val_err(){
     //     $data = $this->get_db_val();
