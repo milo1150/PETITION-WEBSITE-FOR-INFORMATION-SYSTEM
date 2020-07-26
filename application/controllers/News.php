@@ -6,7 +6,7 @@ Class News extends CI_Controller {
         $data['data2'] = $this->db->select('*')->from('news')->where('type','ข่าวมหาวิทยาลัย')->where('status',1)->limit('8')->order_by('id','ASC')->get()->result();
         $data['data3'] = $this->db->select('*')->from('news')->where('type','ข่าวสารสนเทศ')->where('status',1)->limit('8')->order_by('id','ASC')->get()->result();
         $data['data4'] = $this->db->select('*')->from('news')->where('type','อื่นๆ')->where('status',1)->limit('8')->order_by('id','ASC')->get()->result();
-        $this->load->view('news_main',$data);
+        $this->load->view('user/news/news_main',$data);
     }
     /*------------- Onclick redirect to Content --------------*/
     function con(){
