@@ -1,0 +1,142 @@
+<?php
+class request_fix extends CI_Controller
+{
+    public function __construct()
+    {
+       parent::__construct();
+       date_default_timezone_set("Asia/Bangkok"); 
+       $this->load->helper(array('form', 'url'));
+       $this->load->library('form_validation');  
+    }
+    private function get_db_val(){
+        $data['fixlist'] = $this->db->select('*')->from('request_fix_fixlist')->get()->result();
+        $data['building'] = $this->db->select('*')->from('request_fix_building')->get()->result();
+        $data['floor'] = $this->db->select('*')->from('request_fix_floor')->get()->result();
+        return $data;
+    }
+    public function index(){
+        $data = $this->get_db_val();
+        $this->load->view("request_fix",$data);
+    }
+    // public function val_err(){
+    //     $data = $this->get_db_val();
+    //     $post = json_decode(file_get_contents('php://input'),true);
+    // }
+    public function error(){        
+        // print_r($_POST);
+        // CHECK        
+        $this->form_validation->set_rules('firstname','ชื่อ','trim|required');
+        $this->form_validation->set_rules('lastname','นามสกุล','trim|required');
+        $this->form_validation->set_rules('phonenum','เบอร์ติดต่อ','trim|required|regex_match[/^[0-9-]+$/]');
+        $this->form_validation->set_rules('email','อีเมล','trim|required|valid_email');
+        $this->form_validation->set_rules('fixlist','รายการแจ้ง','trim|in_list[แจ้งปัญหาระบบอินเทอร์เน็ต,แจ้งปัญหาเว็บไซต์,แจ้งปัญหาระบบเครือข่าย,แจ้งปัญหาปริ้นเตอร์,แจ้งอุปกรณ์ชำรุด,แจ้งปัญหาคอมพิวเตอร์]');
+        $this->form_validation->set_rules('building','ตึก','trim|required|in_list[42,62,63,64,65,66,67,68,69,90,91,97]');
+        $this->form_validation->set_rules('floor','ชั้น','trim|required|in_list[1,2,3,4,5,6,7,8,9,10]');
+        $this->form_validation->set_rules('room','ห้อง','trim|required|regex_match[/^[0-9-]+$/]|max_length[4]');        
+        $this->form_validation->set_rules('fixprob','อาการ','trim|required');
+        $this->form_validation->set_rules('date','วันที่','trim|required');
+        $this->form_validation->set_rules('time','เวลา','trim|required');
+
+        if($this->form_validation->run() == TRUE){                        
+            $data = array(
+                'firstname' => $this->input->post('firstname'),
+                'lastname' => $this->input->post('lastname'),
+                'phonenum' => $this->input->post('phonenum'),
+                'email' => $this->input->post('email'),
+                'fixlist' => $this->input->post('fixlist'),
+                'building' => $this->input->post('building'),
+                'floor' => $this->input->post('floor'),
+                'room' => $this->input->post('room'),                
+                'fixprob' => $this->input->post('fixprob'),
+                'date' => $this->input->post('date'),
+                'time' => $this->input->post('time'),
+            );
+            //print_r($data);
+            echo json_encode($data);
+        }else{
+            $error = array(
+                'firstname_error' => form_error('firstname'),
+                'lastname_error' => form_error('lastname'),
+                'phonenum_error' => form_error('phonenum'),
+                'email_error' => form_error('email'),
+                'fixlist_error' => form_error('fixlist'),
+                'building_error' => form_error('building'),
+                'floor_error' => form_error('floor'),
+                'room_error' => form_error('room'),
+                'fixprob_error' => form_error('fixprob'),
+                'date_error' => form_error('date'),
+                'time_error' => form_error('time'),
+               
+            );
+            //print_r($error);            
+			echo json_encode($error);
+        }
+    }
+    public function accept_data(){
+        date_default_timezone_set("Asia/Bangkok");
+        $md5id = md5(time()*rand(0,987)+rand(0,654)-rand(0,321));      
+        $data = array(
+            'firstname'=>$this->input->post('firstname'),
+            'lastname'=>$this->input->post('lastname'),
+            'phonenum'=>$this->input->post('phonenum'),
+            'email'=>$this->input->post('email'),
+            'fixlist'=>$this->input->post('fixlist'),
+            'building'=>$this->input->post('building'),
+            'floor'=>$this->input->post('floor'),
+            'room'=>$this->input->post('room'),            
+            'fixprob'=>$this->input->post('fixprob'),
+            'date'=>$this->input->post('date'),
+            'time'=>$this->input->post('time'),
+            'type'=>'แจ้งซ่อม',
+            'date_request'=>date('Y-m-d'),
+            'time_request'=>date('H:i'),
+            'reqid'=>$md5id,
+        );          
+        // print_r($data);  
+        $this->db->insert("request_fix",$data);
+       
+        $data_noti = array(
+            'firstname' => $this->input->post('firstname'),
+            'lastname' => $this->input->post('lastname'),
+            'type' => 'แจ้งซ่อม',
+            'date_request'=>date('Y-m-d'),
+            'time_request'=>date('H:i'),
+            'reqid' => $md5id,
+        );
+        $this->load->model('notification_data');
+        $this->notification_data->insert($data_noti);
+        
+        echo json_encode('');        
+    }
+    /////////////////////////////////////////////////////////// EMAIL (CONFIRM DATA) ////////////////////////////////////////////////////////
+	public function send_email_data(){         
+        $email = $this->input->post('email');
+		$config = Array(
+			'protocol' => 'smtp',
+			'smtp_crypto' => 'ssl',
+		    'smtp_host' => 'smtp.gmail.com',
+		    'smtp_port' => 465,
+		    'smtp_user' => 'codeig.adm1n@gmail.com',
+		    'smtp_pass' => 'Adminza1150',
+		    // 'mailType'  => 'html',
+            'charset'   => 'UTF-8',
+        );        
+        $this->load->library('email', $config);        
+        $this->email->set_newline("\r\n");	
+        $this->email->set_mailtype("html");	     
+		$this->email->from('codeig.adm1n@gmail.com','ICIT System');
+		$this->email->to($email);
+		$this->email->subject('ระบบสารสนเทศ - แจ้งซ่อม');		
+        $message = $this->input->post('msg');		
+		$this->email->message($message);
+        $this->email->send();
+        echo json_encode('');
+    }
+    /* --------------------------------------------------- Line Notification ------------------------------------------------- */
+    public function line_noti(){
+        $this->load->model('line_noti_model');
+        $msg = $this->input->post('msg');
+        $this->line_noti_model->line_noti($msg);
+        echo json_encode('');
+    }
+}

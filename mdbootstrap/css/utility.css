@@ -1,0 +1,1361 @@
+/*-------------------------------------- FONT ---------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Mitr&display=swap');
+body {
+    font-family: 'Mitr', sans-serif;
+    background: #fafafa;
+}
+
+
+/*--------------------------------------- Login Page --------------------------------------*/
+
+#bLogin {
+    padding-top: 11%;
+    padding-bottom: 10%;
+    background: rgb(154, 179, 186);
+    background: linear-gradient(90deg, rgba(154, 179, 186, 1) 0%, rgba(0, 212, 255, 0.6839110644257703) 100%);
+    /*background: -moz-linear-gradient(-45deg, rgb(206, 206, 206) 0%, rgb(16, 197, 190) 100%);
+    background: -webkit-linear-gradient(-45deg, rgb(206, 206, 206) 0%, rgb(16, 197, 190) 100%);
+    background: linear-gradient(135deg, rgb(206, 206, 206) 0%, rgb(16, 197, 190) 100%);*/
+}
+
+#tLogin {
+    text-align: -webkit-center;
+    overflow-x: initial !important;
+}
+
+#dLogin {
+    padding: 18px;
+    max-width: 300px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    /*-webkit-box-shadow: 10px 10px 3px 0px rgba(0, 0, 0, 0.79);
+    -moz-box-shadow: 10px 10px 3px 0px rgba(0, 0, 0, 0.79);
+    box-shadow: 10px 10px 3px 0px rgba(0, 0, 0, 0.79);*/
+}
+
+#lLogin {
+    font-size: 38px;
+    text-shadow: 0 0 3px #00d7ff, 0 0 5px #000000;
+}
+
+.iLogin {
+    box-shadow: 5px 5px grey;
+}
+
+
+/*--------------------------------------- Main Request Page --------------------------------------*/
+
+.mrq_body {
+    background: #ffffff;
+}
+
+.mrq_header {
+    /*-- color ---*/
+    border-radius: 2px;
+    background: linear-gradient(145deg, #9ee2e6, #bcffff);
+    box-shadow: 5px 5px 0px #466466, -8px -8px 0px #ffffff;
+    /*--- size ---*/
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bolder;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.mrq_content {
+    /*--- size ---*/
+    margin-top: 20px;
+    /* margin-bottom: 40px; */
+    max-width: 500px;
+}
+
+.mrq_h {
+    font-weight: bolder;
+    font-size: 38px;
+}
+
+.mrq_box {
+    padding-top: 22px;
+    /* max-width: 400px; */
+    margin-bottom: 30px;
+}
+
+.mrq_form-style {
+    width: 100%;
+    padding-top: 5px;
+}
+
+.mrq_button-style {
+    height: 100px;
+    width: 84%;
+    border-radius: 2px;
+    padding-right: 70px;
+    padding-left: 70px;
+    background: #c4d4d2;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0px #5c5e5f, -8px -8px 0px #ffffff;
+    /* box-shadow: 5px 5px 2px #605753, -5px -5px 2px #ffffff; */
+}
+
+.mrq_a-style {
+    font-size: 28px;
+    color: #444444;
+    text-shadow: 2px 2px #b9b9b9;
+    /*text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC; */
+}
+
+.mrq_btm_content {
+    margin-top: 0px;
+    max-width: 500px;
+}
+
+footer.req {
+    padding-bottom: 5%;
+}
+
+
+/* ---------------------------- On mouse hover request button ------------------------------- */
+
+.mrq_button-style:hover {
+    box-shadow: 5px 5px 0px #5c5e5f, -8px -8px 0px #ffffff;
+}
+
+
+/* ------------- BTN on hover ------------- */
+
+@media screen and (min-width:1024px) {
+    .mrq_button-style:hover {
+        height: 120px;
+        width: 90%;
+        box-shadow: 5px 5px 0px #5c5e5f, -8px -8px 0px #ffffff;
+        transition: all 0.3s;
+    }
+    /* .mrq_button-style:hover.reddy {
+        height: 120px;
+        width: 90%;
+        background: linear-gradient(145deg, #e64747, #ff5555);
+        box-shadow: 5px 5px 0px #5c5e5f, -8px -8px 0px #ffffff;
+        transition: all 0.4s;
+    }
+    .mrq_button-style:hover.blummy {
+        height: 120px;
+        width: 90%;
+        background: linear-gradient(145deg, #9ee2e6, #bcffff);
+        box-shadow: 5px 5px 0px #5c5e5f, -8px -8px 0px #ffffff;
+        transition: all 0.4s;
+    }
+    .mrq_button-style:hover.purpy {
+        height: 120px;
+        width: 90%;
+        background: linear-gradient(145deg, #aba8e4, #cbc8ff);
+        box-shadow: 5px 5px 0px #5c5e5f, -8px -8px 0px #ffffff;
+        transition: all 0.4s;
+    }
+    .mrq_button-style:hover.yelly {
+        height: 120px;
+        width: 90%;
+        background: linear-gradient(145deg, #e5e260, #ffff72);
+        box-shadow: 5px 5px 0px #5c5e5f, -8px -8px 0px #ffffff;
+        transition: all 0.4s;
+    }
+    .mrq_button-style:hover.greeny {
+        height: 120px;
+        width: 90%;
+        background: linear-gradient(145deg, #43e447, #4fff55);
+        box-shadow: 5px 5px 0px #5c5e5f, -8px -8px 0px #ffffff;
+        transition: all 0.4s;
+    } */
+}
+
+
+/* ------------- Request Bottom Content ------------ */
+
+.style11 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid #a59e9e;
+}
+
+
+/* ----- Bottom btn ------*/
+
+.mrq_button-style i {
+    font-size: 39px !important;
+    padding-right: 7px;
+    text-shadow: 2px 2px #807e7e;
+}
+
+.mrq_button-style a {
+    position: relative;
+    bottom: 4px;
+}
+
+
+/* ---- news btn ---- */
+
+.mrq_button-style.news {
+    background: linear-gradient(145deg, #3aa2fb, #ffffff);
+}
+
+.mrq_button-style.news i {
+    color: black;
+    text-shadow: 0px 0px 2px black;
+}
+
+
+/* ----- dwn btn ------*/
+
+.mrq_button-style.dwn {
+    background: linear-gradient(145deg, #fd0000, #ffe3e3);
+}
+
+.mrq_button-style.dwn i {
+    color: black;
+    text-shadow: 0px 0px 2px black;
+}
+
+
+/*-------------------------------------- Request Homepage Responsive ---------------------------------- */
+
+@media screen and (max-width:600px) {
+    .mrq_header {
+        border-radius: 9px;
+        background: linear-gradient(145deg, #9ee2e6, #bcffff);
+        box-shadow: 3px 3px 0px #466466, -8px -8px 0px #ffffff;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin: 10px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+    .mrq_h {
+        font-weight: bolder;
+        font-size: 1.8rem;
+        text-shadow: 2px 2px #807e7e;
+    }
+    .mrq_content {
+        margin-top: 0px;
+    }
+    .mrq_button-style {
+        width: 95%;
+        border-radius: 5px;
+        box-shadow: 3px 3px 0px #5c5e5f, -8px -8px 0px #ffffff;
+    }
+    .mrq_a-style {
+        font-size: 1.2rem;
+        text-shadow: 2px 2px #b9b9b9;
+    }
+}
+
+
+/*---------------------------------------------------------- 5 Request Page ------------------------------------------------------------*/
+
+@media screen and (max-width:600px) {
+    .request_body {
+        padding-top: 6px !important;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
+/* ---- Request Success ---- */
+
+.req_done {
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.req_done i {
+    font-size: 43px;
+    color: #47ab47;
+    text-shadow: 1px 1px 0px black;
+    position: relative;
+    bottom: 4px;
+}
+
+.req_done p {
+    font-size: 1.3rem;
+    margin-bottom: 0px;
+    padding-left: 5px;
+    text-shadow: 0 0 1px black;
+}
+
+
+/* --------------- Request Fix --------------- */
+
+.rq_fix {
+    /*-- color ---*/
+    border-radius: 10px;
+    background: linear-gradient(145deg, #e64747, #ff5555);
+    box-shadow: 8px 8px 0px #466466, -5px -5px 1px #ffffff;
+    /*--- size ---*/
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+@media screen and (max-width:600px) {
+    .rq_fix {
+        border-radius: 2px;
+        box-shadow: 0px 0px 8px #466466, -5px -5px 1px #ffffff;
+    }
+}
+
+
+/* --------------- Request Item --------------- */
+
+.rq_item {
+    /*-- color ---*/
+    border-radius: 10px;
+    background: linear-gradient(145deg, #a8e4e2, #c8ffff);
+    box-shadow: 8px 8px 0px #466466, -5px -5px 1px #ffffff;
+    /*--- size ---*/
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+@media screen and (max-width:600px) {
+    .rq_item {
+        border-radius: 2px;
+        box-shadow: 0px 0px 8px #466466, -5px -5px 1px #ffffff;
+    }
+    /* ---------- item select --------- */
+    .row.item_row {
+        display: block;
+        text-align: center;
+    }
+    .col_type {
+        text-align-last: center;
+    }
+    .col.col_name {
+        padding-right: 0px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        text-align-last: center;
+    }
+    .col_unit {
+        text-align-last: center;
+    }
+    .item_name {
+        max-width: 100% !important;
+    }
+}
+
+
+/* --------------- Request itemotp --------------- */
+
+.rq_itemotp {
+    /*-- color ---*/
+    border-radius: 10px;
+    background: linear-gradient(145deg, #aba8e4, #cbc8ff);
+    box-shadow: 8px 8px 0px #466466, -5px -5px 1px #ffffff;
+    /*--- size ---*/
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+@media screen and (max-width:600px) {
+    .rq_itemotp {
+        border-radius: 2px;
+        box-shadow: 0px 0px 8px #466466, -5px -5px 1px #ffffff;
+    }
+    /* ---------- item select --------- */
+    .row.item_row {
+        display: block;
+        text-align: center;
+    }
+    .col_type_otp {
+        width: 98% !important;
+        text-align-last: center;
+    }
+    .col_name_otp {
+        width: 94% !important;
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+        text-align-last: center;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .col_unit_otp {
+        max-width: 97% !important;
+        text-align-last: center;
+    }
+}
+
+
+/* --------------- Request email --------------- */
+
+.rq_email {
+    /*-- color ---*/
+    border-radius: 10px;
+    background: linear-gradient(145deg, #e5e260, #ffff72);
+    box-shadow: 8px 8px 0px #466466, -5px -5px 1px #ffffff;
+    /*--- size ---*/
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+@media screen and (max-width:600px) {
+    .rq_email {
+        border-radius: 2px;
+        box-shadow: 0px 0px 8px #466466, -5px -5px 1px #ffffff;
+    }
+}
+
+
+/* --------------- Request Finger --------------- */
+
+.rq_finger {
+    /*-- color ---*/
+    border-radius: 10px;
+    background: linear-gradient(145deg, #43e447, #4fff55);
+    box-shadow: 8px 8px 0px #466466, -5px -5px 1px #ffffff;
+    /*--- size ---*/
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+@media screen and (max-width:600px) {
+    .rq_finger {
+        border-radius: 2px;
+        box-shadow: 0px 0px 8px #466466, -5px -5px 1px #ffffff;
+    }
+}
+
+
+/*--------------------------------------- Top Navbar ----------------------------------------------*/
+
+.admainedit_nav {
+    /*-- color ---*/
+    border-radius: 10px;
+    background: linear-gradient(145deg, #9ee2e6, #bcffff);
+    box-shadow: 6px 6px 0px #466466, -6px -6px 0px #ffffff;
+}
+
+
+/*--------------------------------------- Side Navbar ----------------------------------------------*/
+
+.sidenav-badge {
+    position: relative;
+    bottom: 14px;
+    font-size: 64%;
+}
+
+
+/*--------------------------------------- NOTIFICATION --------------------------------------------*/
+
+span.noticss {
+    position: relative;
+    left: 37px;
+    bottom: 9px;
+    z-index: 1;
+}
+
+.dropstyle {
+    top: 34px !important;
+    right: -6px !important;
+    font-family: 'Mitr', sans-serif;
+    background: white;
+    width: 250px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    max-height: 450px !important;
+    overflow-y: auto;
+    border-radius: 15px;
+    animation: fadeIn ease 0.4s;
+    -webkit-animation: fadeIn ease 0.4s;
+}
+
+.noti-banner {
+    background: rgb(231, 29, 29);
+    background: linear-gradient(180deg, rgba(231, 29, 29, 0.6194852941176471) 0%, rgba(218, 31, 31, 0.5998774509803921) 100%);
+    padding-top: 13px;
+    padding-bottom: 13px;
+    margin-right: -10px;
+    margin-left: -10px;
+    margin-top: -8px;
+}
+
+.noti-data:hover {
+    background-color: #E6E6E6;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    /*width: 0px;*/
+    display: none;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 8px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+/*------------------------------------------------------------ ad_main ------------------------------------------------------------*/
+
+.main-table-size {
+    overflow-x: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+
+/*------------------------------------------------- ROW 1 ----------------------------------------------*/
+
+.banner-box {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+
+/*------------------------ BANNER 1 ---------------------*/
+
+.banner-box .boxtobox-1 {
+    padding-left: 30px;
+}
+
+.banner-box .banner1 {
+    border-radius: 15px;
+    margin-top: 20px;
+    height: 65px;
+}
+
+.dot1 {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    right: 27px;
+    top: -12px;
+    background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+}
+
+.dot1 i {
+    position: relative;
+    left: 32px;
+    top: 25px;
+    font-size: 38px;
+}
+
+.h1-text-banner1 {
+    position: relative;
+    bottom: 83px;
+    left: 30px;
+    color: #7b7b7b;
+}
+
+.h2-text-banner1 {
+    position: relative;
+    left: 31px;
+    bottom: 86px;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+@media only screen and (max-width:736px) {
+    .h1-text-banner1 {
+        left: 30px;
+    }
+    .h2-text-banner1 {
+        left: 26px;
+    }
+}
+
+
+/*------------------------ BANNER 2 ---------------------*/
+
+.banner-box .boxtobox-2 {
+    padding-top: 13px;
+    padding-left: 30px;
+}
+
+.banner-box .banner2 {
+    border-radius: 15px;
+    margin-top: 20px;
+    height: 65px;
+}
+
+.dot2 {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    right: 27px;
+    top: -12px;
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+}
+
+.dot2 i {
+    position: relative;
+    left: 26px;
+    top: 25px;
+    font-size: 38px;
+}
+
+.h1-text-banner2 {
+    position: relative;
+    bottom: 84px;
+    left: 30px;
+    color: #7b7b7b;
+}
+
+.h2-text-banner2 {
+    position: relative;
+    left: 31px;
+    bottom: 85px;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+@media only screen and (max-width:736px) {
+    .h1-text-banner2 {
+        left: 30px;
+    }
+    .h2-text-banner2 {
+        left: 26px;
+    }
+}
+
+
+/*------------------------ BANNER 3 ---------------------*/
+
+.banner-box .boxtobox-3 {
+    padding-top: 13px;
+    padding-left: 30px;
+}
+
+.banner-box .banner3 {
+    border-radius: 15px;
+    margin-top: 20px;
+    height: 65px;
+}
+
+.dot3 {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    right: 27px;
+    top: -12px;
+    background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+}
+
+.dot3 i {
+    position: relative;
+    left: 26px;
+    top: 25px;
+    font-size: 38px;
+}
+
+.h1-text-banner3 {
+    position: relative;
+    bottom: 84px;
+    left: 30px;
+    color: #7b7b7b;
+}
+
+.h2-text-banner3 {
+    position: relative;
+    left: 31px;
+    bottom: 85px;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+@media only screen and (max-width:736px) {
+    .h1-text-banner3 {
+        left: 30px;
+    }
+    .h2-text-banner3 {
+        left: 26px;
+    }
+}
+
+
+/*------------------------ BANNER 4 ---------------------*/
+
+.banner-box .boxtobox-4 {
+    padding-top: 13px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+}
+
+.banner-box .banner4 {
+    border-radius: 15px;
+    margin-top: 20px;
+    height: 65px;
+}
+
+.dot4 {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    right: 27px;
+    top: -12px;
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+
+.dot4 i {
+    position: relative;
+    left: 26px;
+    top: 25px;
+    font-size: 38px;
+}
+
+.h1-text-banner4 {
+    position: relative;
+    bottom: 84px;
+    left: 30px;
+    color: #7b7b7b;
+}
+
+.h2-text-banner4 {
+    position: relative;
+    left: 31px;
+    bottom: 85px;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+@media only screen and (max-width:736px) {
+    .h1-text-banner4 {
+        left: 30px;
+    }
+    .h2-text-banner4 {
+        left: 26px;
+    }
+}
+
+
+/*---------------------------------------------- Noti History Box -----------------------------------------*/
+
+.noti_box_fix {
+    border: 1px solid rgba(255, 92, 103, 0.30);
+    border-radius: 5px;
+    background-color: rgba(255, 0, 0, 0.05);
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.noti_box_item {
+    border: 1px solid rgb(92, 202, 255, 0.30);
+    border-radius: 5px;
+    background-color: rgba(0, 231, 255, 0.05);
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.noti_box_itemotp {
+    border: 1px solid rgb(215, 92, 255, 0.30);
+    border-radius: 5px;
+    background-color: rgba(204, 0, 255, 0.05);
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.noti_box_email {
+    border: 1px solid rgb(255, 188, 0, 0.30);
+    border-radius: 5px;
+    background-color: rgba(255, 235, 0, 0.05);
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.noti_box_finger {
+    border: 1px solid rgb(95, 255, 92, 0.30);
+    border-radius: 5px;
+    background-color: rgba(4, 255, 0, 0.05);
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+
+/*-------------- box_noti (Row 1 Block 2) -----------*/
+
+.box_noti {
+    overflow-y: auto;
+    scrollbar-width: none;
+    max-height: 330px;
+    padding-left: 12px;
+    padding-right: 10px;
+    padding-top: 3px;
+}
+
+
+/*-------------- box_event (Row 2 Block 2) -----------*/
+
+.box_event {
+    overflow-y: auto;
+    scrollbar-width: none;
+    height: 377px;
+    max-height: 377px;
+    padding-left: 12px;
+    padding-right: 10px;
+    padding-top: 3px;
+    margin-bottom: 13px;
+}
+
+
+/*------------------------------------------------------------- ad_report ---------------------------------------------------------*/
+
+.dropdown-overall {
+    top: 1px !important;
+    left: -25px !important;
+    min-width: fit-content;
+    font-size: 17px;
+    justify-content: center;
+    text-align: center;
+    border: thin;
+}
+
+@media only screen and (max-width: 400px) {
+    .dropdown-overall {
+        /*top: 0px !important;
+        left: 0px !important;*/
+        font-size: 5px;
+    }
+}
+
+a.header-text {
+    font-size: 17px;
+}
+
+.dropdown-item {
+    font-weight: bolder;
+}
+
+.dropdown-item:hover {
+    background-color: #00ECFF;
+}
+
+.ylist {
+    border: thin;
+    min-width: auto;
+    top: 10px !important;
+}
+
+
+/*-------report_item multiselect product_id------*/
+
+.multi_pd_id:hover {
+    background-color: #a4afbf;
+}
+
+.report_req_row {
+    max-width: 222px;
+    padding-left: 14px;
+}
+
+.pd_id_error {
+    padding-left: 435px;
+    color: red;
+    padding-bottom: 4px;
+}
+
+
+/*------------------------report list-----------------------*/
+
+.t-shadow {
+    font-size: 20px;
+}
+
+
+/*------------------------------------------------------------- ad_upload ---------------------------------------------------------*/
+
+
+/*------------------------ upload Button -----------------------*/
+
+
+/* ----- btn group ----- */
+
+.func_grp {
+    padding-bottom: 10px;
+    padding-right: 5px;
+    display: flex;
+    justify-content: space-between;
+    /* white-space: nowrap; */
+}
+
+.func_grp .btn_pd_grp {
+    display: flex !important;
+}
+
+.func_grp .btn_pd_grp .btn {
+    font-size: 14px;
+}
+
+.func_grp .btn_pd_grp .btn i {
+    font-size: 1.3rem !important;
+    position: relative !important;
+    top: 1.7px !important;
+}
+
+.func_grp .grp_select {
+    width: 25%;
+}
+
+#add_new_modal i.fa-file-pdf {
+    font-size: 27px;
+}
+
+
+/* ----- filter Category ----- */
+
+.func_grp .filter {
+    display: flex;
+    margin-top: 3px;
+    width: 30%;
+}
+
+.filter label {
+    width: 23%;
+    position: relative;
+    top: 8px;
+    font-weight: bold;
+}
+
+
+/* ----- Add File ----- */
+
+#form_upload {
+    padding-bottom: 0px;
+    height: 49px;
+}
+
+#form_upload form {
+    display: flex !important;
+    padding-left: 10%;
+}
+
+#form_upload form p {
+    color: black;
+    padding-right: 13px;
+}
+
+#file_input {
+    height: 30px !important;
+    width: 271px !important;
+}
+
+.pdf_grp_sel {
+    display: flex;
+    padding-left: 13%;
+    padding-bottom: 13px;
+}
+
+.pdf_grp_sel p {
+    padding-right: 10px;
+    position: relative;
+    top: 5px;
+    margin-bottom: 0px;
+    color: black;
+}
+
+.pdf_grp_sel .grp_selector {
+    width: 124%;
+    display: flex;
+}
+
+#grp_val {
+    max-width: 250px !important;
+}
+
+span#f_null {
+    position: relative;
+    text-align: center;
+    padding-bottom: 6px;
+    /* margin-top: -27px; */
+    color: red;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+
+/* Plus icon - add new file with multi category */
+
+.iPlus0 {
+    color: #008051;
+    font-size: 22px;
+    cursor: pointer;
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.iPlus {
+    color: #008051;
+    font-size: 22px;
+    cursor: pointer;
+    padding-top: 7px;
+    padding-left: 10px;
+}
+
+
+/* delete icon - add new file with multi category */
+
+.iMinus0 {
+    color: red;
+    font-size: 22px;
+    cursor: pointer;
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.iMinus {
+    color: red;
+    font-size: 22px;
+    cursor: pointer;
+    padding-top: 7px;
+    padding-left: 10px;
+}
+
+
+/* ---------------- table body ---------------- */
+
+#pdf_table_body tr {
+    text-align-last: center;
+}
+
+#pdf_table_body tr .pdf_id {
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bolder;
+    /* width: 30px; */
+    /* max-width: 30px; */
+}
+
+#pdf_table_body tr .pdf_name {
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bolder;
+    /* width: 80%; */
+}
+
+#pdf_table_body tr .pdf_edit {
+    display: flex;
+    justify-content: center;
+    /* width: 200px; */
+    /* max-width: 200px; */
+}
+
+
+/*----  Manage File Table ---- */
+
+#pdf_table_body tr .pdf_category {
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bolder;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* width: 300px; */
+    max-width: 300px;
+}
+
+#pdf_table_body tr .pdf_category2 {
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bolder;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* width: 100% !important; */
+    /* max-width: 300px !important; */
+}
+
+#pdf_table_body tr .pdf_filename {
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bolder;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* width: 100%; */
+    max-width: 500px;
+}
+
+
+/* ----- New Categories ----- */
+
+#grp_name {
+    display: inline-flex;
+    justify-content: center;
+}
+
+#grp_name .form-control {
+    margin-left: 10px;
+    width: 62% !important;
+}
+
+#grp_name p {
+    color: black;
+    position: relative;
+    top: 4px;
+}
+
+.span_error_grp {
+    position: relative;
+    top: -17px;
+    left: 128px;
+}
+
+.span_error_grp p {
+    margin-bottom: -20px;
+    color: red;
+}
+
+
+/* ----------------------------- modal_ACTION ------------------------ */
+
+.modal_action {
+    display: flex;
+    justify-content: center;
+    padding-top: 26px;
+}
+
+.modal_action i {
+    font-size: 33px;
+    color: #521313;
+}
+
+.modal_action p {
+    color: black;
+    font-size: 22px;
+    font-weight: bolder;
+    padding-left: 5px;
+    position: relative;
+    bottom: 2px;
+}
+
+
+/* --------------- File pdf_edit ------------- */
+
+.pdf_edit_box {
+    padding-top: 0px;
+    display: grid;
+    padding-left: 31px;
+    padding-right: 41px;
+}
+
+
+/* --- Filename input --- */
+
+.pdf_edit_box1 {
+    display: inline-flex;
+    padding-bottom: 5px;
+}
+
+.pdf_edit_box1 label {
+    width: 21%;
+    position: relative;
+    top: 6px;
+    font-weight: bold;
+}
+
+.pdf_edit_box1 input {
+    margin-left: 13px;
+}
+
+
+/* --- Category Select --- */
+
+.pdf_edit_box2 {
+    display: inline-flex;
+}
+
+.pdf_edit_box2 label {
+    width: 21%;
+    position: relative;
+    top: 6px;
+    font-weight: bold;
+}
+
+.pdf_edit_box2 .select1 {
+    display: block;
+    width: 100% !important;
+    padding-left: 10px !important;
+}
+
+.pdf_edit_box2 .select1 select {
+    margin-bottom: 4px;
+}
+
+
+/* ------ Edit File ------ */
+
+#n_err {
+    color: red;
+    padding-left: 21%;
+    padding-bottom: 7px;
+}
+
+.select1 .grp_selector {
+    display: -webkit-box;
+}
+
+
+/*------------------------------------------------------------------Request CSS------------------------------------------------------------------*/
+
+.req_header {
+    font-size: 40px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-shadow: 1px 1px 2px;
+    font-weight: bold;
+}
+
+.reqform {
+    max-width: 550px;
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+
+/*------- request_item (item select)------*/
+
+.item_row {
+    margin-right: -36px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 1px;
+}
+
+.col_name {
+    margin-right: -14px;
+    margin-left: -14px;
+}
+
+.item_type {
+    max-width: 102px;
+}
+
+.item_name {
+    max-width: 309px;
+}
+
+.item_unit {
+    max-width: 79px;
+}
+
+.item_del {
+    padding-left: 5px;
+    padding-top: 9px;
+    color: red;
+}
+
+.error_data {
+    color: red;
+}
+
+.error_row {
+    color: red;
+}
+
+@media only screen and (max-width: 500px) {
+    .item_type {
+        max-width: 96%;
+    }
+    .item_list {
+        max-width: 96%;
+    }
+    .item_unit {
+        max-width: 96%;
+    }
+}
+
+
+/*---------------- request_itemotp ----------------*/
+
+.col_type_otp {
+    width: 87px;
+}
+
+.col_name_otp {
+    width: 309px;
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+.col_unit_otp {
+    max-width: 91px;
+}
+
+
+/*--------------------------------- ad_news ---------------------------------*/
+
+
+/*------ news_list (table) -------*/
+
+.n_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+
+.n_data_sty1 {
+    padding-top: 21px !important;
+    font-size: 16px;
+}
+
+td.edit_n_del {
+    display: flex;
+    justify-content: center;
+}
+
+.news_btn {
+    margin-right: px;
+    margin-left: px
+}
+
+
+/*---------------------------------------------------------------- Rating ------------------------------------------------------------------*/
