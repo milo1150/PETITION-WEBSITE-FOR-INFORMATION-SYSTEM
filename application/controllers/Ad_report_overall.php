@@ -8,16 +8,12 @@ class ad_report_overall extends CI_Controller{
 		} 
     }
 	function index() {
-		if ($this->session->userdata('username') != ''){
-			$this->report_overall();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+		$this->report_overall();
 	}
 	function report_overall(){	 		
 		$data = $this->ad_report_model->report_admin_overall();
 		//print_r($data);
-		$this->load->view('ad_report_overall',$data);		
+		$this->load->view('admin/report/ad_report_overall',$data);		
 	}
 	
 }

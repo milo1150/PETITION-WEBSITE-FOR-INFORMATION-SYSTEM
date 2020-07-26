@@ -8,21 +8,17 @@ class ad_report extends CI_Controller{
 		} 
     }
 	function index() {
-		if ($this->session->userdata('username') != ''){
-			$this->ad_list();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+		$this->ad_list();
 	}
 	public function ad_list(){								 
 		$this->session->unset_userdata('graph_data');						
 		$data['ad_list'] = $this->ad_report_model->admin_list();
-		$this->load->view('ad_report_single',$data);			
+		$this->load->view('admin/report/ad_report_single',$data);			
 	}
 	function admin_report(){
 		$username = $this->input->post('username');		 		
 		$data = $this->ad_report_model->order_alltime($username);
 		//print_r($data['year_data_accept']);
-		$this->load->view('ad_report_single_detail',$data);		
+		$this->load->view('admin/report/ad_report_single_detail',$data);		
 	}
 }

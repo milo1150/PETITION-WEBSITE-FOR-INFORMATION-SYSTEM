@@ -11,17 +11,13 @@ Class ad_admanage extends CI_Controller {
 		redirect(base_url().'ad_login');
 	} 
     }
-	function index() {
-		if ($this->session->userdata('username') != '') {			
-			$this->ad_list();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+	function index() {		
+		$this->ad_list();
 	}
 	//--------------------------------------------------------------- Manage Admin ----------------------------------------------------------------
 	function ad_list() {		
 		$data['query'] = $this->Admin->showdata();
-		$this->load->view('ad_admin_list', $data);
+		$this->load->view('admin/manage_admin/ad_admin_list', $data);
 
 		/*if ($this->session->userdata('username') != '') {
 			$username = $this->session->userdata('username');
@@ -42,7 +38,7 @@ Class ad_admanage extends CI_Controller {
 			// $username = $this->session->userdata('username');
 			$rank = $this->session->userdata('rank');
 			if($rank = 'super_admin'){
-				$this->load->view('ad_admin_add');
+				$this->load->view('admin/manage_admin/ad_admin_add');
 			}else{
 				$this->ad_list();
 			}
@@ -104,7 +100,7 @@ Class ad_admanage extends CI_Controller {
 	function edit(){				
 		$id = $this->input->post('id');			 
 		$data = $this->Admin->fetch_edit($id);		
-		$this->load->view('ad_admin_detail',$data);			
+		$this->load->view('admin/manage_admin/ad_admin_detail',$data);			
 	}
 	function update(){
 		$id = $this->input->post('id');

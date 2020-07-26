@@ -7,7 +7,7 @@
 </head>
 
 <div class="wrapper">
-	<?php include 'admainEDIT.php'?>
+<?php $this->load->view('admin/admainEDIT');?>
 	<?php //echo $content;?>
 	<body>
 		<main>

@@ -10,29 +10,17 @@ Class ad_news extends CI_Controller {
 			redirect(base_url().'ad_login');
 		} 
     }
-    function index(){
-		if ($this->session->userdata('username') != '') {			
-			$this->ad_news_all();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+    function index(){			
+		$this->ad_news_all();
 	}
 	function ad_news_add(){
-		if ($this->session->userdata('username') != '') {	
-			$data['ntype'] = $this->news_model->select_subject();
-			$this->load->view('ad_news_add',$data);
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+		$data['ntype'] = $this->news_model->select_subject();
+		$this->load->view('admin/manage_news/ad_news_add',$data);
 	}
-	function ad_news_all(){
-		if ($this->session->userdata('username') != '') {			
-			$data['ndata'] = $this->news_model->fetch_ndata();
-			//print_r($data);
-			$this->load->view('ad_news_all',$data);
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+	function ad_news_all(){		
+		$data['ndata'] = $this->news_model->fetch_ndata();
+		//print_r($data);
+		$this->load->view('admin/manage_news/ad_news_all',$data);
 	}
 
 	//------------------------- Add news ------------------------
@@ -90,7 +78,7 @@ Class ad_news extends CI_Controller {
 		);
 		//print_r($data);
 		//echo $data[0]['id'];
-		$this->load->view('ad_news_edit',$data);
+		$this->load->view('admin/manage_news/ad_news_edit',$data);
 	}
 	public function news_edit_conf(){
 		$data = array(

@@ -7,19 +7,15 @@ Class Admin_upload extends CI_Controller {
 			redirect(base_url().'ad_login');
 		} 
     }
-    function index(){
-		if ($this->session->userdata('username') != '') {			
-			$this->file();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+    function index(){		
+		$this->file();
 	}
 	/* --------------------------------------------------- File Upload  ---------------------------------------------- */
 	// -------- Manage File --------
 	function file(){
 		$data['file_data'] = $this->db->select('*')->from('pdf_file')->get()->result();
 		$data['group_data'] = $this->db->select('*')->from('pdf_category')->get()->result();
-		$this->load->view('ad_filesUp_file',$data);
+		$this->load->view('admin/manage_files/ad_filesUp_file',$data);
 	}
 	// ----------- Check PDF Name -----------
 	function check_pdf(){
@@ -113,7 +109,7 @@ Class Admin_upload extends CI_Controller {
 	// -------- Manage Category --------
 	function category(){
 		$data['grp_data'] = $this->db->select('*')->from('pdf_category')->get()->result();
-		$this->load->view('ad_filesUp_group',$data);
+		$this->load->view('admin/manage_files/ad_filesUp_group',$data);
 	}
 	// ----------- Add new Cate & Validate Category Name ----------
 	function val_grp_name(){
@@ -215,7 +211,7 @@ Class Admin_upload extends CI_Controller {
 		$data['file_data'] = $this->db->select('*')->from('pdf_file')->where(" category LIKE '%$grp%' ")->get()->result();
 		$data['group_data'] = $this->db->select('*')->from('pdf_category')->get()->result();
 		$data['fil_default'] = $grp;
-		$this->load->view('ad_filesUp_file',$data);
+		$this->load->view('admin/manage_files/ad_filesUp_file',$data);
 		// print_r($_GET);
 	}
 	
