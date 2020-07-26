@@ -7,7 +7,7 @@
 </head>
 
 <div class="wrapper">
-	<?php include 'admainEDIT.php'?>
+<?php $this->load->view('admin/admainEDIT');?>
 	<body>
 		<main>
 			<div class="table-responsive">
@@ -66,8 +66,8 @@
 						<?php 	
 							//---- คำนวณแถวที่ต้อง show และเก็บ item_type & item_name ไปแสดงผลในแต่ละแถว ----											
 							$p_row = 0;
-							$p_data = array();
-							$i = 0;
+							$p_data = array(); //ข้อมูลที่จะนำไปแสดง  
+							$i = 0; //ระบุตำแหน่งของ $p_data
 							foreach($item_list as $col){								
 								$item_type = $col->item_type;
 								$item_name = $col->item_name;
@@ -287,13 +287,6 @@
 
 	//----------------------- Max unit (item_product) -----------------------
 	function max_number(id){ // onkeyup is the best for this validate
-		// const max_val = max;
-		// const input_val = $('#'+id).val()
-		// const sum = max_val-input_val;
-		// if(sum < 0){
-		// 	$('#'+id).val(max_val);
-		// }
-
 		let max = document.getElementById(id).max;
 		let val = document.getElementById(id).value;
 		let sum = max - val;
@@ -318,10 +311,10 @@
 			$('#' + id).val(max)
 			return
 		}
-		if (sum == max) { // if max != 0 but user input 0 > set to max 
-			$('#' + id).val(max)
-			return
-		}
+		// if (sum == max) { // if max != 0 but user input 0 -> set to max 
+		// 	$('#' + id).val(max)
+		// 	return
+		// }
 	}	
 
 	//--------------------------------------------------------------- Onload Page ------------------------------------------------------------
@@ -349,6 +342,7 @@
 	}
 	//-------------------------------------------- Check product_id select (when click อนุมัติการยืม) -----------------------------------------------------
 	function check_product_id(){
+		//-------------------------------------------------------- Check ERROR ----------------------------------------------------------
 		//---- total children row in #req_list ----- 
 		var count_product_id = document.getElementById('req_list').childNodes
 
@@ -371,7 +365,7 @@
 				m++;				
 			}										
 		}														
-		//console.log(max_pd_id.length)
+		// console.log(max_pd_id)
 
 		//------ get selected product_id value -------
 		var select_data = Array();
@@ -381,7 +375,7 @@
 		}
 		
 		//----- Check Error Value V2.0 ------
-		var total_error = 0;
+		var total_error = 0; // var ไว้เช็คว่าเลือกครบหรือไม่ -> ไล่เช็คทีละตำแหน่ง -> ex.ถ้า max_pd_id = 3 แต่ select_data ในแต่ละ ครุภัณนั้นไม่ถึง 3 จะ error
 		for(let j=0;j<max_pd_id.length;j++){
 			if(select_data[j].length != max_pd_id[j]){
 				//$('#select_error'+j).html('โปรดระบุ');
@@ -390,10 +384,13 @@
 				//$('#select_error'+j).html('');
 			}
 		}
-		//console.log(total_error)		
-		//console.log(select_data)
-
-		//------ get selected email_data value -------
+		// ----- CONSOLE sum of error  -----		
+		// console.log(max_pd_id)		
+		// console.log(select_data)
+		//console.log(total_error)
+		
+		/* ----------------------------------------------------- SEND DATA ------------------------------------------------------------ */
+		//------ select เลขครุภัณที่เลือกเพื่อใช้ใน mail text -------
 		var email_data = Array();
 		var email_data_name = Array();
 		for(let i=0;i<p_row;i++){
@@ -404,16 +401,8 @@
 				email_data_name[i] = pdid_name // ถ้าไม่ได้เลือกเลข จะต้องทำให้ว่าง เพื่อไม่ให้ error ตอน fetch ข้อมูล @ad_item line 123
 			}												
 		}
-
-		//----- Check Data before send ------
-		/*var select_data_sum = 0;
-		for(let k=0;k<max_pd_id.length;k++){
-			if(select_data[k].length != max_pd_id[k]){
-				select_data_sum++;
-			}
-		}*/
+		// console.log(email_data)
 		
-		/* -------------------------------------------------- SEND DATA ------------------------------------------------------------ */
 		const acp_btn = document.getElementById('accept_order_btn').onclick = async function(){
 					var id = '<?php echo $id;?>';	
 					var ad_username = '<?php echo $this->session->userdata('username');?>';					
@@ -429,6 +418,7 @@
 					}					
 					//console.log(select_data)
 					//console.log(req_data)
+
 					await $.ajax({
 						url : "<?php echo base_url();?>ad_item/send_email_accept",
 						method : "POST",

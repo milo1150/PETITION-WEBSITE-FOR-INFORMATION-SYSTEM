@@ -70,14 +70,13 @@ Class ad_item_model extends CI_Model{
                 $pd_id = $this->db->select('item_id')->from('item_db_product_id')->where('item_type',$item_type)->where('item_name',$item_name)->where('item_status',0)->get()->result_array();
                 //echo $item_type;
                 //echo $item_name;                                                        
-                //echo '<br/>';
-                //print_r($pd_id);
-                
-                //echo $count;               
+                // print_r($pd_id);    
 
+                            
                 //---- $count != '0' เพื่อเอาแค่ ครุภัณฑ์ ที่มีเลขเท่านั้น ----
                 $count = count($pd_id);
-                if($count != '0'){
+                // echo $count;  
+                if($count != 0){
                     for($j=0;$j<$count;$j++){                    
                         $name[$i][$j] = $pd_id[$j];                    
                     }
@@ -122,7 +121,7 @@ Class ad_item_model extends CI_Model{
             $this->db->set('item_unit_out',$item_unit_out)->where('item_type',$item_type)->where('item_name',$item_name)->update('item_db_product');
         }
     }
-    //------------------------------ update request information -----------------------------------
+    //------------------------------ update request information (ทำเพื่อประกอบข้อมูลในหน้า report_item_inproc , แยก table)-----------------------------------
     function item_information_update($id,$req_data,$select_data){
         //---- get md5 order from request_item table ----
         $reqid = $this->db->select('reqid')->from('request_item')->where('id',$id)->get()->result();

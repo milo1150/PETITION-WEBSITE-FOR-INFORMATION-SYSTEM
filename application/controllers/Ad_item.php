@@ -23,6 +23,7 @@ class ad_item extends CI_Controller {
 		$data = $this->ad_item_model->fetch_item_report($id);
 		$data['item_list'] = $this->ad_item_model->report_item_list($id);
 		$data['product_id'] = $this->ad_item_model->report_item_list_pd_id($id);
+		// print_r($data);
 		$this->load->view('admin/item/report_item_order',$data);							
 	}
 	//------------ query เลขครุภัณฑ์ ------------
@@ -43,9 +44,8 @@ class ad_item extends CI_Controller {
 
 	/////////////////////////////////////////////////////// ACCEPT ORDER ////////////////////////////////////////////////////////
 	public function report_item_order_update_accept(){	
-
-		//------------- UPDATE item_order_status > 1 -----------------	
-		date_default_timezone_set("Asia/Bangkok");							
+		date_default_timezone_set("Asia/Bangkok");
+		//------------- UPDATE item_order_status > 1 -----------------										
 		$data = array(
 			'id' => $this->input->post('id'),
 			'ad_username' => $this->input->post('ad_username'),
