@@ -9,25 +9,17 @@ class ad_email extends CI_Controller {
 		} 
     }
 	function index() {
-		if ($this->session->userdata('username') != '') {
-			$this->ad_email_order();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+		$this->ad_email_order();
 	}
 	/////////////////////////////////////////////////////////// ORDER ////////////////////////////////////////////////////////
 	public function ad_email_order(){						
 		$data['email_order'] = $this->ad_email_model->fecth_email_order();		
-		if ($this->session->userdata('username') != '') {
-			$this->load->view('ad_email_order',$data);
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+		$this->load->view('admin/email/ad_email_order',$data);
 	} 		
 	public function report_email_order() {			
 		$id = $this->input->post('id');	
 		$data = $this->ad_email_model->fetch_email_report($id);
-		$this->load->view('report_email_order',$data);	
+		$this->load->view('admin/email/report_email_order',$data);	
 	}
 	/////////////////////////////////////////////////////// ACCEPT ORDER ////////////////////////////////////////////////////////
 	public function report_email_order_update_accept(){	
@@ -91,12 +83,12 @@ class ad_email extends CI_Controller {
 	/////////////////////////////////////////////////////////// COMPLETE ////////////////////////////////////////////////////////
 	public function ad_email_com(){
 		$data['email_com'] = $this->ad_email_model->fecth_email_com();
-		$this->load->view('ad_email_com',$data);	
+		$this->load->view('admin/email/ad_email_com',$data);	
 	}
 	public function report_email_com() {
 		$id = $this->input->post('id');	
 		$data = $this->ad_email_model->report_email_com($id);
-		$this->load->view('report_email_com',$data);	
+		$this->load->view('admin/email/report_email_com',$data);	
 	}
 	/*------------------------------------ Watching same page in the same time then someone ACCEPT ORDER -------------------------------------------*/
 	public function watch_accept_status(){

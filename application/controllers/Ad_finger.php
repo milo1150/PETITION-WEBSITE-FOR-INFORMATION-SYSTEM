@@ -8,21 +8,17 @@ class ad_finger extends CI_Controller {
 		} 
     }
 	function index() {
-		if ($this->session->userdata('username') != '') {
-			$this->ad_finger_order();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+		$this->ad_finger_order();
 	}
 	/////////////////////////////////////////////////////////// ORDER ////////////////////////////////////////////////////////
 	public function ad_finger_order(){						
 		$data['finger_order'] = $this->ad_finger_model->fecth_finger_order();
-		$this->load->view('ad_finger_order',$data);				
+		$this->load->view('admin/finger/ad_finger_order',$data);				
 	}		
 	public function report_finger_order(){		
 		$id = $this->input->post('id');	
 		$data = $this->ad_finger_model->fetch_finger_report($id);
-		$this->load->view('report_finger_order',$data);		
+		$this->load->view('admin/finger/report_finger_order',$data);		
 	}
 	/////////////////////////////////////////////////////// ACCEPT ORDER ////////////////////////////////////////////////////////
 	public function check_id_scan(){
@@ -92,19 +88,14 @@ class ad_finger extends CI_Controller {
 	/////////////////////////////////////////////////////////// COMPLETE ////////////////////////////////////////////////////////
 	public function ad_finger_com(){						
 		$data['finger_com'] = $this->ad_finger_model->fecth_finger_com();
-		$this->load->view('ad_finger_com',$data);		
+		$this->load->view('admin/finger/ad_finger_com',$data);		
 	}
 	public function report_finger_com() {		
 		$id = $this->input->post('id');	
 		$data = $this->ad_finger_model->report_finger_com($id);
-		$this->load->view('report_finger_com',$data);		
+		$this->load->view('admin/finger/report_finger_com',$data);		
 	}
 
-	//----------------------------------------------------------- FINGER REPORT ----------------------------------------------------------------
-	public function finger_report(){
-		$data['finger_report'] = $this->ad_finger_model->finger_report();
-		$this->load->view('ad_finger_list',$data);
-	}
 	/*------------------------------------ Watching same page in the same time then someone ACCEPT ORDER -------------------------------------------*/
 	public function watch_accept_status(){
 		$id = $this->input->post('id');

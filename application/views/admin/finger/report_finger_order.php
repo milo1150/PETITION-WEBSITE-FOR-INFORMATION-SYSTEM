@@ -3,7 +3,7 @@
 <head>
 </head>
 <div class="wrapper">
-	<?php include 'admainEDIT.php'?>
+<?php $this->load->view('admin/admainEDIT');?>
 	<body>
 		<main>
 			<div class="table-responsive">

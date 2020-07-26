@@ -11,24 +11,20 @@ class ad_itemotp extends CI_Controller {
 		} 		
     }
 	function index() {
-		if ($this->session->userdata('username') != '') {
-			$this->ad_itemotp_order();
-		} else {
-			redirect(base_url() . 'ad_login');
-		}
+		$this->ad_itemotp_order();
 	}
 
 
 	/////////////////////////////////////////////////////////// ORDER ////////////////////////////////////////////////////////
 	public function ad_itemotp_order() {					
 		$data['itemotp_order'] = $this->ad_itemotp_model->fecth_item_order();
-		$this->load->view('ad_itemotp_order',$data);		
+		$this->load->view('admin/item_otp/ad_itemotp_order',$data);		
 	}
 	public function report_itemotp_order(){			
 		$id = $this->input->post('id');			
 		$data = $this->ad_itemotp_model->fetch_item_report($id);
 		$data['itemotp_list'] = $this->ad_itemotp_model->report_item_list($id);
-		$this->load->view('report_itemotp_order',$data);							
+		$this->load->view('admin/item_otp/report_itemotp_order',$data);							
 	}
 
 
@@ -112,31 +108,33 @@ class ad_itemotp extends CI_Controller {
 		$this->email->message($message);
 		$this->email->print_debugger();
 		$this->email->send();
+		
+		echo json_encode('');
 	}
 
 	/////////////////////////////////////////////////////////// COMPLETE ////////////////////////////////////////////////////////
 	public function ad_itemotp_com(){						
 		$data['itemotp_com'] = $this->ad_itemotp_model->fecth_item_com();
-		$this->load->view('ad_itemotp_com',$data);
+		$this->load->view('admin/item_otp/ad_itemotp_com',$data);
 	}		
 	public function report_itemotp_com(){
 		$id = $this->input->post('id');						
 		$data = $this->ad_itemotp_model->fetch_item_report_com($id);		
 		$data['itemotp_list'] = $this->ad_itemotp_model->report_itemotp_com_list($id);
-		$this->load->view('report_itemotp_com',$data);	
+		$this->load->view('admin/item_otp/report_itemotp_com',$data);	
 	}
 
 	/////////////////////////////////////////////////////////// CANCLE ORDER ////////////////////////////////////////////////////////
 	public function ad_itemotp_cancle(){					
 		$data['itemotp_order'] = $this->ad_itemotp_model->fecth_item_cancle();
-		$this->load->view('ad_itemotp_cancle',$data);		
+		$this->load->view('admin/item_otp/ad_itemotp_cancle',$data);		
 	}
 				
 	public function report_itemotp_cancle(){		
 		$id = $this->input->post('id');								
 		$data = $this->ad_itemotp_model->fetch_item_order_cancle($id);	
 		$data['itemotp_list'] = $this->ad_itemotp_model->report_item_list($id);
-		$this->load->view('report_itemotp_cancle',$data);	
+		$this->load->view('admin/item_otp/report_itemotp_cancle',$data);	
 	}
 
 	public function cancle_order(){	
@@ -183,6 +181,7 @@ class ad_itemotp extends CI_Controller {
 		$message = 'รายการเบิกของที่คุณ'.$firstname.' '.$lastname.' ได้แจ้งไว้ ณ วันที่ '.$date_request.' เวลา '.$time_request.' ได้ถูกยกเลิกรายการเนื่องจาก'.$cancle_detail.'<br>';		 
 		$this->email->message($message);
 		$this->email->send();
+		echo json_encode('');  
 	}	
 
 
@@ -190,7 +189,7 @@ class ad_itemotp extends CI_Controller {
 	//------- Main page-------
 	public function item_product(){	
 		$data['itemotp_product'] = $this->ad_itemotp_model->product_list();
-		$this->load->view('ad_itemotp_product',$data);
+		$this->load->view('admin/item_otp/pd_otp/ad_itemotp_product',$data);
 	}
 	//------- Add item -------
 	public function item_product_add(){		
@@ -232,7 +231,7 @@ class ad_itemotp extends CI_Controller {
 	//---------------------------- Edit and Delete page ---------------------------
 	public function item_product_editndel(){	
 		$data['itemotp_product'] = $this->ad_itemotp_model->product_list();
-		$this->load->view('ad_itemotp_product_editndel',$data);
+		$this->load->view('admin/item_otp/pd_otp/ad_itemotp_product_editndel',$data);
 	}
 	public function item_product_edit(){
 		$this->form_validation->set_rules('item_new_name','item_name','trim|required|regex_match[/^[ก-๏a-zA-Z0-9เ\s]+$/]',
@@ -293,14 +292,14 @@ class ad_itemotp extends CI_Controller {
 	//----------------------------------------------------- itemotp LOG ---------------------------------------------------------------
 	public function itemotp_product_log(){	
 		$data['itemotp_log'] = $this->ad_itemotp_model->itemotp_log();
-		$this->load->view('ad_itemotp_product_log',$data);
+		$this->load->view('admin/item_otp/pd_otp/ad_itemotp_product_log',$data);
 	}
 	//---------------------------------------------------------- History ---------------------------------------------------------------
 	public function history(){
 		$item_name = $this->input->get('item_name');
 		$data['item_name'] = $item_name;
 		$data['history_list'] = $this->ad_itemotp_model->otp_history_list($item_name);
-		$this->load->view('ad_itemotp_history',$data);
+		$this->load->view('admin/item_otp/pd_otp/ad_itemotp_history',$data);
 	}
 	/*------------------------------------ Watching same page in the same time then someone ACCEPT ORDER -------------------------------------------*/
 	public function watch_accept_status(){

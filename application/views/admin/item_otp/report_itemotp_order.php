@@ -6,7 +6,7 @@
 </head>
 
 <div class="wrapper">
-	<?php include 'admainEDIT.php'?>
+<?php $this->load->view('admin/admainEDIT');?>
 	<body>
 		<main>
 			<div class="table-responsive">
@@ -225,13 +225,6 @@
 	})	
 	//----------------------- Max unit (item_product) -----------------------
 	function max_number(id){ // onkeyup is the best for this validate
-		// const max_val = max;
-		// const input_val = $('#'+id).val()
-		// const sum = max_val-input_val;
-		// if(sum < 0){
-		// 	$('#'+id).val(max_val);
-		// }
-
 		let max = document.getElementById(id).max;
 		let val = document.getElementById(id).value;
 		let sum = max - val;
@@ -256,16 +249,16 @@
 			$('#' + id).val(max)
 			return
 		}
-		if (sum == max) { // if max != 0 but user input 0 > set to max 
-			$('#' + id).val(max)
-			return
-		}
+		// if (sum == max) { // if max != 0 but user input 0 > set to max 
+		// 	$('#' + id).val(max)
+		// 	return
+		// }
 	}	
 
 	//--------------------------------------------------------------- Onload Page ------------------------------------------------------------
 	function fetch_product_id(){				
 			$('#accept_order').modal('show');
-				document.getElementById('accept_order_btn').onclick = function(){
+				document.getElementById('accept_order_btn').onclick = async function(){
 					var id = '<?php echo $id;?>';	
 					var ad_username = '<?php echo $this->session->userdata('username');?>';					
 					//----- row มี text สลับ div จึงต้อง i=i+2 และ length-2 ----- 
@@ -278,19 +271,19 @@
 						let item_unit = document.getElementById('req_list').childNodes[i].childNodes[5].value;
 						req_data[i] = [item_type,item_name,item_unit]				
 					}					
-					console.log(req_data)
-
-					$.ajax({
-						url : "<?php echo base_url();?>ad_itemotp/report_item_order_update_accept",
-						method : "POST",
-						data :	{"id": id , 'ad_username' : ad_username , 'req_data':req_data , 'row_count':row_count},
-						success : setTimeout(function(){window.history.back()},1000)									
-					});
-					$.ajax({
+					// console.log(req_data)
+					await $.ajax({
 						url : "<?php echo base_url();?>ad_itemotp/send_email",
 						method : "POST",
 						data : {'id':id },
 					})
+					await $.ajax({
+						url : "<?php echo base_url();?>ad_itemotp/report_item_order_update_accept",
+						method : "POST",
+						data :	{"id": id , 'ad_username' : ad_username , 'req_data':req_data , 'row_count':row_count},
+						success : setTimeout(function(){window.history.back()},300)									
+					});
+					
 				}		
 	}
 
@@ -311,7 +304,7 @@
 			url : "<?php echo base_url();?>ad_itemotp/cancle_order",
 			method : "POST",
 			data : {'id':id ,'cancle_detail':cancle_detail,'ad_username':ad_username},
-			success : setTimeout(function(){window.history.back()},500)
+			success : setTimeout(function(){window.history.back()},300)
 		})
 		
 	}

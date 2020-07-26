@@ -167,7 +167,7 @@
 				url : "<?php echo base_url();?>ad_item/report_item_order_update_close",
 				method : "POST",
 				data :	{'ad_username' : ad_username , 'id':id , 'req_detail':req_detail},
-				success : setTimeout(function(){window.history.back()},100)									
+				success : setTimeout(function(){window.history.back()},300)									
 			});			
 		}
 		submit;				
