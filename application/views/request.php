@@ -21,7 +21,7 @@
 </style>
 <body class="mrq_body">
       <div class="mrq_header">
-          <h3 class="mrq_h">คำร้องแจ้งเรื่องสารสนเทศk</h3>
+          <h3 class="mrq_h">คำร้องแจ้งเรื่องสารสนเทศ</h3>
       </div>
     <div class="table-responsive container text-center mrq_content">      
       <div class="container mrq_box">        
