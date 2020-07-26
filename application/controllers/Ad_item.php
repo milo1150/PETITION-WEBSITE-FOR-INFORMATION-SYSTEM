@@ -164,14 +164,14 @@ class ad_item extends CI_Controller {
 	/////////////////////////////////////////////////////////// INPROC ////////////////////////////////////////////////////////
 	public function ad_item_inproc(){					
 		$data['item_inproc'] = $this->ad_item_model->fecth_item_inproc();
-		$this->load->view('ad_item_inproc',$data);
+		$this->load->view('admin/item/ad_item_inproc',$data);
 	}	
 	public function report_item_inproc(){
 		$id = $this->input->post('id');		
 		$data = $this->ad_item_model->fetch_item_report_inproc($id);	
 		$data['item_list'] = $this->ad_item_model->report_inproc_item_list($id);
 		$data['item_detail'] = $this->ad_item_model->report_inproc_item_list_detail($id);
-		$this->load->view('report_item_inproc',$data);						
+		$this->load->view('admin/item/report_item_inproc',$data);						
 	}
 
 	/////////////////////////////////////////////////////// CLOSING ORDER ////////////////////////////////////////////////////////
@@ -241,20 +241,20 @@ class ad_item extends CI_Controller {
 	/////////////////////////////////////////////////////////// COMPLETE ////////////////////////////////////////////////////////
 	public function ad_item_com(){						
 		$data['item_com'] = $this->ad_item_model->fecth_item_com();
-		$this->load->view('ad_item_com',$data);
+		$this->load->view('admin/item/ad_item_com',$data);
 	}		
 	public function report_item_com(){
 		$id = $this->input->post('id');						
 		$data = $this->ad_item_model->fetch_item_report_com($id);		
 		$data['item_list'] = $this->ad_item_model->report_inproc_item_list($id);
 		$data['item_detail'] = $this->ad_item_model->report_inproc_item_list_detail($id);
-		$this->load->view('report_item_com',$data);	
+		$this->load->view('admin/item/report_item_com',$data);	
 	}
 
 	/////////////////////////////////////////////////////////// CANCLE ORDER ////////////////////////////////////////////////////////
 	public function ad_item_cancle(){					
 		$data['item_order'] = $this->ad_item_model->fecth_item_cancle();
-		$this->load->view('ad_item_cancle',$data);		
+		$this->load->view('admin/item/ad_item_cancle',$data);		
 	}
 
 	public function cancle_order(){	
@@ -274,7 +274,7 @@ class ad_item extends CI_Controller {
 		$id = $this->input->post('id');								
 		$data = $this->ad_item_model->fetch_item_order_cancle($id);	
 		$data['item_list'] = $this->ad_item_model->report_inproc_item_list($id);
-		$this->load->view('report_item_cancle',$data);	
+		$this->load->view('admin/item/report_item_cancle',$data);	
 	}
 
 	public function email_cancle_order(){
@@ -314,7 +314,7 @@ class ad_item extends CI_Controller {
 	//------- Main page-------
 	public function item_product(){	
 		$data['item_product'] = $this->ad_item_model->product_list();
-		$this->load->view('ad_item_product',$data);
+		$this->load->view('admin/item/pd/ad_item_product',$data);
 	}
 	//------- Add item -------
 	public function item_product_add(){		
@@ -364,7 +364,7 @@ class ad_item extends CI_Controller {
 	//---------------------------- Edit and Delete page ---------------------------
 	public function item_product_editndel(){	
 		$data['item_product'] = $this->ad_item_model->product_list();
-		$this->load->view('ad_item_product_editndel',$data);
+		$this->load->view('admin/item/pd/ad_item_product_editndel',$data);
 	}
 	public function item_product_edit(){
 		$this->form_validation->set_rules('item_name','item_name','trim|required|regex_match[/^[ก-๏a-zA-Z0-9เ\s]+$/]',
@@ -422,7 +422,7 @@ class ad_item extends CI_Controller {
 	//------- Main page-------
 	public function item_product_id(){	
 		$data['item_product_id'] = $this->ad_item_model->product_id_list();
-		$this->load->view('ad_item_product_id',$data);
+		$this->load->view('admin/item/pd_id/ad_item_product_id',$data);
 	}
 	//------- Add item -------
 	public function item_product_id_add(){		
@@ -489,7 +489,7 @@ class ad_item extends CI_Controller {
 	//---------------------------- Edit and Delete page ---------------------------
 	public function item_product_id_editndel(){	
 		$data['item_product_id'] = $this->ad_item_model->product_id_list();
-		$this->load->view('ad_item_product_id_editndel',$data);
+		$this->load->view('admin/item/pd_id/ad_item_product_id_editndel',$data);
 	}
 	public function item_product_id_edit(){
 		$this->form_validation->set_rules('item_name','item_name','trim|required|regex_match[/^[ก-๏a-zA-Z0-9เ\s]+$/]',
@@ -578,18 +578,18 @@ class ad_item extends CI_Controller {
 	//----------------------------------------------------- item_product_LOG ---------------------------------------------------------------
 	public function item_product_log(){	
 		$data['product_log'] = $this->ad_item_model->item_product_log();
-		$this->load->view('ad_item_product_log',$data);
+		$this->load->view('admin/item/pd/ad_item_product_log',$data);
 	}	
 	public function item_product_id_log(){	
 		$data['product_id_log'] = $this->ad_item_model->item_product_id_log();
-		$this->load->view('ad_item_product_id_log',$data);
+		$this->load->view('admin/item/pd_id/ad_item_product_id_log',$data);
 	}			
 	//---------------------------------------------------------- History ---------------------------------------------------------------
 	public function history_pd(){
 		$item_name = $this->input->get('item_name');
 		$data['item_name'] = $item_name;
 		$data['history_list'] = $this->ad_item_model->pd_history_list($item_name);
-		$this->load->view('ad_item_product_history',$data);
+		$this->load->view('admin/item/pd/ad_item_product_history',$data);
 	}
 	public function history_pdid(){
 		$item_id = $this->input->get('item_id');
@@ -597,7 +597,7 @@ class ad_item extends CI_Controller {
 		$data['history_list'] = $this->ad_item_model->pdid_history_list($item_id);
 		$data['item_info'] = $this->db->select('*')->from('item_db_product_id')->where('item_id',$item_id)->get()->result_array();
 		// print_r($data['item_info']);
-		$this->load->view('ad_item_product_id_history',$data);
+		$this->load->view('admin/item/pd_id/ad_item_product_id_history',$data);
 	}
 	/*------------------------------------ Watching same page in the same time then someone ACCEPT ORDER -------------------------------------------*/
 	public function watch_accept_status(){

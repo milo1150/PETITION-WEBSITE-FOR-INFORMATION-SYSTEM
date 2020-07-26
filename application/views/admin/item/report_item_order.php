@@ -428,7 +428,7 @@
 						url : "<?php echo base_url();?>ad_item/report_item_order_update_accept",
 						method : "POST",
 						data :	{"id": id , 'ad_username' : ad_username , 'req_data':req_data , 'row_count':row_count , 'select_data':select_data},
-						success : setTimeout(function(){window.history.back()},1000)									
+						success : setTimeout(function(){window.history.back()},100)									
 					})					
 				}
 		//------------- if total_error != 0 -> popup confirm modal---------------
@@ -467,7 +467,7 @@
 			url : "<?php echo base_url();?>ad_item/cancle_order",
 			method : "POST",
 			data : {'id':id ,'cancle_detail':cancle_detail,'ad_username':ad_username},
-			success : setTimeout(function(){window.history.back()},500)
+			success : setTimeout(function(){window.history.back()},100)
 			
 		})
 		
