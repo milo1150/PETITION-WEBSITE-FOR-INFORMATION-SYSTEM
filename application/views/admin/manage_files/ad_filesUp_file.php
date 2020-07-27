@@ -20,9 +20,10 @@
 						อัพโหลดไฟล์
 					</button>
 				</div>
-				<div class="filter">
+				<!-- <form id="formgrp"> -->
+				<form class="filter">
 					<label>หมวดหมู่</label>
-					<select class="form-control" id="filter_cate">
+					<select class="form-control" name="grp" id="filter_cate">
 						<option value="0">ทั้งหมด</option>
 						<?php						
 							foreach($group_data as $row){
@@ -30,7 +31,8 @@
 							}
 						?>
 					</select>
-				</div>
+				<!-- </div> -->
+				</form>
 			</div>
 			
 			<div id="pdf_table">

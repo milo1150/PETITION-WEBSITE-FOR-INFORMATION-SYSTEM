@@ -293,9 +293,13 @@ function del(id, f_name) {
 /* ----------------------------------- Filter Category -------------------------------- */
 const fv = document.querySelector('#filter_cate')
 fv.onchange = () => {
+    const f = document.querySelector('.filter')
     let v = fv.value
-    $(location).attr('href', base_url + '/fil_grp?grp=' + v)
-        // console.log(v)
+    f.method = "GET"
+    f.action = base_url+"/fil_grp"
+    f.value = v
+    f.name = "grp"
+    f.submit()
 }
 
 // --------------------------------- GET value ------------------------------
