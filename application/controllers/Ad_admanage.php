@@ -2,20 +2,24 @@
 Class ad_admanage extends CI_Controller {
 	public function __construct()
     {
-	   parent::__construct();
-	   $this->load->library('session');
-	   $this->load->helper(array('form', 'url'));	   
-	   $this->load->library('form_validation');
-	   $this->load->model('Admin');
-	   if($this->session->userdata('username') == ''){
-		redirect(base_url().'ad_login');
-	} 
+		parent::__construct();
+		$this->load->library('session');
+		$this->load->helper(array('form', 'url'));	   
+		$this->load->library('form_validation');
+		$this->load->model('Admin');
+		if($this->session->userdata('username') == ''){
+			redirect(base_url().'ad_login');
+		} 
+		if($this->session->userdata('rank') != 'super_admin'){		
+			redirect(base_url().'ad_main');
+		} 
     }
 	function index() {		
 		$this->ad_list();
 	}
 	//--------------------------------------------------------------- Manage Admin ----------------------------------------------------------------
-	function ad_list() {		
+	function ad_list() {	
+		// print_r($_SESSION);	
 		$data['query'] = $this->Admin->showdata();
 		$this->load->view('admin/manage_admin/ad_admin_list', $data);
 
