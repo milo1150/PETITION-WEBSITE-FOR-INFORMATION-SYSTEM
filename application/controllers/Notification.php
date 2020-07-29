@@ -93,7 +93,7 @@ Class notification extends CI_Controller{
             'date' => $fix_data['date'],
             'time' => $fix_data['time'],
         );
-        $this->load->view('report_fix_order',$data);     
+        $this->load->view('admin/fix/report_fix_order',$data);     
     }
     //-----------------------------------request_item data-------------------------------------
     public function request_item_report(){
@@ -122,7 +122,7 @@ Class notification extends CI_Controller{
         $data['item_list'] = $this->ad_item_model->report_item_list($id);
         $data['product_id'] = $this->ad_item_model->report_item_list_pd_id($id);
         //print_r($data);
-        $this->load->view('report_item_order',$data);     
+        $this->load->view('admin/item/report_item_order',$data);     
     }    
     //-----------------------------------request_email data-------------------------------------
     public function request_email_report(){
@@ -146,7 +146,7 @@ Class notification extends CI_Controller{
             'time_request' => $email_data['time_request'],       
             'type' => $email_data['id'], 
         );
-        $this->load->view('report_email_order',$data);     
+        $this->load->view('admin/email/report_email_order',$data);     
     }
     //-----------------------------------request_finger data-------------------------------------
     public function request_finger_report(){
@@ -165,6 +165,7 @@ Class notification extends CI_Controller{
             'phonenum' => $finger_data['phonenum'],
             'phonein' => $finger_data['phonein'],
             'email' => $finger_data['email'],
+            'userid' => $finger_data['userid'],
             'section' => $finger_data['section'],            
             'rank' => $finger_data['rank'],      
             'date_request' => $finger_data['date_request'],
@@ -172,7 +173,7 @@ Class notification extends CI_Controller{
             'type' => $finger_data['type'],  
             'max_id' => $max_id['id_scan']+1, 
         );
-        $this->load->view('report_finger_order',$data);     
+        $this->load->view('admin/finger/report_finger_order',$data);     
     }
     //-----------------------------------request_otp_item data-------------------------------------
     public function request_itemotp_report(){
@@ -198,7 +199,7 @@ Class notification extends CI_Controller{
         $this->load->model('ad_itemotp_model');
         $data['itemotp_list'] = $this->ad_itemotp_model->report_item_list($id);
         //print_r($data);
-        $this->load->view('report_itemotp_order',$data);     
+        $this->load->view('admin/item_otp/report_itemotp_order',$data);     
     }
 }
 ?>

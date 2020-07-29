@@ -38,50 +38,50 @@
 			<div class="container z-depth-1 reqform">
 					<div class="form-row pb-2">
 						<div class="col">
-							<label>ชื่อ (ภาษาอังกฤษ)</label>
+							<label>ชื่อ (ภาษาอังกฤษ)<a style="color:red">*</a></label>
 							<input type="text" id="firstname" class="form-control z-depth-1" oninput="form_change_value(id)">
 							<span class="error_data" id="firstname_error"></span>
 						</div>
 						<div class="col">
-							<label>นามสกุล (ภาษาอังกฤษ)</label>
+							<label>นามสกุล (ภาษาอังกฤษ)<a style="color:red">*</a></label>
 							<input type="text" id="lastname" class="form-control z-depth-1" oninput="form_change_value(id)">
 							<span class="error_data" id="lastname_error"></span>
 						</div>
 					</div>
 					<div class="form-row pb-2">
 						<div class="col">
-							<label>ชื่อ (ภาษาไทย)</label>
+							<label>ชื่อ (ภาษาไทย)<a style="color:red">*</a></label>
 							<input type="text" id="firstnameth" class="form-control z-depth-1" oninput="form_change_value(id)">
 							<span class="error_data" id="firstnameth_error"></span>
 						</div>
 						<div class="col">
-							<label>นามสกุล (ภาษาไทย)</label>
+							<label>นามสกุล (ภาษาไทย)<a style="color:red">*</a></label>
 							<input type="text" id="lastnameth" class="form-control z-depth-1" oninput="form_change_value(id)">
 							<span class="error_data" id="lastnameth_error"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label>เบอร์ติดต่อ (ส่วนตัว)</label>
-						<input type="text" id="phonenum" class="form-control z-depth-1" oninput="form_change_value(id)" placeholder="ไม่จำเป็นต้องกรอก">
+						<input type="text" id="phonenum" class="form-control z-depth-1" oninput="form_change_value(id)" placeholder="">
 						<span class="error_data" id="phonenum_error"></span>
 					</div>
 					<div class="form-group">
 						<label>เบอร์ติดต่อ (ภายใน)</label>
-						<input type="text" id="phonein" class="form-control z-depth-1" oninput="form_change_value(id)" placeholder="ไม่จำเป็นต้องกรอก">
+						<input type="text" id="phonein" class="form-control z-depth-1" oninput="form_change_value(id)" placeholder="">
 						<span class="error_data" id="phonein_error"></span>
 					</div>
 					<div class="form-group">
-						<label>อีเมลติดต่อ</label>
+						<label>อีเมลติดต่อ<a style="color:red">*</a></label>
 						<input type="text" id="email" class="form-control z-depth-1" oninput="form_change_value(id)"> 
 						<span class="error_data" id="email_error"></span>
 					</div>
 					<div class="form-group">
-					<label>สังกัด/แผนก</label>
+					<label>สังกัด/แผนก<a style="color:red">*</a></label>
 						<input type="text" id="section" class="form-control z-depth-1" oninput="form_change_value(id)">
 						<span class="error_data" id="section_error"></span>
 					</div>
 					<div class="form-group">
-					<label>ตำแหน่ง</label>
+					<label>ตำแหน่ง<a style="color:red">*</a></label>
 						<input type="text" id="rank" class="form-control z-depth-1" oninput="form_change_value(id)">
 						<span class="error_data" id="rank_error"></span>
 					</div>					

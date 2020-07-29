@@ -39,28 +39,28 @@
 			<div class="container z-depth-1 reqform" id="req_form">
 					<div class="form-row pb-2 ">
 						<div class="col">
-							<label>ชื่อ</label>
+							<label>ชื่อ<a style="color:red">*</a></label>
 							<input type="text" id="firstname" class="form-control z-depth-1" oninput="form_change_value(id)">
 							<span class="error_data" id="firstname_error"></span>
 						</div>
 						<div class="col">
-							<label>นามสกุล</label>
+							<label>นามสกุล<a style="color:red">*</a></label>
 							<input type="text" id="lastname" class="form-control z-depth-1" oninput="form_change_value(id)">
 							<span class="error_data" id="lastname_error"></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label>เบอร์ติดต่อ</label>
+						<label>เบอร์ติดต่อ<a style="color:red">*</a></label>
 						<input type="text" id="phonenum" class="form-control z-depth-1" oninput="form_change_value(id)">
 						<span class="error_data" id="phonenum_error"></span>
 					</div>
 					<div class="form-group">
-						<label>อีเมลติดต่อ</label>
+						<label>อีเมลติดต่อ<a style="color:red">*</a></label>
 						<input type="text" id="email" class="form-control z-depth-1" oninput="form_change_value(id)"> 
 						<span class="error_data" id="email_error"></span>
 					</div>
 					<div class="form-group">
-						<label>รายการแจ้ง</label>
+						<label>รายการแจ้ง<a style="color:red">*</a></label>
 							<select class="form-control z-depth-1" id="fixlist" onchange="onchange_value(id)">	
 							<?php
 								foreach($fixlist as $row){
@@ -71,7 +71,7 @@
 							<span class="error_data" id="fixlist_error"></span>													
 					</div>
 					
-					<label>สถานที่</label>
+					<label>สถานที่<a style="color:red">*</a></label>
 					<div class="form-row pb-2">
 						<div class="col">
 							<select class="form-control z-depth-1" id="building" onchange="onchange_value(id)">
@@ -100,11 +100,11 @@
 					</div>
 										
 					<div class="form-group">
-						<label>ลักษณะของปัญหา</label>
+						<label>ลักษณะของปัญหา<a style="color:red">*</a></label>
 						<textarea class="form-control z-depth-1" rows="5" cols="9" id="fixprob" oninput="form_change_value(id)"></textarea>
 						<span class="error_data" id="fixprob_error"></span>
 					</div>
-					<label>กำหนดเวลาซ่อม</label>
+					<label>กำหนดเวลาซ่อม<a style="color:red">*</a></label>
 					<div class="form-row pb-2">
 						<div class="col">
 							<input type="text" class="form-control z-depth-1" id="datepicker" placeholder="วันที่" onchange="onchange_value(id)">

@@ -5,7 +5,7 @@ class rating extends CI_Controller {
         $this->load->model('rating_model');
     }
 	function index() {
-		$this->load->view('rating');
+		$this->load->view('admin/rating');
 	}
 	function rated() {
 		$data = array(

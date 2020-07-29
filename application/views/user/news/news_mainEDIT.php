@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="th">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<title>MIS.CIT</title>
 <head>
 	<meta charset="utf-8">
 	<!---------- Font Awesome ----------->
@@ -31,10 +31,10 @@
 <header>
 	<!------------------------------------------------ TopBanner ---------------------------------------------------->
 	<div class="banner-box">
-		<img src="https://sv1.picz.in.th/images/2019/06/19/1UDsvS.png" class="img-fluid" alt="Responsive image">
+		<img src="https://mis-cit.com/uploads/miscit-logo.jpg" class="img-fluid" alt="Responsive image">
 		<div class="banner-text">
-			<p class="p1">หน่วยสารสนเทศและประชาสัมพันธ์ วิทยาลัยเทคโนโลยีอุตสาหกรรม</p>
-			<p class="p2">Institute of Computer and Information Technology</p>
+			<p class="p1">หน่วยสารสนเทศและประชาสัมพันธ์</p>
+			<p class="p2">Management Information System of Computer and Information Technology</p>
 		</div>
 	</div>
 	<!------------------------------------------------ TopNavbar ---------------------------------------------------->
@@ -44,9 +44,9 @@
 			</div>
 			<ul class="crop-box">
 				<li class="content-item"><a href="<?php echo base_url();?>">หน้าแรก</a></li>
-				<li class="content-item" id="ct1""><a>แนะนำสำนัก</a>
+				<li class="content-item" id="ct1"><a>สำนักงาน</a>
                     <ul class=" content-item-row" id="content-item-1">
-				<li><a href="http://icit.kmutnb.ac.th/main/about/">เกี่ยวกับสำนัก</a>
+				<li><a href="">เกี่ยวกับสำนักงาน</a>
 					<hr>
 				</li>
 				<li><a>โครงสร้างองค์กร</a>

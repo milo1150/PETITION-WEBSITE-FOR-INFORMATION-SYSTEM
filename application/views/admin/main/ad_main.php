@@ -17,7 +17,7 @@
 			<div class="col-md-4 mt-4">
 				<div class="card z-depth-1" style="height:100%;">
 					<div class="card-header">
-						<a class="float-left font-weight-bolder header-text">งานที่แจ้ง <?php //echo date('d M Y',strtotime('today'))?></a>						
+						<a class="float-left font-weight-bolder header-text">งานที่แจ้ง / วัน <?php //echo date('d M Y',strtotime('today'))?></a>						
 					</div>
 										 
 					<div class="card-body text-center">					
@@ -28,7 +28,7 @@
 			<div class="col-md-4 mt-4">
 				<div class="card z-depth-1" style="height:100%;">
 					<div class="card-header">
-						<a class="float-left font-weight-bolder header-text">งานที่แจ้ง</a>
+						<a class="float-left font-weight-bolder header-text">งานที่แจ้ง / วัน</a>
 					</div>
 					<div class="card-body box_noti" id="box_noti">					
                        <!--<div class="col text-center z-depth-1 mt-2 noti_box_fix">
@@ -177,9 +177,7 @@ function box_event(){
     })
 }
 box_event();
-setInterval(function(){
-    box_event();
-},10000);
+
 
 
 
@@ -199,7 +197,7 @@ function box_noti(){
         success:function(data){
             //let y = data[0].date_request
             //toString('dd-MM-yyyy');
-            //console.log(y)
+            // console.log(data)
 
             for(let i=data.length-1;i>=0;i--){ // j เพื่อกลับตำแหน่ง
                 if(data[i].type == 'แจ้งซ่อม'){
@@ -235,7 +233,9 @@ function box_noti(){
     })
 }
 box_noti();
+
 setInterval(function(){
+    box_event();
     box_noti();
 },10000);
 

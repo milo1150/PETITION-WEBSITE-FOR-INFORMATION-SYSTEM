@@ -58,9 +58,9 @@
 					</div>
 					<div class="text-center pb-4">
 						<div class="row justify-content-center pt-2">
-							<div class="col-sm-6 pb-2">
+							<div class="col-sm-8 pb-2">
 								<button type="submit" name="insert" value="Insert" class="btn btn-lg btn-success btn-block"
-									style="font-size:20px;">ยืนยัน</button>
+									style="font-size:20px;">ยืนยันการประเมิน</button>
 							</div>
 							<!-- <div class="col-sm-6">
 								<a href="<?php echo base_url()?>request">

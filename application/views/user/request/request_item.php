@@ -39,40 +39,40 @@
 		<div class="container z-depth-1 reqform">
 				<div class="form-row pb-2">
 					<div class="col">
-						<label>ชื่อ</label>
+						<label>ชื่อ<a style="color:red">*</a></label>
 						<input type="text" id="firstname" class="form-control z-depth-1" oninput="form_change_value(id)">
 						<span class="error_data" id="firstname_error"></span>
 					</div>
 					<div class="col">
-						<label>นามสกุล</label>
+						<label>นามสกุล<a style="color:red">*</a></label>
 						<input type="text" id="lastname" class="form-control z-depth-1" oninput="form_change_value(id)">
 						<span class="error_data" id="lastname_error"></span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label>เบอร์ติดต่อ</label>
+					<label>เบอร์ติดต่อ<a style="color:red">*</a></label>
 					<input type="text" id="phonenum" class="form-control z-depth-1" oninput="form_change_value(id)">
 					<span class="error_data" id="phonenum_error"></span>
 				</div>
 				<div class="form-group">
-					<label>อีเมลติดต่อ</label>
+					<label>อีเมลติดต่อ<a style="color:red">*</a></label>
 					<input type="email" id="email" class="form-control z-depth-1" oninput="form_change_value(id)"> 
 					<span class="error_data" id="email_error"></span>
 				</div>
 				<div class="form-group">
-					<label>สังกัด/แผนก</label>
+					<label>สังกัด/แผนก<a style="color:red">*</a></label>
 					<input type="text" id="section" class="form-control z-depth-1" oninput="form_change_value(id)">
 					<span class="error_data" id="section_error"></span>
 				</div>
 				<div class="form-group">
-					<label>รายการขอยืม</label>
+					<label>รายการขอยืม<a style="color:red">*</a></label>
 						<div id="item_req"></div>						
 						<div class="row justify-content-center">
 							<button id="req_btn" value="-1" class="btn btn-sm amber accent-4 font-weight-bolder" style="margin-left: 18px; font-size: 16px;"><i class="fas fa-plus"></i> เพิ่มรายการ</button>
 						</div>						
 				</div>
 																		
-				<label>กำหนดคืน</label>
+				<label>กำหนดคืน<a style="color:red">*</a></label>
 				<div class="form-row pb-2">
 					<div class="col">
 						<input type="text" class="form-control z-depth-1" id="datepicker" placeholder="วันที่" onchange="datetime_onchange_value(id)">
