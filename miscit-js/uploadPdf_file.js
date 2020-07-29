@@ -96,6 +96,8 @@ const send_pdf = () => {
             for (let i = 0; i < hmny_file; i++) {
                 formData.append('pdf' + i, file_input.files[i])
             }
+            await $('#add_pdf_modal').modal('hide')
+            await $('#wait_modal').modal('show')
             await $.ajax({
                     url: base_url + '/pdf',
                     dataType: 'json',
@@ -103,7 +105,7 @@ const send_pdf = () => {
                     contentType: false,
                     cache: false,
                     processData: false,
-                    data: formData,                   
+                    data: formData,                  
                 })
                 // console.log(form_input.files.length)
 

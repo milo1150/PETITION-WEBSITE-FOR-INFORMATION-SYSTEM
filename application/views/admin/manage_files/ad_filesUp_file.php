@@ -105,6 +105,17 @@
 			</div>
 		</div>
 	</div>
+	<!------------------------------------------------------ waiting modal---------------------------------------------------->
+	<div class="modal fade " id="wait_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"	data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+			<div class="modal-content z-depth-2" style="padding-inline-end: 20px;  padding-inline-start: 20px;">
+				<div class="modal-body text-center" style="padding-bottom: 41px; font-weight: bold;">
+					<br/>
+					<h class="font-weight-bolder" style="font-size:24px;">กรุณารอสักครู่</h>																
+				</div>																																																										
+			</div>
+		</div>
+	</div>
 	<!------------------------------------------------------------ Remove ------------------------------------------------------->
 	<div class="modal fade " id="remove_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-family: 'Kanit', sans-serif;" data-backdrop="static">
 		<div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">

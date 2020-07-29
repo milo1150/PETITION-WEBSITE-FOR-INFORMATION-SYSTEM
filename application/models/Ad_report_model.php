@@ -404,7 +404,6 @@ Class ad_report_model extends CI_Model{
 
     /*------------------------------------------------------- Realtime (Noti Box) ----------------------------------------------------*/
     function rt_order(){
-        //----- Select 10 request 
         $now_date = date('Y-m-d',strtotime('now'));
         $x = $this->db->query("
         SELECT id,firstname,lastname,type,date_request,time_request FROM request_fix WHERE date_request = '$now_date' 
