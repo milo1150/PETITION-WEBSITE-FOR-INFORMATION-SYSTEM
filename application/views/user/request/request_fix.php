@@ -27,13 +27,15 @@
 
 	<!-------- Axios --------->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<!-------- Capcha --------->
+	<script src="https://www.google.com/recaptcha/api.js?render=6Lcxr7oZAAAAAGRAom_IazRhpHtZEEiiJjdnyPbO"></script>
 	
 
 </head>
 <body>
 		<div class="rq_fix">
          	<h3 class="mrq_h">แบบฟอร์มแจ้งซ่อม</h3>
-      	</div>
+		</div>	
 	<!---------------------------------------------------------------- FORM -------------------------------------------------------------------->
 		<div class="table-responsive-md pb-4 pt-4 request_body">
 			<div class="container z-depth-1 reqform" id="req_form">
@@ -127,7 +129,7 @@
 							</a>
 						</div>					
 					</div>
-				</div>
+				</div>		
 					<!------------------------------------------------------ final modal---------------------------------------------------->
 					<div class="modal fade " id="form_ready" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" 
 						style="font-family: 'Kanit', sans-serif;" data-backdrop="static">

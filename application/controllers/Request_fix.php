@@ -1,4 +1,5 @@
 <?php
+include 'Captcha.php';
 class request_fix extends CI_Controller
 {
     public function __construct()
@@ -7,6 +8,7 @@ class request_fix extends CI_Controller
        date_default_timezone_set("Asia/Bangkok"); 
        $this->load->helper(array('form', 'url'));
        $this->load->library('form_validation');  
+       
     }
     private function get_db_val(){
         $data['fixlist'] = $this->db->select('*')->from('request_fix_fixlist')->get()->result();
@@ -18,11 +20,8 @@ class request_fix extends CI_Controller
         $data = $this->get_db_val();
         $this->load->view("user/request/request_fix",$data);
     }
-    // public function val_err(){
-    //     $data = $this->get_db_val();
-    //     $post = json_decode(file_get_contents('php://input'),true);
-    // }
-    public function error(){        
+    
+    public function check_error(){        
         // print_r($_POST);
         // CHECK        
         $this->form_validation->set_rules('firstname','ชื่อ','trim|required');
@@ -51,7 +50,6 @@ class request_fix extends CI_Controller
                 'date' => $this->input->post('date'),
                 'time' => $this->input->post('time'),
             );
-            //print_r($data);
             echo json_encode($data);
         }else{
             $error = array(
@@ -62,6 +60,9 @@ class request_fix extends CI_Controller
                 'fixlist_error' => form_error('fixlist'),
                 'building_error' => form_error('building'),
                 'floor_error' => form_error('floor'),
+                // 'fixlist_error' => "<p>โปรดระบุ</p>",
+                // 'building_error' => "<p>โปรดระบุ</p>",
+                // 'floor_error' => "<p>โปรดระบุ</p>",
                 'room_error' => form_error('room'),
                 'fixprob_error' => form_error('fixprob'),
                 'date_error' => form_error('date'),
@@ -72,7 +73,75 @@ class request_fix extends CI_Controller
 			echo json_encode($error);
         }
     }
-    public function accept_data(){
+    //---------------------------------------------------------- Captcha & Insert Data to DB -------------------------------------------------
+    public function check(){
+        if(isset($_POST)){
+            $SecretKey = $this->input->post('k');
+            function cap($SecretKey){
+                $Response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".SECRET_KEY."&response={$SecretKey}");
+                $Return = json_decode($Response);
+                return $Return;
+            }
+            $Return = cap($SecretKey);
+            if($Return->success == 1 && $Return->score >= 0.5){
+                // $this->accept_data();
+                $this->send_email_data();
+                // $this->line_noti();
+            }else{
+                // echo 'U R BOT';
+                redirect(base_url());
+            }
+        }       
+    }
+    /* ------------------------------------------------------------- Email ----------------------------------------------------------*/
+	private function send_email_data(){         
+        // print_r($_POST);
+        $firstname = $this->input->post('firstname');
+        $lastname = $this->input->post('lastname');
+        $phonenum = $this->input->post('phonenum');
+        $fixlist = $this->input->post('fixlist');
+        $building = $this->input->post('building');
+        $floor = $this->input->post('floor');
+        $room = $this->input->post('room');         
+        $fixprob = $this->input->post('fixprob');
+        $date = $this->input->post('date');
+        $time = $this->input->post('time');
+        $email = $this->input->post('email');
+        $date_request = date('d-m-Y');
+        $time_request = date('H:i');
+		$config = Array(
+			'protocol' => 'smtp',
+			'smtp_crypto' => 'ssl',
+		    'smtp_host' => 'smtp.gmail.com',
+		    'smtp_port' => 465,
+		    'smtp_user' => 'codeig.adm1n@gmail.com',
+		    'smtp_pass' => 'Adminza1150',
+		    // 'mailType'  => 'html',
+            'charset'   => 'UTF-8',
+        );        
+        $this->load->library('email', $config);        
+        $this->email->set_newline("\r\n");	
+        $this->email->set_mailtype("html");	     
+		$this->email->from('codeig.adm1n@gmail.com','ICIT System');
+		$this->email->to($email);
+		$this->email->subject('ระบบสารสนเทศ - แจ้งซ่อม');		
+        $message = 
+            'ข้อมูลแบบฟอร์มแจ้งซ่อมที่คุณ'.$firstname.' ได้แจ้งไว้ ณ วันที่ '.$date_request.' เวลา '.$time_request.'<br>'.
+            'ชื่อ-นามสกุล : '.$firstname.' '.$lastname.'<br>'.
+            'เบอร์ติดต่อ : '.$phonenum.'<br>'.
+            'อีเมลติดต่อ : '.$email.'<br>'.
+            'รายการที่แจ้ง : '.$fixlist.'<br>'.
+            'สถานที่ : อาคาร '.$building.' ชั้น '.$floor.' ห้อง '.$room.'<br>'.
+            'ปัญหาที่แจ้ง : '.$fixprob.'<br>'.
+            'กำหนดเวลาซ่อม : วันที่ '.$date.' เวลา '.$time.'<br>'           
+        ;		
+		$this->email->message($message);
+        $this->email->send();
+        $this->accept_data();
+    }
+    /* ------------------------------------------------------------- Insert Data ----------------------------------------------------------*/    
+    private function accept_data(){
+        // print_r($_POST); 
         date_default_timezone_set("Asia/Bangkok");
         $md5id = md5(time()*rand(0,987)+rand(0,654)-rand(0,321));      
         $data = array(
@@ -91,8 +160,7 @@ class request_fix extends CI_Controller
             'date_request'=>date('Y-m-d'),
             'time_request'=>date('H:i'),
             'reqid'=>$md5id,
-        );          
-        // print_r($data);  
+        );      
         $this->db->insert("request_fix",$data);
        
         $data_noti = array(
@@ -106,37 +174,15 @@ class request_fix extends CI_Controller
         $this->load->model('notification_data');
         $this->notification_data->insert($data_noti);
         
-        echo json_encode('');        
+        $this->line_noti();
+        // echo json_encode('');        
     }
-    /////////////////////////////////////////////////////////// EMAIL (CONFIRM DATA) ////////////////////////////////////////////////////////
-	public function send_email_data(){         
-        $email = $this->input->post('email');
-		$config = Array(
-			'protocol' => 'smtp',
-			'smtp_crypto' => 'ssl',
-		    'smtp_host' => 'smtp.gmail.com',
-		    'smtp_port' => 465,
-		    'smtp_user' => 'codeig.adm1n@gmail.com',
-		    'smtp_pass' => 'Adminza1150',
-		    // 'mailType'  => 'html',
-            'charset'   => 'UTF-8',
-        );        
-        $this->load->library('email', $config);        
-        $this->email->set_newline("\r\n");	
-        $this->email->set_mailtype("html");	     
-		$this->email->from('codeig.adm1n@gmail.com','ICIT System');
-		$this->email->to($email);
-		$this->email->subject('ระบบสารสนเทศ - แจ้งซ่อม');		
-        $message = $this->input->post('msg');		
-		$this->email->message($message);
-        $this->email->send();
-        echo json_encode('');
-    }
+    
     /* --------------------------------------------------- Line Notification ------------------------------------------------- */
-    public function line_noti(){
-        $this->load->model('line_noti_model');
+    private function line_noti(){
         $msg = $this->input->post('msg');
+        $this->load->model('line_noti_model');
         $this->line_noti_model->line_noti($msg);
-        echo json_encode('');
+        echo json_encode('OK');
     }
 }
