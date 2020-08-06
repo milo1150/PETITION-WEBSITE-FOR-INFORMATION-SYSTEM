@@ -44,12 +44,21 @@ document.getElementById('send_data').onclick = async function () {
             if (x < 10) { return '0' + x } else { return x }
         },
 		n_y: n_date.getFullYear(),
-		n_t: n_date.getHours() + ':' + n_date.getMinutes()
+		hour: () => {
+			const a = n_date.getHours().toString();
+			if(a.length == 1){ return '0' + a }
+            if(a.length == 2){ return a }
+		},
+		min: () => {
+			const a = n_date.getMinutes().toString();
+			if(a.length == 1){ return '0' + a }
+            if(a.length == 2){ return a }
+		},
     }
     let n_s = n_now.n_d() + '-' + n_now.n_m() + '-' + n_now.n_y
 	let msg_line = '\nงาน : แจ้งซ่อม \n' +
 					'รายการแจ้ง : ' + fixlist + '\n' +
-					'เวลาที่แจ้ง : ' + n_s + ' เวลา ' + n_now.n_t
+					'เวลาที่แจ้ง : ' + n_s + ' เวลา ' + n_now.hour() + ':' + n_now.min()
 	// console.log(msg_line)
 	
 	//--------------------- Validate Data -----------------------

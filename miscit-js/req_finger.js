@@ -31,12 +31,21 @@ document.getElementById('send_data').onclick = function () {
             let x = n_date.getMonth() + 1
             if (x < 10) { return '0' + x } else { return x }
         },
-        n_y: n_date.getFullYear(),
-        n_t: n_date.getHours() + ':' + n_date.getMinutes()
+		n_y: n_date.getFullYear(),
+		hour: () => {
+			const a = n_date.getHours().toString();
+			if(a.length == 1){ return '0' + a }
+            if(a.length == 2){ return a }
+		},
+		min: () => {
+			const a = n_date.getMinutes().toString();
+			if(a.length == 1){ return '0' + a }
+            if(a.length == 2){ return a }
+		},
     }
     let n_s = n_now.n_d() + '-' + n_now.n_m() + '-' + n_now.n_y
     let msg_line = '\nงาน : สแกนนิ้ว \n' +
-                    'เวลาที่แจ้ง : ' + n_s + ' เวลา ' + n_now.n_t
+                    'เวลาที่แจ้ง : ' + n_s + ' เวลา ' + n_now.hour() + ':' + n_now.min()
     // console.log(msg_line)
 
     //--------------------- Validate Data -----------------------
