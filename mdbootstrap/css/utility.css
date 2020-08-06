@@ -80,8 +80,13 @@ body {
 
 .mrq_box {
     padding-top: 22px;
-    /* max-width: 400px; */
+    width: 500px;
     margin-bottom: 30px;
+}
+@media screen and (max-width:600px){
+    .mrq_box {
+        width: 100%;
+    }
 }
 
 .mrq_form-style {

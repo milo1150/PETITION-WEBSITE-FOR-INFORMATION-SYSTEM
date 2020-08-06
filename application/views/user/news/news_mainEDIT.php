@@ -58,7 +58,7 @@
 				<li><a>บุคลากร</a></li>
 			</ul>
 			</li>
-			<li class="content-item" id="ct2"><a>งานบริการ</a>
+			<!-- <li class="content-item" id="ct2"><a>งานบริการ</a>
 				<ul class="content-item-row" id="content-item-2">
 					<li><a>หัวข้อการให้บริการ</a>
 						<hr>
@@ -82,7 +82,7 @@
 					</li>
 					<li><a>สำหรับบุคลากรภายใน</a></li>
 				</ul>
-			</li>
+			</li> -->
 			<li class="content-item"><a href="<?php echo base_url();?>request">คำร้องแจ้งเรื่องสารสนเทศ</a></li>
 			<li class="content-item"><a href="<?php echo base_url();?>news/files">ดาวน์โหลด</a></li>
 			</ul>
@@ -98,7 +98,7 @@
 			let box_ele = document.querySelector('.crop-box')
 			document.getElementById('ali-cropy').addEventListener('click', function () {
 				if (num == 0) {
-					box_ele.style = "height:273px !important"
+					box_ele.style = "height:190px !important"
 					box_ele.style.transition = "ease 0.3s"
 					num = 1
 					return
@@ -127,28 +127,28 @@
 					return
 				}
 			})
-			document.getElementById('ct2').addEventListener('click', function () {
-				if (li_row.ct2 == 1) {
-					document.getElementById('content-item-2').style.display = "none"
-					li_row.ct2 = 0
-					return
-				} else {
-					document.getElementById('content-item-2').style.display = "block"
-					li_row.ct2 = 1
-					return
-				}
-			})
-			document.getElementById('ct3').addEventListener('click', function () {
-				if (li_row.ct3 == 1) {
-					document.getElementById('content-item-3').style.display = "none"
-					li_row.ct3 = 0
-					return
-				} else {
-					document.getElementById('content-item-3').style.display = "block"
-					li_row.ct3 = 1
-					return
-				}
-			})
+			// document.getElementById('ct2').addEventListener('click', function () {
+			// 	if (li_row.ct2 == 1) {
+			// 		document.getElementById('content-item-2').style.display = "none"
+			// 		li_row.ct2 = 0
+			// 		return
+			// 	} else {
+			// 		document.getElementById('content-item-2').style.display = "block"
+			// 		li_row.ct2 = 1
+			// 		return
+			// 	}
+			// })
+			// document.getElementById('ct3').addEventListener('click', function () {
+			// 	if (li_row.ct3 == 1) {
+			// 		document.getElementById('content-item-3').style.display = "none"
+			// 		li_row.ct3 = 0
+			// 		return
+			// 	} else {
+			// 		document.getElementById('content-item-3').style.display = "block"
+			// 		li_row.ct3 = 1
+			// 		return
+			// 	}
+			// })
 		}
     })
     /* ------------------------------------------------ On Hover Topnav --------------------------------------------- */
@@ -161,22 +161,22 @@
 	ct1.onmouseleave = function () {
 		$('#content-item-1').css("display", "none")
 	}
-	//----------------------- content 2 ------------------------
-	const ct2 = document.getElementById('ct2');
-	ct2.onmouseenter = function () {
-		$('#content-item-2').css("display", "block")
-	}
-	ct2.onmouseleave = function () {
-		$('#content-item-2').css("display", "none")
-	}
-	//----------------------- content 3 ------------------------
-	const ct3 = document.getElementById('ct3');
-	ct3.onmouseenter = function () {
-		$('#content-item-3').css("display", "block")
-	}
-	ct3.onmouseleave = function () {
-		$('#content-item-3').css("display", "none")
-	}
+	// //----------------------- content 2 ------------------------
+	// const ct2 = document.getElementById('ct2');
+	// ct2.onmouseenter = function () {
+	// 	$('#content-item-2').css("display", "block")
+	// }
+	// ct2.onmouseleave = function () {
+	// 	$('#content-item-2').css("display", "none")
+	// }
+	// //----------------------- content 3 ------------------------
+	// const ct3 = document.getElementById('ct3');
+	// ct3.onmouseenter = function () {
+	// 	$('#content-item-3').css("display", "block")
+	// }
+	// ct3.onmouseleave = function () {
+	// 	$('#content-item-3').css("display", "none")
+	// }
 
 </script>
 
