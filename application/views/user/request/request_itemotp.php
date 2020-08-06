@@ -26,6 +26,8 @@
 	<link href="<?php echo base_url(); ?>/mdbootstrap/css/utility.css" rel="stylesheet">
 	<!-------- Axios --------->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<!-------- Capcha --------->
+	<script src="https://www.google.com/recaptcha/api.js?render=6Lcxr7oZAAAAAGRAom_IazRhpHtZEEiiJjdnyPbO"></script>
 
 	
 	<?php date_default_timezone_set("Asia/Bangkok");?>

@@ -1,4 +1,5 @@
 <?php
+include 'Captcha.php';
 class request_itemotp extends CI_Controller
 {
     public function __construct()
@@ -56,7 +57,7 @@ class request_itemotp extends CI_Controller
         // print_r($d);
         echo json_encode($sum);
     }
-    public function error(){      
+    public function check_error(){      
         //------------ CHECK -----------        
         $this->form_validation->set_rules('firstname','ชื่อ','trim|required|alpha_thai');
         $this->form_validation->set_rules('lastname','นามสกุล','trim|required|alpha_thai');
@@ -86,80 +87,29 @@ class request_itemotp extends CI_Controller
 			echo json_encode($error);
         }
     }
-    public function accept_data(){
-        $md5id = md5(time()*rand(0,987)+rand(0,654)-rand(0,321));
-        $req_data = $this->input->post('req_data');
-        $total_row = count($req_data);
-
-        //-------------- insert into item_list database --------------- 
-        //i+2 becuz space between data row and error row
-        for($i=0;$i<$total_row;$i=$i+2){
-            $item_type = "";
-            if($req_data[$i][0]=="product"){
-                $item_type = "วัสดุ";
+    //---------------------------------------------------------- Captcha & Insert Data to DB -------------------------------------------------
+    public function check(){
+        if(isset($_POST)){
+            $SecretKey = $this->input->post('k');
+            function cap($SecretKey){
+                $Response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".SECRET_KEY."&response={$SecretKey}");
+                $Return = json_decode($Response);
+                return $Return;
             }
-            $data = array(
-                'reqid' => $md5id,
-                'item_type' => $item_type,
-                'item_name' => $req_data[$i][1],
-                'item_unit' => $req_data[$i][2],
-            );              
-            $this->db->insert('request_itemotp_list',$data);          
-        }
-             
-        date_default_timezone_set("Asia/Bangkok");
-        $data = array(
-            'firstname'=>$this->input->post('firstname'),
-            'lastname'=>$this->input->post('lastname'),
-            'phonenum'=>$this->input->post('phonenum'),
-            'email'=>$this->input->post('email'),
-            'section'=>$this->input->post('section'),
-            'type'=>'เบิกของ',
-            'date_request'=>date('Y-m-d'),
-            'time_request'=>date('H:i'),
-            'reqid'=>$md5id,
-        );
-        $this->db->insert('request_itemotp',$data);
-
-        
-        $data_noti = array(
-            'firstname' => $this->input->post('firstname'),
-            'lastname' => $this->input->post('lastname'),
-            'type' => 'เบิกของ',
-            'date_request'=>date('Y-m-d'),
-            'time_request'=>date('H:i'),
-            'reqid' => $md5id,
-        );
-        $this->load->model('notification_data');
-        $this->notification_data->insert($data_noti);
-
-        echo json_encode('');
-        
+            $Return = cap($SecretKey);
+            if($Return->success == 1 && $Return->score >= 0.5){
+                $this->send_email_data();
+                set_time_limit(4);
+                $this->accept_data();                         
+                $this->line_noti();
+            }else{
+                // echo 'U R BOT';
+                redirect(base_url());
+            }
+        }       
     }
-    function success(){
-        $this->load->view('success');
-    }
-    //------------------------------------------------ Item Select ---------------------------------------------
-    public function product_item(){  
-        //-----------------ONCHANGE select<item_type>------------------             
-        if($this->input->post('type')=='product' && $this->input->post('name')==null){   
-            $data_product = $this->db->select('*')->from('itemotp_db_product')->order_by('id','ASC')->get()->result();                         
-            echo json_encode($data_product); 
-        }
-
-        //-----------------ONCHANGE select<item_name>------------------ 
-        if($this->input->post('type')=='product' && $this->input->post('name')!=null){
-            $name = $this->input->post('name'); 
-            if($name == "0"){
-                echo json_encode('');
-            } 
-            //echo $name;
-            $data_unit = $this->db->select('item_unit_remain')->from('itemotp_db_product')->where('item_name',$name)->get()->result();  
-            echo json_encode($data_unit);
-        }              
-    }
-    /////////////////////////////////////////////////////////// EMAIL (CONFIRM DATA) ////////////////////////////////////////////////////////
-	public function send_email_data(){         
+    /* ------------------------------------------------------------- Email ----------------------------------------------------------*/    
+    private function send_email_data(){         
 		$firstname = $this->input->post('firstname');
         $lastname = $this->input->post('lastname');
         $phonenum = $this->input->post('phonenum');
@@ -206,14 +156,81 @@ class request_itemotp extends CI_Controller
         ;		
         $this->email->message($message);
         $this->email->send();
-        echo json_encode('');
+    }
+    /* ------------------------------------------------------------- Insert Data ----------------------------------------------------------*/  
+    private function accept_data(){
+        $md5id = md5(time()*rand(0,987)+rand(0,654)-rand(0,321));
+        $req_data = $this->input->post('req_data');
+        $total_row = count($req_data);
+
+        //-------------- insert into item_list database --------------- 
+        //i+2 becuz space between data row and error row
+        for($i=0;$i<$total_row;$i=$i+2){
+            $item_type = "";
+            if($req_data[$i][0]=="product"){
+                $item_type = "วัสดุ";
+            }
+            $data = array(
+                'reqid' => $md5id,
+                'item_type' => $item_type,
+                'item_name' => $req_data[$i][1],
+                'item_unit' => $req_data[$i][2],
+            );              
+            $this->db->insert('request_itemotp_list',$data);          
+        }
+             
+        date_default_timezone_set("Asia/Bangkok");
+        $data = array(
+            'firstname'=>$this->input->post('firstname'),
+            'lastname'=>$this->input->post('lastname'),
+            'phonenum'=>$this->input->post('phonenum'),
+            'email'=>$this->input->post('email'),
+            'section'=>$this->input->post('section'),
+            'type'=>'เบิกของ',
+            'date_request'=>date('Y-m-d'),
+            'time_request'=>date('H:i'),
+            'reqid'=>$md5id,
+        );
+        $this->db->insert('request_itemotp',$data);
+
+        
+        $data_noti = array(
+            'firstname' => $this->input->post('firstname'),
+            'lastname' => $this->input->post('lastname'),
+            'type' => 'เบิกของ',
+            'date_request'=>date('Y-m-d'),
+            'time_request'=>date('H:i'),
+            'reqid' => $md5id,
+        );
+        $this->load->model('notification_data');
+        $this->notification_data->insert($data_noti);
+
     }
     /* --------------------------------------------------- Line Notification ------------------------------------------------- */
-    public function line_noti(){
+    private function line_noti(){
         $this->load->model('line_noti_model');
         $msg = $this->input->post('msg');
         $this->line_noti_model->line_noti($msg);
-        echo json_encode('');
+        echo json_encode('OK');
+    }
+    //------------------------------------------------ Item Select ---------------------------------------------
+    public function product_item(){  
+        //-----------------ONCHANGE select<item_type>------------------             
+        if($this->input->post('type')=='product' && $this->input->post('name')==null){   
+            $data_product = $this->db->select('*')->from('itemotp_db_product')->order_by('id','ASC')->get()->result();                         
+            echo json_encode($data_product); 
+        }
+
+        //-----------------ONCHANGE select<item_name>------------------ 
+        if($this->input->post('type')=='product' && $this->input->post('name')!=null){
+            $name = $this->input->post('name'); 
+            if($name == "0"){
+                echo json_encode('');
+            } 
+            //echo $name;
+            $data_unit = $this->db->select('item_unit_remain')->from('itemotp_db_product')->where('item_name',$name)->get()->result();  
+            echo json_encode($data_unit);
+        }              
     }
 
 

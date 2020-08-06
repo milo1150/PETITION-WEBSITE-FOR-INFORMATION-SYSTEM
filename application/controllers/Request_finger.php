@@ -1,4 +1,5 @@
 <?php
+include 'Captcha.php';
 class request_finger extends CI_Controller
 {
     public function __construct(){
@@ -9,7 +10,7 @@ class request_finger extends CI_Controller
     public function index(){
         $this->load->view("user/request/request_finger");
     }
-    public function error(){      
+    public function check_error(){      
         // CHECK        
         $this->form_validation->set_rules('firstname','ชื่อ','trim|required');
         $this->form_validation->set_rules('lastname','นามสกุล','trim|required');       
@@ -48,7 +49,27 @@ class request_finger extends CI_Controller
 			echo json_encode($error);
         }
     }
-    public function accept_data(){
+    //---------------------------------------------------------- Captcha & Insert Data to DB -------------------------------------------------
+    public function check(){
+        if(isset($_POST)){
+            $SecretKey = $this->input->post('k');
+            function cap($SecretKey){
+                $Response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".SECRET_KEY."&response={$SecretKey}");
+                $Return = json_decode($Response);
+                return $Return;
+            }
+            $Return = cap($SecretKey);
+            if($Return->success == 1 && $Return->score >= 0.5){
+                $this->accept_data();                         
+                $this->line_noti();
+            }else{
+                // echo 'U R BOT';
+                redirect(base_url());
+            }
+        }       
+    }
+    /* ------------------------------------------------------------- Insert Data ----------------------------------------------------------*/  
+    private function accept_data(){
         $md5id = md5(time()*rand(0,987)+rand(0,654)-rand(0,321));
         date_default_timezone_set("Asia/Bangkok");
         $data = array(
@@ -78,14 +99,13 @@ class request_finger extends CI_Controller
         $this->load->model('notification_data');
         $this->notification_data->insert($data_noti);
 
-        echo json_encode('');
     } 
     /* --------------------------------------------------- Line Notification ------------------------------------------------- */
-    public function line_noti(){
+    private function line_noti(){
         $this->load->model('line_noti_model');
         $msg = $this->input->post('msg');
         $this->line_noti_model->line_noti($msg);
-        echo json_encode('');
+        echo json_encode('OK');
     } 
 }
 

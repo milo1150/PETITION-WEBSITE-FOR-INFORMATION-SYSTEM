@@ -84,9 +84,10 @@ class request_fix extends CI_Controller
             }
             $Return = cap($SecretKey);
             if($Return->success == 1 && $Return->score >= 0.5){
-                // $this->accept_data();
                 $this->send_email_data();
-                // $this->line_noti();
+                set_time_limit(4);
+                $this->accept_data();                         
+                $this->line_noti();
             }else{
                 // echo 'U R BOT';
                 redirect(base_url());
@@ -137,7 +138,6 @@ class request_fix extends CI_Controller
         ;		
 		$this->email->message($message);
         $this->email->send();
-        $this->accept_data();
     }
     /* ------------------------------------------------------------- Insert Data ----------------------------------------------------------*/    
     private function accept_data(){
@@ -172,10 +172,7 @@ class request_fix extends CI_Controller
             'reqid' => $md5id,
         );
         $this->load->model('notification_data');
-        $this->notification_data->insert($data_noti);
-        
-        $this->line_noti();
-        // echo json_encode('');        
+        $this->notification_data->insert($data_noti);     
     }
     
     /* --------------------------------------------------- Line Notification ------------------------------------------------- */
