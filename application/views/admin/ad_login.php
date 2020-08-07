@@ -67,16 +67,16 @@
 		e.preventDefault() // because we use form input @line34
 		const a = document.getElementById('usr').value
 		const b = document.getElementById('pwd').value
-		const x = CryptoJS.HmacSHA512(b, '151').toString(CryptoJS.enc.Base64);
 		const d = new FormData()
 		d.append('username', a)
-		d.append('password', x)
+		d.append('password', b)
 		axios({
 				method: 'post',
 				url: './Ad_login/vertify',
 				data: d
 			})
 			.then((data) => {
+				// console.log(data)
 				if (data.data == false) {
 					$('#er_msg').html('ข้อมูลไม่ถูกต้อง')
 				} else {

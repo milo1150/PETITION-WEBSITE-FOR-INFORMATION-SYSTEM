@@ -25,15 +25,6 @@ class ad_login extends CI_Controller {
 			}
 		} 
 	}
-
-	// function enter() {
-	// 	if ($this->session->userdata('username') != '') {
-	// 		$this->load->view('ad_main');
-	// 	} else {
-	// 		redirect(base_url() . 'ad_login');
-	// 	}
-	// }
-
 	function logout() {
 		// $this->session->unset_userdata('username');
 		$this->session->sess_destroy();

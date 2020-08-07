@@ -73,16 +73,19 @@ Class ad_admanage extends CI_Controller {
                 'required'      => 'โปรดระบุอีเมล',
                 'valid_email'   => 'รูปแบบอีเมลผิด',
                 'is_unique'     => 'อีเมลซ้ำ'
-        ));
-		
-		$data = array(
-				'username' => $this->input->post('username'),
-				'password' => $this->input->post('password'),
-				'user_id' => $this->input->post('user_id'),
-				'email' => $this->input->post('email')
-				);
+        ));		
 		
 		if($this->form_validation->run()){
+			// ---------- HASH --------------
+			$pwd = $this->input->post('password');
+			$pwd_hash = password_hash($pwd,PASSWORD_DEFAULT);
+			
+			$data = array(
+					'username' => $this->input->post('username'),
+					'password' => $pwd_hash,
+					'user_id' => $this->input->post('user_id'),
+					'email' => $this->input->post('email')
+				);
 			$this->Admin->add_insert($data);
 			$status = 1;
 			echo json_encode($status);

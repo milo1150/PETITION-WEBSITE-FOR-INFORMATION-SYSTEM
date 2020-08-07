@@ -76,12 +76,12 @@ btn.addEventListener('click',(e)=>{
 	const b = document.getElementById('pwd').value
 	const c = document.getElementById('usrId').value
 	const d = document.getElementById('email').value
-	let y = CryptoJS.HmacSHA512(b,'151').toString(CryptoJS.enc.Base64);
+	// let y = CryptoJS.HmacSHA512(b,'151').toString(CryptoJS.enc.Base64);
 	if(b == ''){ y = ''} 
 	// set formData
 	const f = new FormData()
 	f.append('username',a)
-	f.append('password',y)
+	f.append('password',b)
 	f.append('user_id',c)
 	f.append('email',d)
 	// console.log(a+''+y+''+c+''+d)

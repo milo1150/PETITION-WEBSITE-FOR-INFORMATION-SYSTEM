@@ -209,9 +209,14 @@ Class News extends CI_Controller {
             $data['group_data'] = $this->db->select('*')->from('pdf_category')->get()->result();
             $data['fil_default'] = $grp;
             $this->load->view('user/news/news_download',$data);                    
-        }       
-        
+        }     
     }
+
+    /* --------------------------------------------------------- News Dynamic ---------------------------------------------------------- */
+    // function content(){
+    //     $this->load->view('user/news/news_dynamic');
+    // }
+
 
 
 

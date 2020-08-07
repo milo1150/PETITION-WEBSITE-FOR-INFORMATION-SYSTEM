@@ -2,30 +2,18 @@
 Class admin extends CI_Model {
 	/* ---------------------------- Login ----------------------------*/
 	function can_login($username, $password) {
-		$this->db->where('username', $username);
-		$this->db->where('password', $password);
-		$query = $this->db->get('admin_login');
-		if ($query->num_rows() > 0) {
+		$q = $this->db->select('password')->from('admin_login')->where('username',$username)->get()->result_array();
+		$hash = $q[0]['password'];
+		if(password_verify($password,$hash)){
 			return true;
-		} else {
+		}else{
 			return false;
 		}
 	}
-	// function permission($username, $rank){
-	// 	$this->db->where('username', $username);
-	// 	$this->db->where('rank', $rank);
-	// 	$query = $this->db->get('admin_login');
-	// 	if ($query->num_rows() > 0) {
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
 	function ad_data($username){
 		$q = $this->db->select('*')->from('admin_login')->where('username',$username)->get()->result_array();
 		return $q;
 	}
-
 	function showdata(){
 		$query = $this->db->get('admin_login');
 		return $query->result();
