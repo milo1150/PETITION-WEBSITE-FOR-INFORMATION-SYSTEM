@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>    
 	<link src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css" rel="stylesheet"></link>
-<style type="text/css">
-</style>
+
+    <!-- DATE RANGE PICKER -->
+
 </head>
 <div class="wrapper">
 <?php $this->load->view('admin/admainEDIT');?>
@@ -13,10 +14,13 @@
 		<main>
 			<div class="table-responsive container-fluid">
 				<p class="text-center text-dark" style="margin-top: 15px; font-size: 35px; font-weight: bold;">
-					รีพอร์ตรายบุคคล  <?php echo $username;?></p>
+                    รีพอร์ตรายบุคคล  <?php echo $username;?></p>       
+                                    
+
+
 					<div class="row">
 						<div class="col-md-4 mt-4">
-							<div class="card shadow" style="height:100%;">
+							<div class="card z-depth-1" style="height:100%;">
 								<div class="card-header">
 								    <a class="float-left font-weight-bolder header-text">งานที่รับ</a>																	
 								</div>
@@ -27,7 +31,7 @@
 							</div>
 						</div>
 						<div class="col-md-4 mt-4">
-							<div class="card shadow" style="height:100%;">
+							<div class="card z-depth-1" style="height:100%;">
 								<div class="card-header">
 									<a class="float-left font-weight-bolder header-text">งานที่ปิด</a>
 								</div>
@@ -37,7 +41,7 @@
 							</div>
 						</div>
 						<div class="col-md-4 mt-4">							
-							<div class="card shadow" style="height:100%;">
+							<div class="card z-depth-1" style="height:100%;">
 								<div class="card-header">
 									<a class="float-left font-weight-bolder header-text">ผลประเมินความพึงพอใจ</a> 
 								</div>
@@ -46,14 +50,28 @@
 								</div>
 							</div>																									
 						</div>
-					</div>
-
+                    </div>
+                    <div>
+                        <!-- <div id="reportrange" onchange="x1()" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                            <i class="fa fa-calendar"></i>&nbsp;
+                            <span id="rangeV"></span> <i class="fa fa-caret-down"></i>
+                        </div>
+                        <button class="btn btn-success" id="rangeBtn">OK</button> -->
+                                            
+                       
+                    
 					<div class="row">
 						<div class="col mt-4 w-100 h-50">
-							<div class="card shadow">
-								<div class="card-header">
-								<a class="float-left font-weight-bolder header-text">ภาพรวม</a>
-									<i class="fas fa-angle-down float-right pt-1" data-toggle="dropdown" id="menu1"></i>
+							<div class="card z-depth-1">
+								<div class="card-header overall-header">
+                                    <div class="overall-header-text"><a class="float-left font-weight-bolder header-text">ภาพรวม</a></div>
+                                    <div class="md-form md-outline overall-header-date">
+                                        <i class="fas fa-calendar-check prefix"></i>
+                                        <!-- <input class="form-control" type="text" name="daterange" id="reportrange" value="<?php echo date('d-m-Y',strtotime('-2 days')).' - '.date('d-m-Y',strtotime('today'));?>" /> -->
+                                        <input class="form-control" type="text" name="daterange" id="reportrange" />
+
+                                    </div> 
+									<!-- <i class="fas fa-angle-down float-right pt-1" data-toggle="dropdown" id="menu1"></i>
 									<div class="dropdown-menu dropdown-overall pt-2 z-depth-2" aria-labelledby="menu1">
 										<a class="dropdown-item" id="day_latest">30 วันล่าสุด</a>				
                                         <a class="dropdown-item" id="year_latest">ปีล่าสุด</a>
@@ -63,7 +81,7 @@
                                                 <a class="dropdown-item" id="2021">2021</a>
                                                 <a class="dropdown-item" id="2022">2022</a>
                                             </ul>   
-                                    </div>	
+                                    </div>	 -->
 								</div>
 								<div class="card-body">
 									<canvas id="data_overall" style="display: block; width: 100%; height: 350px;"></canvas>
@@ -77,18 +95,33 @@
 
 						</div>
 					</div>
-
-				</div>
-
+                
 			</div>
-		</main>
+        </main>
+        
 </div>
+<style>
+.overall-header {
+    padding-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+.overall-header-text{
+    padding-top: 6px;
+}
+.overall-header-date{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+.overall-header-date input{
+    padding-right: 24px !important;
+}
+</style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script src="<?php echo base_url().'miscit-js/admin_report.js';?>"></script>
 
 <script>
-
-
-
-
 
 //---------------------------------------------------- ACCEPT ORDER --------------------------------------------------//
 var fix_accept = '<?php echo $fix_accept;?>' , item_accept = '<?php echo $item_accept;?>';
