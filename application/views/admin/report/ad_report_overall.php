@@ -215,7 +215,7 @@ var rating_chart = {
 
 //----------------------------------------------------- Graph_Overall_30 DAY latest----------------------------------------------//
     var today = moment().format('DD/MM/YYYY');
-    var thirty = moment().subtract(30,'days').format('DD/MM/YYYY');
+    var thirty = moment().subtract(60,'days').format('DD/MM/YYYY');
     
     /*create 30 day datas*/
     var day = [];       

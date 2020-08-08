@@ -14,7 +14,7 @@
 		<main>
 			<div class="table-responsive container-fluid">
 				<p class="text-center text-dark" style="margin-top: 15px; font-size: 35px; font-weight: bold;">
-                    รีพอร์ตรายบุคคล  <?php echo $username;?></p>       
+                    รีพอร์ตรายบุคคล  <?php echo $username;?></p><span id="uName" value="<?php echo $username;?>">       
                                     
 
 
@@ -22,7 +22,7 @@
 						<div class="col-md-4 mt-4">
 							<div class="card z-depth-1" style="height:100%;">
 								<div class="card-header">
-								    <a class="float-left font-weight-bolder header-text">งานที่รับ</a>																	
+								    <a class="float-left font-weight-bolder header-text">รับงาน</a>																	
 								</div>
 								<div class="card-body text-center">
 									<canvas id="accept" width="80" height="80"></canvas>									
@@ -33,7 +33,7 @@
 						<div class="col-md-4 mt-4">
 							<div class="card z-depth-1" style="height:100%;">
 								<div class="card-header">
-									<a class="float-left font-weight-bolder header-text">งานที่ปิด</a>
+									<a class="float-left font-weight-bolder header-text">ปิดงาน</a>
 								</div>
 								<div class="card-body">
 									<canvas id="close" width="80" height="80"></canvas>
@@ -251,119 +251,119 @@ var rating_chart = {
         day[i] = moment().subtract(i,'days').format('DD/MM/YYYY');
     }; 
   
-    var day_latest = {
-    type: 'line',
-    data: {
-        datasets: [{
-                label: 'งานที่รับ',                
-                data:
-                [                    
-                    { x: day[30], y: '<?php echo $data_accept[30];?>' },{ x: day[29], y: '<?php echo $data_accept[29];?>' },{ x: day[28], y: '<?php echo $data_accept[28];?>' },
-                    { x: day[27], y: '<?php echo $data_accept[27];?>' },{ x: day[26], y: '<?php echo $data_accept[26];?>' },{ x: day[25], y: '<?php echo $data_accept[25];?>' },
-                    { x: day[24], y: '<?php echo $data_accept[24];?>' },{ x: day[23], y: '<?php echo $data_accept[23];?>' },{ x: day[22], y: '<?php echo $data_accept[22];?>' },
-                    { x: day[21], y: '<?php echo $data_accept[21];?>' },{ x: day[20], y: '<?php echo $data_accept[20];?>' },{ x: day[19], y: '<?php echo $data_accept[19];?>' },
-                    { x: day[18], y: '<?php echo $data_accept[18];?>' },{ x: day[17], y: '<?php echo $data_accept[17];?>' },{ x: day[16], y: '<?php echo $data_accept[16];?>' },
-                    { x: day[15], y: '<?php echo $data_accept[15];?>' },{ x: day[14], y: '<?php echo $data_accept[14];?>' },{ x: day[13], y: '<?php echo $data_accept[13];?>' },
-                    { x: day[12], y: '<?php echo $data_accept[12];?>' },{ x: day[11], y: '<?php echo $data_accept[11];?>' },{ x: day[10], y: '<?php echo $data_accept[10];?>' },
-                    { x: day[9], y: '<?php echo $data_accept[9];?>' },{ x: day[8], y: '<?php echo $data_accept[8];?>' },{ x: day[7], y: '<?php echo $data_accept[7];?>' },
-                    { x: day[6], y: '<?php echo $data_accept[6];?>' },{ x: day[5], y: '<?php echo $data_accept[5];?>' },{ x: day[4], y: '<?php echo $data_accept[4];?>' },
-                    { x: day[3], y: '<?php echo $data_accept[3];?>' },{ x: day[2], y: '<?php echo $data_accept[2];?>' },{ x: day[1], y: '<?php echo $data_accept[1];?>' },
-                    { x: day[0], y: '<?php echo $data_accept[0];?>' }                       
-                ],                
-                pointBackgroundColor: [
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
-                    'rgba(255,0,0,1)',
-                ],
-                backgroundColor: [
-                    'rgba(255,0,0,0.1)',
-                ],
-                borderColor: [
-                    'rgba(255,0,0,0.4)',
-                ],
-                borderWidth: 3,
-                pointHoverBorderWidth: 1,
-                pointHoverRadius: 3,
-                pointRadius: 3,
-            },
-            {
-                label: 'งานที่ปิด',                
-                data:
-                [                    
-                    { x: day[30], y: '<?php echo $data_close[30];?>' },{ x: day[29], y: '<?php echo $data_close[29];?>' },{ x: day[28], y: '<?php echo $data_close[28];?>' },
-                    { x: day[27], y: '<?php echo $data_close[27];?>' },{ x: day[26], y: '<?php echo $data_close[26];?>' },{ x: day[25], y: '<?php echo $data_close[25];?>' },
-                    { x: day[24], y: '<?php echo $data_close[24];?>' },{ x: day[23], y: '<?php echo $data_close[23];?>' },{ x: day[22], y: '<?php echo $data_close[22];?>' },
-                    { x: day[21], y: '<?php echo $data_close[21];?>' },{ x: day[20], y: '<?php echo $data_close[20];?>' },{ x: day[19], y: '<?php echo $data_close[19];?>' },
-                    { x: day[18], y: '<?php echo $data_close[18];?>' },{ x: day[17], y: '<?php echo $data_close[17];?>' },{ x: day[16], y: '<?php echo $data_close[16];?>' },
-                    { x: day[15], y: '<?php echo $data_close[15];?>' },{ x: day[14], y: '<?php echo $data_close[14];?>' },{ x: day[13], y: '<?php echo $data_close[13];?>' },
-                    { x: day[12], y: '<?php echo $data_close[12];?>' },{ x: day[11], y: '<?php echo $data_close[11];?>' },{ x: day[10], y: '<?php echo $data_close[10];?>' },
-                    { x: day[9], y: '<?php echo $data_close[9];?>' },{ x: day[8], y: '<?php echo $data_close[8];?>' },{ x: day[7], y: '<?php echo $data_close[7];?>' },
-                    { x: day[6], y: '<?php echo $data_close[6];?>' },{ x: day[5], y: '<?php echo $data_close[5];?>' },{ x: day[4], y: '<?php echo $data_close[4];?>' },
-                    { x: day[3], y: '<?php echo $data_close[3];?>' },{ x: day[2], y: '<?php echo $data_close[2];?>' },{ x: day[1], y: '<?php echo $data_close[1];?>' },
-                    { x: day[0], y: '<?php echo $data_close[0];?>' }                       
-                ],                
-                pointBackgroundColor: [
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
-                    'rgba(50,205,50,1)',
-                ],
-                backgroundColor: [
-                    'rgba(50,205,50,0.1)',
-                ],
-                borderColor: [
-                    'rgba(50,205,50,0.4)',
-                ],
-                borderWidth: 3,
-                pointHoverBorderWidth: 1,
-                pointHoverRadius: 3,
-                pointRadius: 3,
-            },           
-        ]
-    },
+    // var day_latest = {
+    // type: 'line',
+    // data: {
+    //     datasets: [{
+    //             label: 'งานที่รับ',                
+    //             data:
+    //             [                    
+    //                 { x: day[30], y: '<?php echo $data_accept[30];?>' },{ x: day[29], y: '<?php echo $data_accept[29];?>' },{ x: day[28], y: '<?php echo $data_accept[28];?>' },
+    //                 { x: day[27], y: '<?php echo $data_accept[27];?>' },{ x: day[26], y: '<?php echo $data_accept[26];?>' },{ x: day[25], y: '<?php echo $data_accept[25];?>' },
+    //                 { x: day[24], y: '<?php echo $data_accept[24];?>' },{ x: day[23], y: '<?php echo $data_accept[23];?>' },{ x: day[22], y: '<?php echo $data_accept[22];?>' },
+    //                 { x: day[21], y: '<?php echo $data_accept[21];?>' },{ x: day[20], y: '<?php echo $data_accept[20];?>' },{ x: day[19], y: '<?php echo $data_accept[19];?>' },
+    //                 { x: day[18], y: '<?php echo $data_accept[18];?>' },{ x: day[17], y: '<?php echo $data_accept[17];?>' },{ x: day[16], y: '<?php echo $data_accept[16];?>' },
+    //                 { x: day[15], y: '<?php echo $data_accept[15];?>' },{ x: day[14], y: '<?php echo $data_accept[14];?>' },{ x: day[13], y: '<?php echo $data_accept[13];?>' },
+    //                 { x: day[12], y: '<?php echo $data_accept[12];?>' },{ x: day[11], y: '<?php echo $data_accept[11];?>' },{ x: day[10], y: '<?php echo $data_accept[10];?>' },
+    //                 { x: day[9], y: '<?php echo $data_accept[9];?>' },{ x: day[8], y: '<?php echo $data_accept[8];?>' },{ x: day[7], y: '<?php echo $data_accept[7];?>' },
+    //                 { x: day[6], y: '<?php echo $data_accept[6];?>' },{ x: day[5], y: '<?php echo $data_accept[5];?>' },{ x: day[4], y: '<?php echo $data_accept[4];?>' },
+    //                 { x: day[3], y: '<?php echo $data_accept[3];?>' },{ x: day[2], y: '<?php echo $data_accept[2];?>' },{ x: day[1], y: '<?php echo $data_accept[1];?>' },
+    //                 { x: day[0], y: '<?php echo $data_accept[0];?>' }                       
+    //             ],                
+    //             pointBackgroundColor: [
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)', 'rgba(255,0,0,1)', 'rgba(255,0,0,1)',
+    //                 'rgba(255,0,0,1)',
+    //             ],
+    //             backgroundColor: [
+    //                 'rgba(255,0,0,0.1)',
+    //             ],
+    //             borderColor: [
+    //                 'rgba(255,0,0,0.4)',
+    //             ],
+    //             borderWidth: 3,
+    //             pointHoverBorderWidth: 1,
+    //             pointHoverRadius: 3,
+    //             pointRadius: 3,
+    //         },
+    //         {
+    //             label: 'งานที่ปิด',                
+    //             data:
+    //             [                    
+    //                 { x: day[30], y: '<?php echo $data_close[30];?>' },{ x: day[29], y: '<?php echo $data_close[29];?>' },{ x: day[28], y: '<?php echo $data_close[28];?>' },
+    //                 { x: day[27], y: '<?php echo $data_close[27];?>' },{ x: day[26], y: '<?php echo $data_close[26];?>' },{ x: day[25], y: '<?php echo $data_close[25];?>' },
+    //                 { x: day[24], y: '<?php echo $data_close[24];?>' },{ x: day[23], y: '<?php echo $data_close[23];?>' },{ x: day[22], y: '<?php echo $data_close[22];?>' },
+    //                 { x: day[21], y: '<?php echo $data_close[21];?>' },{ x: day[20], y: '<?php echo $data_close[20];?>' },{ x: day[19], y: '<?php echo $data_close[19];?>' },
+    //                 { x: day[18], y: '<?php echo $data_close[18];?>' },{ x: day[17], y: '<?php echo $data_close[17];?>' },{ x: day[16], y: '<?php echo $data_close[16];?>' },
+    //                 { x: day[15], y: '<?php echo $data_close[15];?>' },{ x: day[14], y: '<?php echo $data_close[14];?>' },{ x: day[13], y: '<?php echo $data_close[13];?>' },
+    //                 { x: day[12], y: '<?php echo $data_close[12];?>' },{ x: day[11], y: '<?php echo $data_close[11];?>' },{ x: day[10], y: '<?php echo $data_close[10];?>' },
+    //                 { x: day[9], y: '<?php echo $data_close[9];?>' },{ x: day[8], y: '<?php echo $data_close[8];?>' },{ x: day[7], y: '<?php echo $data_close[7];?>' },
+    //                 { x: day[6], y: '<?php echo $data_close[6];?>' },{ x: day[5], y: '<?php echo $data_close[5];?>' },{ x: day[4], y: '<?php echo $data_close[4];?>' },
+    //                 { x: day[3], y: '<?php echo $data_close[3];?>' },{ x: day[2], y: '<?php echo $data_close[2];?>' },{ x: day[1], y: '<?php echo $data_close[1];?>' },
+    //                 { x: day[0], y: '<?php echo $data_close[0];?>' }                       
+    //             ],                
+    //             pointBackgroundColor: [
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)', 'rgba(50,205,50,1)', 'rgba(50,205,50,1)',
+    //                 'rgba(50,205,50,1)',
+    //             ],
+    //             backgroundColor: [
+    //                 'rgba(50,205,50,0.1)',
+    //             ],
+    //             borderColor: [
+    //                 'rgba(50,205,50,0.4)',
+    //             ],
+    //             borderWidth: 3,
+    //             pointHoverBorderWidth: 1,
+    //             pointHoverRadius: 3,
+    //             pointRadius: 3,
+    //         },           
+    //     ]
+    // },
 
-    options: {
-        responsive: true,
-        scales: {
-            xAxes: [{                
-                type: 'time',                           
-                time:{    
-                    unit: 'day',
-                    format:'DD MM YYYY',               
-                    displayFormats:{
-                        'day': 'DD MMM',
-                    },               
-                    tooltipFormat:'DD MMM YYYY',  
-                    min:thirty,    
-                    max:today,
-                    stepSize:1, 
-                },
-            }
-            ],
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    precision:0,
-                }
-            }],
-        },
-    }
-    };
+    // options: {
+    //     responsive: true,
+    //     scales: {
+    //         xAxes: [{                
+    //             type: 'time',                           
+    //             time:{    
+    //                 unit: 'day',
+    //                 format:'DD MM YYYY',               
+    //                 displayFormats:{
+    //                     'day': 'DD MMM',
+    //                 },               
+    //                 tooltipFormat:'DD MMM YYYY',  
+    //                 min:thirty,    
+    //                 max:today,
+    //                 stepSize:1, 
+    //             },
+    //         }
+    //         ],
+    //         yAxes: [{
+    //             ticks: {
+    //                 beginAtZero: true,
+    //                 precision:0,
+    //             }
+    //         }],
+    //     },
+    // }
+    // };
     //----------------------------------------------------- Graph_Overall_YEAR latest----------------------------------------------//
     var year_latest = {
     type: 'line',
@@ -651,8 +651,8 @@ var year_2022 = {
 };   
 //------------------------------------------------------------------MAIN--------------------------------------------------------------------//  
 $(document).ready(function(){
-    var graph_overall = document.getElementById('data_overall').getContext('2d');
-    window.load = new Chart(graph_overall,day_latest);
+    // var graph_overall = document.getElementById('data_overall').getContext('2d');
+    // window.load = new Chart(graph_overall,day_latest);
     var accept_graph = document.getElementById('accept').getContext('2d');
     window.load = new Chart(accept_graph,accept_chart);
     var close_graph = document.getElementById('close').getContext('2d');
