@@ -302,72 +302,6 @@ var order_chart = {
         }
     }
 }
-
-/*var order_chart = {
-    type: 'line',
-    data: {
-        //labels: ['01','02','03','04','04'],
-        datasets: [{
-            data:[
-                { x:day[0] , y:5 },{ x:day[1] , y:6 },{ x:day[2] , y:7 },{ x:day[3] , y:3 },{ x:day[4] , y:2 },{ x:day[5] , y:1 },{ x:day[6] , y:6 }
-            ],
-            //data: [<?php echo $fix_order;?>,<?php echo $item_order;?>,<?php echo $itemotp_order;?>,<?php echo $email_order;?>,<?php echo $finger_order;?>],
-            pointBackgroundColor: [
-                'rgba(255, 26, 26 , 1)','rgba(255, 26, 26 , 1)','rgba(255, 26, 26 , 1)','rgba(255, 26, 26 , 1)','rgba(255, 26, 26 , 1)','rgba(255, 26, 26 , 1)','rgba(255, 26, 26 , 1)'                 
-            ],
-            backgroundColor: [
-                'rgba(255, 26, 26, 0.1)'              
-            ],
-            borderColor: [
-                    'rgba(255,0,0,0.4)',
-                ],
-                borderWidth: 3,
-                pointHoverBorderWidth: 1,
-                pointHoverRadius: 3,
-                pointRadius: 3,
-        }]
-    },
-    
-    options: {
-        responsive: true,
-        scales: {
-            xAxes: [{    
-                gridLines:{
-                    display:false,
-                },          
-                type: 'time',                           
-                time:{    
-                    unit: 'day',
-                    format:'DD MM YYYY',               
-                    displayFormats:{
-                        'day': 'DD MMM',
-                    },               
-                    tooltipFormat:'DD MMM YYYY',  
-                    min:seven,    
-                    max:today,
-                    stepSize:1, 
-                },
-            }],
-            yAxes: [{
-                gridLines:{
-                    //color: "rgba(0, 0, 0, 0)",
-                },
-                ticks: {               
-                    //display:false,       
-                    //precision:0,       
-                    //beginAtZero:true,                                 
-                },  
-                gridLines: {
-                    //display:false,
-                },
-            }]
-        },
-        legend: {
-            display: false
-        }
-    }
-}
-*/
 /*--------------------- attr --------------------*/
 const today = moment().format('DD/MM/YYYY');
 const seven = moment().subtract(13,'days').format('DD/MM/YYYY');
@@ -476,6 +410,14 @@ for(i=0;i<15;i++){
                 }
             }],
         },
+        hover: {
+            animationDuration:0,
+            mode: null
+        },
+        tooltips: {
+            mode: 'index',
+            // enabled: false
+        }
     }
     };
 

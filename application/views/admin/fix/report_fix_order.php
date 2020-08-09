@@ -204,7 +204,7 @@
 		function watching(){
 			var id = '<?php echo $id;?>';
 			$.ajax({
-				url:"./watch_accept_status",
+				url:"<?php echo base_url();?>ad_fix/watch_accept_status",
 				method:"POST",
 				dataType:"JSON",
 				data:{'id':id},
@@ -228,12 +228,12 @@
 		var ad_username = '<?php echo $this->session->userdata('username');?>';		
 					
 		await $.ajax({
-			url : "./send_email_accept",
+			url : "<?php echo base_url();?>ad_fix/send_email_accept",
 			method : "POST",
 			data : {'id':id},			
 		})
 		await $.ajax({
-			url : './report_fix_order_update_accept',
+			url : '<?php echo base_url();?>ad_fix/report_fix_order_update_accept',
 			method : 'POST',
 			data : {'ad_username' : ad_username , 'id':id },
 			success : setTimeout(function(){window.history.back()},500)												
@@ -249,13 +249,13 @@
 		var ad_username = '<?php echo $this->session->userdata('username');?>';	
 		var cancle_detail = $('textarea[id="cancleDetail"]').val();
 		await $.ajax({
-			url : "./cancle_order",
+			url : "<?php echo base_url();?>ad_fix/cancle_order",
 			method : "POST",
 			data : {'id':id ,'cancle_detail':cancle_detail,'ad_username':ad_username},
 			
 		})
 		await $.ajax({
-			url : "./email_cancle_order",
+			url : "<?php echo base_url();?>ad_fix/email_cancle_order",
 			method : "POST",
 			data : {'id':id ,'cancle_detail':cancle_detail },
 			success : setTimeout(function(){window.history.back()},500)
