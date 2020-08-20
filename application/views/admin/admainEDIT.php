@@ -39,7 +39,7 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	
 	<!--------------- print to PDF ------------->
-	<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+	<!-- <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script> -->
 	<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
 </head>
@@ -175,11 +175,15 @@
 			</li>
 				  -->
 			<li>
+				<a href="<?php echo base_url();?>ImageEdit"><i class="fas fa-image"></i></i>   รูปภาพ</a>
+			</li>
+			<li>
 				<a href="<?php echo base_url();?>ad_news"><i class="fas fa-globe"></i>   อัพเดทหน้าข่าว</a>
 			</li>
 			<li>
 				<a href="<?php echo base_url();?>Admin_upload"><i class="fas fa-file-pdf"></i>   เอกสารดาวน์โหลด</a>
 			</li>
+			
 
 			
 			<li class="nav-item">

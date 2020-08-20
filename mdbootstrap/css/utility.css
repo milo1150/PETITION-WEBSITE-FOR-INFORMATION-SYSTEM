@@ -938,6 +938,7 @@ a.header-text {
 }
 
 .func_grp .btn_pd_grp .btn {
+    width: 150px !important;
     font-size: 14px;
 }
 
