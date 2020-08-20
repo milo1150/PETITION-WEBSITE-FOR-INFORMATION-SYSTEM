@@ -1,0 +1,169 @@
+/*------------------------------------------------------ upload Button ---------------------------------------------*/
+
+.subTable {
+	display: grid;
+	padding-top: 11px;
+}
+
+/* ----- btn group ----- */
+
+.navBtn {
+	padding-top: 12px;
+	padding-bottom: 10px;
+	padding-right: 5px;
+	display: flex;
+	/* justify-content: space-between; */
+	float: left;
+	box-sizing: border-box;
+	/* white-space: nowrap; */
+}
+
+.topicGator{
+    display: flex;
+}
+
+.topicName {
+	/* box-shadow: 2px 2px 1px; */
+	cursor: default;
+	/* background: #9e978d; */
+	padding-left: 15px;
+	padding-right: 15px;
+	box-sizing: border-box;
+	margin-right: 11px;
+	margin-left: 7px;
+	border-radius: 3px;
+	align-self: center;
+}
+
+.topicName a {
+	color: black;
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-weight: bold;
+}
+
+.picText:hover{
+    text-decoration-line: underline !important;
+}
+
+.topicArrow {
+	margin-right: 14px;
+    align-self: center;
+    display: none;
+}
+
+.topicArrow i {
+	font-size: 1.6rem;
+	position: relative;
+	top: 3px;
+	/* text-shadow: 0px 0px 2px; */
+}
+
+.navBtn .btnGrp {
+	display: flex !important;
+}
+
+.navBtn .btnGrp .btn {
+	width: 150px !important;
+	font-size: 14px;
+}
+
+.navBtn .btnGrp .btn i {
+	font-size: 1.3rem !important;
+	position: relative !important;
+	top: 1.7px !important;
+}
+
+/* ----------- Error Span ------------*/
+.spanCateError {
+	position: relative;
+	bottom: 19px;
+	padding-left: 114px;
+}
+
+.spanCateError p {
+	margin-bottom: -20px;
+	color: red;
+}
+
+/* ------------------------------------------------------ Spinner --------------------------------------------------- */
+.spinner {
+	text-align: center;
+	margin-top: 140px;
+}
+
+.lds-ring {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+.lds-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	margin: 8px;
+	border: 8px solid rgb(245, 12, 101);
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: rgb(245, 12, 101) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+	animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+	animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+	animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* ------------------------------------------------------ Area --------------------------------------------------- */
+.spaceArea {
+	padding: 7px;
+	box-sizing: border-box;
+}
+.folderRow {
+    display: flex;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: center;
+    margin-top: 8px;
+}
+.folderContent{
+    height: 100px;
+    border-radius: 6px;
+    margin-right: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: #eaeaea;
+    width: 200px !important;
+}
+.folderContent i {
+    font-size: 1.7rem;
+    text-shadow: 0px 0px 2px;
+}
+.folderContent p {
+    position: relative;
+    padding-left: 8px;
+    top: 3px;
+    font-weight: bold;
+    color: black;
+}
+.folderContent div:nth-child(2){
+    white-space: nowrap;
+    overflow: hidden;
+}

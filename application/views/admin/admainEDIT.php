@@ -175,6 +175,9 @@
 			</li>
 				  -->
 			<li>
+				<a href="<?php echo base_url();?>ImageEdit"><i class="fas fa-image"></i></i>   รูปภาพ</a>
+			</li>
+			<li>
 				<a href="<?php echo base_url();?>ad_news"><i class="fas fa-globe"></i>   อัพเดทหน้าข่าว</a>
 			</li>
 			<li>
