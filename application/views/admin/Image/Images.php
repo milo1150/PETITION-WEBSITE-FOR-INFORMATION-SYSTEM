@@ -27,16 +27,15 @@
                         </div>
                     </div>
                     <div class="topicGator">
-                        <div class="topicName"><a class="picText">รูปภาพ</a></div>
+                        <div class="topicName"><a class="picText">อัลบั้ม</a></div>
                         <div class="topicArrow"><i class="fas fa-angle-right"></i></div>
                     </div>                    
                     <div class="navLine"></div>
                     <div class="spinner" style="display: none;">
                         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                     </div>
-                    <div id="spaceArea">                        
-                        
-                        <!-- <div class="folderRow col-12">
+                    <div id="spaceArea">                                             
+                        <div class="folderRow col-12">
                             <div class="folderContent col-2 z-depth-1 waves-effect">
                                 <div>
                                     <i class="fas fa-folder-open"></i>
@@ -44,8 +43,41 @@
                                 <div>
                                     <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
                                 </div>                                
-                            </div>                                                                            
-                        </div> -->
+                            </div>                                                                                                                                                     
+                            <div class="folderContent col-2 z-depth-1 waves-effect">
+                                <div>
+                                    <i class="fas fa-folder-open"></i>
+                                </div>
+                                <div>
+                                    <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
+                                </div>                                
+                            </div>                                                                                                                                                     
+                            <div class="folderContent col-2 z-depth-1 waves-effect">
+                                <div>
+                                    <i class="fas fa-folder-open"></i>
+                                </div>
+                                <div>
+                                    <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
+                                </div>                                
+                            </div>                                                                                                                                                     
+                            <div class="folderContent col-2 z-depth-1 waves-effect">
+                                <div>
+                                    <i class="fas fa-folder-open"></i>
+                                </div>
+                                <div>
+                                    <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
+                                </div>                                
+                            </div>                                                                                                                                                     
+                            <div class="folderContent col-2 z-depth-1 waves-effect">
+                                <div>
+                                    <i class="fas fa-folder-open"></i>
+                                </div>
+                                <div>
+                                    <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
+                                </div>                                
+                            </div>                                                                                                                                                     
+                                                                                                                                                                                
+                        </div>
                     </div>
                 </div>
             </div>
