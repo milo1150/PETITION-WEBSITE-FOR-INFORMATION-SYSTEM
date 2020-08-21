@@ -18,8 +18,11 @@
                             <button class="btn btn-sm amber lighten-1 font-weight-bolder albumBtn"><i class="fas fa-folder-open"></i>
                                 อัลบั้ม
                             </button>                         
-                            <button class="btn btn-sm green accent-2 font-weight-bolder" id="newGrp"><i class="fas fa-plus"></i></i>
+                            <button class="btn btn-sm green accent-2 font-weight-bolder" id="newGrp"><i class="fas fa-plus-circle"></i>
                                 สร้างอัลบั้ม
+                            </button>
+                            <button class="btn btn-sm red accent-2 font-weight-bolder" id="delGrp"><i class="fas fa-minus-circle"></i>
+                                ลบอัลบั้ม
                             </button>
                             <button class="btn btn-sm red accent-2 font-weight-bolder" id="newImg" style="display: none;"><i class="fas fa-file-upload"></i>
                                 อัพโหลดภาพ
@@ -35,7 +38,7 @@
                         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                     </div>
                     <div id="spaceArea">                                             
-                        <div class="folderRow col-12">
+                        <!-- <div class="folderRow col-12">
                             <div class="folderContent col-2 z-depth-1 waves-effect">
                                 <div>
                                     <i class="fas fa-folder-open"></i>
@@ -77,7 +80,7 @@
                                 </div>                                
                             </div>                                                                                                                                                     
                                                                                                                                                                                 
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -18,8 +18,8 @@
 	/* white-space: nowrap; */
 }
 
-.topicGator{
-    display: flex;
+.topicGator {
+	display: flex;
 }
 
 .topicName {
@@ -43,14 +43,14 @@
 	font-weight: bold;
 }
 
-.picText:hover{
-    text-decoration-line: underline !important;
+.picText:hover {
+	text-decoration-line: underline !important;
 }
 
 .topicArrow {
 	margin-right: 14px;
-    align-self: center;
-    display: none;
+	align-self: center;
+	display: none;
 }
 
 .topicArrow i {
@@ -135,35 +135,49 @@
 	box-sizing: border-box;
 }
 .folderRow {
-    display: flex;
-    box-sizing: border-box;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    justify-content: center;
-    margin-top: 8px;
+	display: flex;
+	box-sizing: border-box;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	justify-content: center;
+	margin-top: 8px;
 }
-.folderContent{
-    height: 100px;
-    border-radius: 6px;
-    margin-right: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    background-color: #eaeaea;
-    width: 200px !important;
+.folderContent {
+	height: 100px;
+	border-radius: 6px;
+	margin-right: 20px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	background-color: #eaeaea;
+	width: 200px !important;
+	display: block;
+	text-align: center;
+	padding-top: 32px;
 }
-.folderContent i {
-    font-size: 1.7rem;
-    text-shadow: 0px 0px 2px;
+.folderContent div:nth-child(1) {
+	display: flex;
 }
-.folderContent p {
-    position: relative;
-    padding-left: 8px;
-    top: 3px;
-    font-weight: bold;
-    color: black;
+.folderContent div:nth-child(1) div:nth-child(1) i {
+	font-size: 1.7rem;
+	text-shadow: 0px 0px 2px;
 }
-.folderContent div:nth-child(2){
-    white-space: nowrap;
-    overflow: hidden;
+.folderContent div:nth-child(1) div:nth-child(2) p {
+	position: relative;
+	padding-left: 8px;
+	bottom: 2px;
+	font-weight: bold;
+	color: black;
+	white-space: nowrap;
+	overflow: hidden;
+	/* width: 82%; */
+}
+.folderContent div:nth-child(2) {
+	position: inherit;
+	bottom: 9px;
+}
+i.contentDel {
+	display: none;
+	color: red;
+	font-size: 1.4rem;
 }

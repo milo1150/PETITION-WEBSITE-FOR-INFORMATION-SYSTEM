@@ -20,78 +20,48 @@ const loadContent = () => {
 	spinnerStatus(true);
     axios.get("./Image/folderList")
     .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
 
-        
         dataOne = [ '<div class="folderContent col-2 z-depth-1 waves-effect">' , '</div>' ];
         dataTwo = res.data;
-        dataHtml = [];     
+        dataHtml = [];    
                
-        /* Head-End Loop */
-        let row = Math.ceil(res.data.length/5);
-        let a = 0; // start loop push res.data         
-        let c = 6; // end loop push res.data
-        for(let i=1;i<=row;i++,a+=7,c+=7){
-            dataHtml[a] = '<div class="folderContent col-2 z-depth-1 waves-effect">';
-            dataHtml[c] = '</div>';
+        let maxRow = Math.ceil(res.data.length/5);
+        dataRow = [];
+        for(let i=0;i<maxRow;i++){
+            dataRow.push('<div class="folderRow col-12" id="Frow'+i+'">');
         }
-
-        /* Inside Loop */
+        for(let i of dataTwo){
+            dataHtml.push('<div class="folderContent col-2 z-depth-1 waves-effect">'+
+                                '<div><div>'+
+                                    '<i class="fas fa-folder-open"></i>'+
+                                '</div>'+
+                                '<div>'+
+                                    '<p>'+i.category+'</p>'+
+                                '</div></div>'+
+                                '<div>'+
+                                    '<i class="fas fa-minus-circle contentDel"></i>'+  
+                                '</div>'+          
+                            '</div>')
+        }
+        // console.log(maxRow)
+        /* ---------------- Append HTML Content ------------- */
+        $('#spaceArea').html(dataRow)
+        let count = 0;
+        let countBtw = 0;
         let dLength = res.data.length;
-        let i = 0;
-        let b = 1; // between loop push res.data
-        let d = 1; // reset loop
-        while( i < dLength ){
-            dataHtml[b] = res.data[i];
-            b++;           
-            if( d == 5 ){
-                d = 0;
-                a = a + 7;
-                b = b + 2;
-            }
-            d++;
-            i++;
-        }
-        console.log(dataHtml)
-
-
-        // for(let i=0;i<res.data.length;i++){
-            // let contentText = 
-            //     '<div class="folderContent col-2 z-depth-1 waves-effect">'+
-            //         '<div>'+
-            //             '<i class="fas fa-folder-open"></i>'+
-            //         '</div>'+
-            //         '<div>'+
-            //             '<p>'+res.data[i-1].category+'</p>'+
-            //         '</div>'+                            
-            //     '</div>';
-                // contetnText.push(folderBox);               
-            // if( i == a ){
-            //     contentHtml.push('<div class="folderRow col-12">')
-            //     contentHtml.push(contetnText)
-            //     contentHtml.push('</div>')
-            //     a + 4;
-            // }
-        // }
-
-        // let folderBox = 
-        //     '<div class="folderRow col-12">'+
-        //         '<div class="folderContent col-2 z-depth-1 waves-effect">'+
-        //             '<div>'+
-        //                 '<i class="fas fa-folder-open"></i>'+
-        //             '</div>'+
-        //             '<div>'+
-        //                 '<p>ข่าวรายวันน</p>'+
-        //             '</div>'+                            
-        //         '</div>'+                
-        //     '</div>';
-        
-        // console.log(contentHtml)  
-
-
-
-
-        // $('#spaceArea').html(contentHtml)              
+        let parentRow = 0; // Parent Row
+        while(count < dLength){
+            // console.log(countBtw)
+            // console.log(res.data[count].category)
+            $('#Frow'+parentRow).append(dataHtml[count]);   
+            countBtw++;           
+            count++;     
+            if( countBtw == 5 && parentRow < maxRow ){
+                countBtw = 0;
+                parentRow++;
+            }                                                       
+        }               
         spinnerStatus(false);        
 	}).catch(error => {
         window.location.reload()
@@ -136,8 +106,17 @@ cateConbtn.addEventListener("click", () => {
 			if (data.error_name) {
 				$("#spanCateError").html(data.error_name);
 			} else {
-				hideModal();
+                hideModal();
+                loadContent();
 			}
 		},
 	});
 });
+
+/* --------------------------------------------- Delete ---------------------------------------------*/
+const delBtn = document.getElementById('delGrp');
+delBtn.onclick = () => {
+    console.log('del')
+    let x = document.querySelector('.contentDel');
+    x.classList.add('omg')
+}
