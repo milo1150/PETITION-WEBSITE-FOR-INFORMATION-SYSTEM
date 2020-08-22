@@ -29,7 +29,7 @@
 	padding-left: 15px;
 	padding-right: 15px;
 	box-sizing: border-box;
-	margin-right: 11px;
+	/* margin-right: 11px; */
 	margin-left: 7px;
 	border-radius: 3px;
 	align-self: center;
@@ -48,7 +48,7 @@
 }
 
 .topicArrow {
-	margin-right: 14px;
+	/* margin-right: 14px; */
 	align-self: center;
 	display: none;
 }
@@ -58,6 +58,20 @@
 	position: relative;
 	top: 3px;
 	/* text-shadow: 0px 0px 2px; */
+}
+.topicContent {
+	cursor: default;
+	padding-left: 15px;
+	padding-right: 15px;
+	box-sizing: border-box;
+	border-radius: 3px;
+	align-self: center;
+}
+.contentText {
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-weight: bold;
 }
 
 .navBtn .btnGrp {
@@ -75,6 +89,13 @@
 	top: 1.7px !important;
 }
 
+/* ------------ btn navigator CSS --------- */
+#newGrp,
+#delGrp,
+#newImg {
+	transition: 0.3s all;
+}
+
 /* ----------- Error Span ------------*/
 .spanCateError {
 	position: relative;
@@ -85,6 +106,32 @@
 .spanCateError p {
 	margin-bottom: -20px;
 	color: red;
+}
+
+#fileError {
+	position: relative;
+    left: 147px;
+    width: 300px;
+    color: red;
+    font-weight: bold;
+}
+
+/* ----------- Upload Image Modal ------------*/
+#formUpload {
+	padding-bottom: 0px;
+    height: 49px;
+}
+#formFile {
+	display: flex !important;
+    padding-left: 10%;
+}
+#formFile p {
+	color: black;
+    padding-right: 13px;
+}
+#fileInput { 
+	height: 31px;
+    width: 271px;
 }
 
 /* ------------------------------------------------------ Spinner --------------------------------------------------- */
@@ -173,6 +220,7 @@
 	/* width: 82%; */
 }
 .folderContent div:nth-child(2) {
+	max-width: 155px !important;
 	position: inherit;
 	bottom: 9px;
 }

@@ -20,18 +20,19 @@
                             </button>                         
                             <button class="btn btn-sm green accent-2 font-weight-bolder" id="newGrp"><i class="fas fa-plus-circle"></i>
                                 สร้างอัลบั้ม
-                            </button>
-                            <button class="btn btn-sm red accent-2 font-weight-bolder" id="delGrp"><i class="fas fa-minus-circle"></i>
-                                ลบอัลบั้ม
-                            </button>
-                            <button class="btn btn-sm red accent-2 font-weight-bolder" id="newImg" style="display: none;"><i class="fas fa-file-upload"></i>
+                            </button>                            
+                            <button class="btn btn-sm green accent-2 font-weight-bolder" id="newImg" style="display: none"><i class="fas fa-file-upload"></i>
                                 อัพโหลดภาพ
+                            </button>
+                            <button class="btn btn-sm red accent-2 font-weight-bolder" id="delGrp" style="display: none"><i class="fas fa-minus-circle"></i>
+                                ลบอัลบั้ม
                             </button>
                         </div>
                     </div>
                     <div class="topicGator">
-                        <div class="topicName"><a class="picText">อัลบั้ม</a></div>
-                        <div class="topicArrow"><i class="fas fa-angle-right"></i></div>
+                        <div class="topicName"><a class="picText" onclick="loadContent()">อัลบั้ม</a></div>
+                        <div class="topicArrow"><i class="fas fa-angle-right tArrow"></i></div>
+                        <div class="topicContent"><a class="contentText"></a></div>
                     </div>                    
                     <div class="navLine"></div>
                     <div class="spinner" style="display: none;">
@@ -94,17 +95,17 @@
                 <br />
                 <a class="font-weight-bolder" style="font-size:24px;"> อัพโหลดรูปภาพ</a>
             </div>
-            <div class="modal-body text-center" id="form_upload">
-                <form id="form_file" enctype="multipart/form-data">
+            <div class="modal-body text-center" id="formUpload">
+                <form id="formFile" enctype="multipart/form-data">
                     <p>เลือกไฟล์ :</p>
-                    <input type="file" accept="image/*" id="file_input" multiple></input>
+                    <input type="file" accept="image/*" id="fileInput" multiple></input>
                 </form>
             </div>
-            <span id="f_null" value="0"></span>
+            <span id="fileError" value="0"></span>
             <div class="modal-body text-center">
                 <div class="row justify-content-center mb-3">
                     <div class="col-4">
-                        <button id="confirm_btn" type="submit" class="btn btn-md btn-block green accent-3 text-white" style="font-size:16px;">ยืนยัน</button>
+                        <button id="confirmBtn" type="submit" class="btn btn-md btn-block green accent-3 text-white" style="font-size:16px;">ยืนยัน</button>
                     </div>
                     <div class="col-4">
                         <button onclick=hideModal() class="btn btn-md btn-block red accent-4 text-white" style="font-size:16px;" id="closemodal">ยกเลิก</button>

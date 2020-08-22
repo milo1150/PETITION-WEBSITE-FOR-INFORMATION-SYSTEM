@@ -11,7 +11,7 @@ Class Admin_upload extends CI_Controller {
 		$this->file();
 	}
 	/* --------------------------------------------------- File Upload  ---------------------------------------------- */
-	// -------- Manage File --------
+	// -------- Manage File ---------
 	function file(){
 		$data['file_data'] = $this->db->select('*')->from('pdf_file')->get()->result();
 		$data['group_data'] = $this->db->select('*')->from('pdf_category')->get()->result();
