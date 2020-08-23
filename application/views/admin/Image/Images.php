@@ -13,14 +13,14 @@
             <div class="table-responsive">
                 <div class="subTable">
                     <!-- <p class="text-center text-dark" style="margin-top: 15px; font-size: 35px; font-weight: bold;">จัดการรูปภาพ</p> -->
-                    <div class="navBtn">                                    
+                    <div class="navBtn">
                         <div class="btnGrp">
                             <button class="btn btn-sm amber lighten-1 font-weight-bolder albumBtn"><i class="fas fa-folder-open"></i>
                                 อัลบั้ม
-                            </button>                         
+                            </button>
                             <button class="btn btn-sm green accent-2 font-weight-bolder" id="newGrp"><i class="fas fa-plus-circle"></i>
                                 สร้างอัลบั้ม
-                            </button>                            
+                            </button>
                             <button class="btn btn-sm green accent-2 font-weight-bolder" id="newImg" style="display: none"><i class="fas fa-file-upload"></i>
                                 อัพโหลดภาพ
                             </button>
@@ -33,55 +33,49 @@
                         <div class="topicName"><a class="picText" onclick="loadContent()">อัลบั้ม</a></div>
                         <div class="topicArrow"><i class="fas fa-angle-right tArrow"></i></div>
                         <div class="topicContent"><a class="contentText"></a></div>
-                    </div>                    
+                    </div>
                     <div class="navLine"></div>
                     <div class="spinner" style="display: none;">
-                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                        <div class="lds-ring">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
-                    <div id="spaceArea">                                             
-                        <!-- <div class="folderRow col-12">
-                            <div class="folderContent col-2 z-depth-1 waves-effect">
-                                <div>
-                                    <i class="fas fa-folder-open"></i>
-                                </div>
-                                <div>
-                                    <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
+                    <div id="spaceArea">
+                        <div class="folderRowImg col-12">
+                            <div class="ImgBox">
+                                <img src="http://localhost/codeig/image_db/aaaa/Webex_01-1024x1024.jpg" width="250" height="250">
+                                <div class="overlayImg">
+                                <a href=""><i class="fas fa-external-link-square-alt"></i></a>
                                 </div>                                
-                            </div>                                                                                                                                                     
-                            <div class="folderContent col-2 z-depth-1 waves-effect">
-                                <div>
-                                    <i class="fas fa-folder-open"></i>
-                                </div>
-                                <div>
-                                    <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
-                                </div>                                
-                            </div>                                                                                                                                                     
-                            <div class="folderContent col-2 z-depth-1 waves-effect">
-                                <div>
-                                    <i class="fas fa-folder-open"></i>
-                                </div>
-                                <div>
-                                    <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
-                                </div>                                
-                            </div>                                                                                                                                                     
-                            <div class="folderContent col-2 z-depth-1 waves-effect">
-                                <div>
-                                    <i class="fas fa-folder-open"></i>
-                                </div>
-                                <div>
-                                    <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
-                                </div>                                
-                            </div>                                                                                                                                                     
-                            <div class="folderContent col-2 z-depth-1 waves-effect">
-                                <div>
-                                    <i class="fas fa-folder-open"></i>
-                                </div>
-                                <div>
-                                    <p>ข่าวรายวันนนนนนนนนนนนนนนนนนนนนน</p>
-                                </div>                                
-                            </div>                                                                                                                                                     
-                                                                                                                                                                                
-                        </div> -->
+                            </div>
+                            <div class="ImgBox">
+                                <img src="http://localhost/codeig/image_db/aaaa/image002-(1).jpg" width="250" height="250">
+                                <div class="overlayImg">
+                                    <p>hello world</p>
+                                </div>                                 
+                            </div>
+                            <div class="ImgBox">
+                                <img src="http://localhost/codeig/image_db/aaaa/teaser_creative_cloud_website-752x440.jpg" width="250" height="250">
+                                <div class="overlayImg">
+                                    <p>hello world</p>
+                                </div> 
+                            </div>
+                            <div class="ImgBox">
+                                <img src="http://localhost/codeig/image_db/aaaa/finn_space_icit_webiste-752x440.jpg" width="250" height="250">
+                                <div class="overlayImg">
+                                    <p>hello world</p>
+                                </div> 
+                            </div>
+                            <div class="ImgBox">
+                                <img src="http://localhost/codeig/image_db/aaaa/KeyboardReferenceSheet.png" width="250" height="250">
+                                <div class="overlayImg">
+                                    <p>hello world</p>
+                                </div>  
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,6 +102,41 @@
                         <button id="confirmBtn" type="submit" class="btn btn-md btn-block green accent-3 text-white" style="font-size:16px;">ยืนยัน</button>
                     </div>
                     <div class="col-4">
+                        <button onclick=hideModal() id="closemodal" class="btn btn-md btn-block red accent-4 text-white" style="font-size:16px;">ยกเลิก</button>
+                    </div>
+                    <div class="spinner2">
+                        <div class="lds-ring">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!------------------------------------------------------------ MODAL : create new album ------------------------------------------------------->
+<div class="modal fade " id="newGrpBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-family: 'Kanit', sans-serif;" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+        <div class="modal-content z-depth-2" style="padding-inline-end: 20px;  padding-inline-start: 20px;">
+            <div class="modal-body text-center">
+                <br />
+                <a class="font-weight-bolder" style="font-size:24px;"> สร้างอัลบั้ม</a>
+            </div>
+            <div class="modal-body text-center" id="grp_name">
+                <p>ชื่อ</p>
+                <input class="form-control" id="grp_name_val" maxlength="24"></input>
+            </div>
+            <span class="spanCateError" id="spanCateError"></span>
+            <div class="modal-body text-center">
+                <div class="row justify-content-center mb-3">
+                    <div class="col-4">
+                        <button id="cateConbtn" class="btn btn-md btn-block green accent-3 text-white" style="font-size:16px;">ยืนยัน</button>
+                    </div>
+                    <div class="col-4">
                         <button onclick=hideModal() class="btn btn-md btn-block red accent-4 text-white" style="font-size:16px;" id="closemodal">ยกเลิก</button>
                     </div>
                 </div>
@@ -115,32 +144,6 @@
         </div>
     </div>
 </div>
-<!------------------------------------------------------------ MODAL : create new album ------------------------------------------------------->
-<div class="modal fade " id="newGrpBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-family: 'Kanit', sans-serif;" data-backdrop="static">
-		<div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
-			<div class="modal-content z-depth-2" style="padding-inline-end: 20px;  padding-inline-start: 20px;">
-				<div class="modal-body text-center">
-					<br />
-					<a class="font-weight-bolder" style="font-size:24px;"> สร้างอัลบั้ม</a>
-				</div>
-				<div class="modal-body text-center" id="grp_name">
-					<p>ชื่อ</p>
-					<input class="form-control" id="grp_name_val" maxlength="24"></input>					
-				</div>
-				<span class="spanCateError" id="spanCateError"></span>
-				<div class="modal-body text-center">
-					<div class="row justify-content-center mb-3">
-						<div class="col-4">
-							<button id="cateConbtn" class="btn btn-md btn-block green accent-3 text-white" style="font-size:16px;">ยืนยัน</button>
-						</div>
-						<div class="col-4">
-							<button onclick=hideModal() class="btn btn-md btn-block red accent-4 text-white" style="font-size:16px;" id="closemodal">ยกเลิก</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 <script src="<?php echo base_url() . 'miscit-js/ImageEdit.js'; ?>"></script>
 </body>
 

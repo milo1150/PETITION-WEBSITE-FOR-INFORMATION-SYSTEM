@@ -34,6 +34,13 @@ Class Image extends CI_Controller {
 			echo json_encode($error);
 		}
 	}
+	// ------------------------------------- Fecth Image (on click folder) ----------------------------------------
+	function fetchAlbum() {
+		$post = json_decode(file_get_contents('php://input'),true);
+		$query = $this->db->select('*')->from('image_database')->where('category',$post['folderName'])->get()->result_array();
+		echo json_encode($query);
+	}
+
 	// ------------------------------------- Upload IMG File  -----------------------------------
 	// ---------------------- Validate --------------------------
 	function imgCheck(){
@@ -73,15 +80,23 @@ Class Image extends CI_Controller {
 
 	// ---------------------- Upload File ----------------------------
 	function imgUpload() {
-		print_r($_POST);
-		print_r($_FILES);
+		// print_r($_POST);
+		// print_r($_FILES);
+		$folderName = $this->input->post('folderName');
 		/* ----------- Config ---------- */
-        $config['upload_path']          = './image_db/';
+        $config['upload_path']          = './image_db/'.$folderName.'/';
         $config['allowed_types']        = 'png|jpg|jpeg|gif';
 		$this->load->library('upload', $config);
 		$count = count($_FILES);
 		for($i=0;$i<$count;$i++){
 			$this->upload->do_upload('img'.$i);
+			$img = 'img'.$i;
+			$imgName = $_FILES[$img]['name'];
+			$data = array(
+				'name' => $imgName,
+				'category' => $folderName
+			);
+			$this->db->insert('image_database',$data);
 		}
 		echo json_encode('');
 	}

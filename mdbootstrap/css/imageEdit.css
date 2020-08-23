@@ -139,6 +139,12 @@
 	text-align: center;
 	margin-top: 140px;
 }
+.spinner2 {
+    position: absolute;
+    right: -3px;
+	top: 0px;
+	display: none;
+}
 
 .lds-ring {
 	display: inline-block;
@@ -228,4 +234,37 @@ i.contentDel {
 	display: none;
 	color: red;
 	font-size: 1.4rem;
+}
+
+/* ------ IMG BOX CONTENT ---------*/
+.folderRowImg {
+	display: flex;
+    justify-content: center;
+}
+.ImgBox{
+	text-align: center;
+	padding: 5px;
+	box-sizing: border-box;
+	width: 100%;
+	display: block;
+}
+.overlayImg{
+    background: #888888;
+    height: 100%;
+    width: 19%;
+    position: absolute;
+    top: 0px;
+	opacity: 60%;
+	transition: 0.3s;
+}
+.ImgBox:hover .overlayImg{
+	cursor: pointer;
+	opacity: 60%;
+}
+.fa-external-link-square-alt{
+	position: relative;
+    top: 40%;
+    right: 27px;
+    font-size: 3rem;
+    color: black;
 }

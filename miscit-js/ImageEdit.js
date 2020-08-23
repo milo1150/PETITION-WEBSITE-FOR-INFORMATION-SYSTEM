@@ -1,6 +1,7 @@
 /* --------------- DEFINE VALUE ------------- */
 const area = document.getElementById("spaceArea");
 const spinner = document.querySelector(".spinner");
+const BASE_URL = 'http://localhost/codeig/';
 var spinnerValue = false;
 
 /* ------------------------ Spinner ------------------------- */
@@ -40,7 +41,7 @@ const toolNav = (status, title) => {
 
 const loadContent = () => {
 	spinnerStatus(true);
-    axios.get("./Image/folderList")
+    axios.get("./folderList")
     .then((res) => {
         console.log(res.data);
 
@@ -87,7 +88,8 @@ const loadContent = () => {
         spinnerStatus(false); 
         toolNav(false);       
 	}).catch(error => {
-        window.location.reload()
+        console.log(error)
+        // window.location.reload()
     })
 };
 
@@ -96,7 +98,7 @@ document.querySelector('.albumBtn').onclick = () => loadContent()
 
 
 window.onload = () => {
-	loadContent();
+	// loadContent();
 };
 
 
@@ -109,12 +111,13 @@ const getImgName = () => {
     }
     return imgName;
 }
-const getImgFiles = () => {
+const getImgFiles = (title) => {
     const fileCount = fileInput.files.length
-    let ImgFile = new FormData();
+    let ImgFile = new FormData();    
+    ImgFile.append('folderName',title);
     for(let i = 0 ; i < fileCount ; i++ ){
         ImgFile.append('img' + i, fileInput.files[i] );
-    };
+    };    
     return ImgFile;
 }
 
@@ -122,16 +125,27 @@ const getImgFiles = () => {
 /* ---------------------------------------------------- Load Content : on click folder ------------------------------------------------- */
 function loadInsideData(id, title) {
 	toolNav(true, title);
-	console.log(id);
+    axios.post('./fetchAlbum',{ folderName: title })
+    .then(res => {
+        $('#spaceArea').html('');
+        const data = res.data;
+        // console.log(data)
+        for(let img of data){
+            let imgUrl = BASE_URL+'image_db/'+img.category+'/'+img.name;
+            
+            $('#spaceArea').append(imgUrl+'<br>')
+            console.log(imgUrl)
+        }
+        // console.log(BASE_URL)
+    })
 
+
+    // ------------------------------------------------- Onclick Confirm ------------------------------------------------
 	const confirmBtn = document.getElementById("confirmBtn");
-	confirmBtn.onclick = () => {
-		const imgName = getImgName();
-		const imgFiles = getImgFiles();
-		// console.log(imgName)
-
-		// --------------- Validate Image's name and exist ---------------
-        axios.post("./Image/imgCheck", {imgName: imgName, folderName: title})
+	confirmBtn.onclick = () => {		
+        // --------------- Validate Image's name and exist ---------------
+        const imgName = getImgName();
+        axios.post("./imgCheck", {imgName: imgName, folderName: title})
         .then((res) => {
             const data = res.data;
             console.log(data)
@@ -149,20 +163,23 @@ function loadInsideData(id, title) {
             }
             if(data.status){
                 // --------------- Upload Image ---------------
-                $.ajax({
-                    url: "./Image/imgUpload",
-                    dataType: "json",
-                    method: "post",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    data: imgFiles,
-                    // data: {img:imgName}
-                });
+                const imgFiles = getImgFiles(title);
+                axios.post('./imgUpload',imgFiles)
+                .then( () => {
+                    $("#fileError").html("");
+                    document.getElementById("confirmBtn").disabled = true;
+                    document.getElementById("closemodal").disabled = true;
+                    document.querySelector('.spinner2').style.display = "block";
+                })
+                .then(res => {
+                    document.getElementById("confirmBtn").disabled = false;
+                    document.getElementById("closemodal").disabled = false;
+                    document.querySelector('.spinner2').style.display = "none";
+                    hideModal();
+                    // console.log(res)
+                })
             }
         });
-
-		
 	};
 }
 
@@ -171,7 +188,7 @@ function loadInsideData(id, title) {
 /* ---------------------------------------------------- Modal ------------------------------------------------- */
 /* Show modal */
 document.getElementById("newImg").onclick = () => {
-	$("#imgModal").modal("show");
+    $("#imgModal").modal("show");
 };
 document.getElementById("newGrp").onclick = () => {
 	$("#newGrpBtn").modal("show");
@@ -193,7 +210,7 @@ const cateConbtn = document.getElementById("cateConbtn");
 cateConbtn.addEventListener("click", () => {
 	const value = document.getElementById("grp_name_val").value;
 	$.ajax({
-		url: "./Image/cateCheck",
+		url: "./cateCheck",
 		method: "POST",
 		dataType: "JSON",
 		data: { cateName: value },
