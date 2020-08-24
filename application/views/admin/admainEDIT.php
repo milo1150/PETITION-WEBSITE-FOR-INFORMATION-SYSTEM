@@ -50,7 +50,7 @@
 	<!-- Sidebar  -->	
 	<nav id="sidebar">
 		<div class="sidebar-header text-center" onclick="homeicon()">
-			<img type="submit" src="https://sv1.picz.in.th/images/2019/12/17/isVLx8.png"
+			<img type="submit" src="https://mis-cit.com/files_download/isVLx8.png"
 				style="width: 110px;" onclick="homeicon()">
 		</div>		
 		<ul class="list-unstyled components">

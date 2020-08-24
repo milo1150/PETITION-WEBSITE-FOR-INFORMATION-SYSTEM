@@ -7,8 +7,8 @@ var spinnerValue = false;
 /* ------------------------ Spinner ------------------------- */
 const spinnerStatus = (status) => {
 	if (status === true) {
-        spinner.style.display = "";
         $('#spaceArea').html('');
+        spinner.style.display = "";
 	}
 	if (status === false) {
         spinner.style.display = "none";        
@@ -40,12 +40,11 @@ const toolNav = (status, title) => {
 /* ---------------------------------------------------- Load Content ------------------------------------------------- */
 
 const loadContent = () => {
-	spinnerStatus(true);
+    spinnerStatus(true);    
     axios.get("./folderList")
     .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
 
-        dataOne = [ '<div class="folderContent col-2 z-depth-1 waves-effect">' , '</div>' ];
         dataTwo = res.data;
         dataHtml = [];    
                
@@ -98,7 +97,7 @@ document.querySelector('.albumBtn').onclick = () => loadContent()
 
 
 window.onload = () => {
-	// loadContent();
+	loadContent();
 };
 
 
@@ -123,29 +122,77 @@ const getImgFiles = (title) => {
 
 
 /* ---------------------------------------------------- Load Content : on click folder ------------------------------------------------- */
-function loadInsideData(id, title) {
-	toolNav(true, title);
+function loadInsideData(id, title) {  
+    spinnerStatus(true);
     axios.post('./fetchAlbum',{ folderName: title })
-    .then(res => {
+    .then(res => {        
+        toolNav(true, title);
         $('#spaceArea').html('');
         const data = res.data;
         // console.log(data)
-        for(let img of data){
-            let imgUrl = BASE_URL+'image_db/'+img.category+'/'+img.name;
-            
-            $('#spaceArea').append(imgUrl+'<br>')
-            console.log(imgUrl)
+
+        // ---- Delete Folder Button ----
+        const delFold = document.getElementById('delGrp');
+        if(data.length == []){
+            delFold.style.display = 'block'
+        }else{
+            delFold.style.display = 'none'
         }
-        // console.log(BASE_URL)
+
+        // --- Parent Row ---
+        const maxRow = Math.ceil(data.length/5);
+        const dataRow = [];
+        for(let i=0;i<maxRow;i++){
+            dataRow.push('<div class="folderRowImg" id="imgRowPar'+i+'">');
+        }
+
+        // --- Child Row ---
+        const dataHtml = [];
+        for(let img of data){
+            const imgUrl = BASE_URL+'image_db/'+img.category+'/'+img.name;
+            dataHtml.push(
+                '<div class="ImgBox" id="'+img.id+'">'+
+                    '<img src="'+imgUrl+'" width="250" height="250">'+
+                        '<div class="overlayImg">'+
+                            '<div>'+
+                                '<a href="'+imgUrl+'" target="_blank"><i class="fas fa-external-link-square-alt"></i></a>'+
+                                '<i class="fas fa-link" id="'+img.id+'" onclick="copyLink(id)"></i>'+
+                                '<i class="fas fa-minus-circle minus-circle" onclick=deleteImageModal('+img.id+',"'+img.name+'","'+img.category+'")></i>'+
+                                // '<i class="fas fa-minus-circle minus-circle" onclick=deleteImage('+img.id+',"'+img.name+'","'+img.category+'")></i>'+
+                                '</div>'+
+                            '<div><input value="'+imgUrl+'" id="picInput'+img.id+'"></input></div>'+
+                        '</div>'+                                
+                '</div>'
+            );          
+            // console.log(img)
+        }
+        // console.log(dataRow)
+        // console.log(dataHtml)
+        $('#spaceArea').html(dataRow)       
+        let start = 0;
+        let count = 0;
+        let end = 5;
+        let parentRow = 0;
+        while(start < data.length){
+            // console.log(start, count);
+            $( '#imgRowPar' + parentRow ).append(dataHtml[start]);
+            count++;
+            start++;
+            if( count == end ){
+                parentRow++;
+                count = 0;
+            }            
+        }   
+        spinnerStatus(false)     
     })
 
 
-    // ------------------------------------------------- Onclick Confirm ------------------------------------------------
+    // ------------------------------------------------- Onclick Confirm Upload Image ------------------------------------------------
 	const confirmBtn = document.getElementById("confirmBtn");
-	confirmBtn.onclick = () => {		
+	confirmBtn.onclick = async () => {		
         // --------------- Validate Image's name and exist ---------------
         const imgName = getImgName();
-        axios.post("./imgCheck", {imgName: imgName, folderName: title})
+        await axios.post("./imgCheck", {imgName: imgName, folderName: title})
         .then((res) => {
             const data = res.data;
             console.log(data)
@@ -179,10 +226,45 @@ function loadInsideData(id, title) {
                     // console.log(res)
                 })
             }
-        });
-	};
+        })
+        await setTimeout(()=>{
+            loadInsideData(null, title)
+        },500);
+    };
 }
 
+/* ----------------------------------- Overlay Image Function ----------------------------------*/
+// ----------- Copy Image URL ----------
+function copyLink(id) {
+    let x = document.getElementById('picInput'+id);
+    x.select();
+    console.log(x.value)
+    document.execCommand("copy");
+}
+// ----------- Delete Modal : IMAGE -------------
+function deleteImageModal(imgId, imgName, imgCategory) {
+    $('#deleteImageModal').modal('show');
+    document.getElementById('confDelImg').onclick = () => {
+        deleteImage(imgId, imgName, imgCategory);
+    }
+}
+// ----------- Delete Image -------------
+async function deleteImage(imgId, imgName, imgCategory) {
+    // console.log(imgName,imgCategory)
+    const data = new FormData();
+    data.append('imgId',imgId);
+    data.append('imgName',imgName);
+    data.append('imgCategory',imgCategory);
+    await axios.post('./deleteImage',data)
+    .then(res => {
+        if(res.data){
+            hideModal();
+            setTimeout(() => {
+                loadInsideData(null, imgCategory)
+            },500);
+        }
+    })
+}
 
 
 /* ---------------------------------------------------- Modal ------------------------------------------------- */
@@ -197,7 +279,9 @@ document.getElementById("newGrp").onclick = () => {
 function hideModal() {
 	$("#imgModal").modal("hide");
 	$("#newGrpBtn").modal("hide");
-
+	$("#deleteImageModal").modal("hide");
+	$("#deleteFolderModal").modal("hide");
+    
 	document.getElementById("grp_name_val").value = "";
     document.getElementById("spanCateError").innerHTML = "";
 
@@ -205,7 +289,7 @@ function hideModal() {
     $('#fileError').html(''); //Clear text Error fileInput
 }
 
-/* ---------------------------------------------- Image Category ----------------------------------------- */
+/* ---------------------------------------------- Create new Image Folder ----------------------------------------- */
 const cateConbtn = document.getElementById("cateConbtn");
 cateConbtn.addEventListener("click", () => {
 	const value = document.getElementById("grp_name_val").value;
@@ -225,10 +309,20 @@ cateConbtn.addEventListener("click", () => {
 	});
 });
 
-/* --------------------------------------------- Delete ---------------------------------------------*/
-const delBtn = document.getElementById('delGrp');
-delBtn.onclick = () => {
-    console.log('del')
-    let x = document.querySelector('.contentDel');
-    // x.classList.add('omg')
+/* --------------------------------------------- Delete Folder ---------------------------------------------*/
+document.getElementById('delGrp').onclick = () => {
+    $('#deleteFolderModal').modal('show');
+    const title = document.querySelector('.contentText').innerHTML
+    document.getElementById('confDelFolder').onclick = () => {
+        const data = new FormData();
+        data.append('folderName',title);
+        axios.post('./deleteCategory',data)
+        .then(res => {
+            hideModal();
+            if(res.data){
+                loadContent();
+            }
+        })
+    }
 }
+

@@ -44,38 +44,7 @@
                         </div>
                     </div>
                     <div id="spaceArea">
-                        <div class="folderRowImg col-12">
-                            <div class="ImgBox">
-                                <img src="http://localhost/codeig/image_db/aaaa/Webex_01-1024x1024.jpg" width="250" height="250">
-                                <div class="overlayImg">
-                                <a href=""><i class="fas fa-external-link-square-alt"></i></a>
-                                </div>                                
-                            </div>
-                            <div class="ImgBox">
-                                <img src="http://localhost/codeig/image_db/aaaa/image002-(1).jpg" width="250" height="250">
-                                <div class="overlayImg">
-                                    <p>hello world</p>
-                                </div>                                 
-                            </div>
-                            <div class="ImgBox">
-                                <img src="http://localhost/codeig/image_db/aaaa/teaser_creative_cloud_website-752x440.jpg" width="250" height="250">
-                                <div class="overlayImg">
-                                    <p>hello world</p>
-                                </div> 
-                            </div>
-                            <div class="ImgBox">
-                                <img src="http://localhost/codeig/image_db/aaaa/finn_space_icit_webiste-752x440.jpg" width="250" height="250">
-                                <div class="overlayImg">
-                                    <p>hello world</p>
-                                </div> 
-                            </div>
-                            <div class="ImgBox">
-                                <img src="http://localhost/codeig/image_db/aaaa/KeyboardReferenceSheet.png" width="250" height="250">
-                                <div class="overlayImg">
-                                    <p>hello world</p>
-                                </div>  
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -135,6 +104,50 @@
                 <div class="row justify-content-center mb-3">
                     <div class="col-4">
                         <button id="cateConbtn" class="btn btn-md btn-block green accent-3 text-white" style="font-size:16px;">ยืนยัน</button>
+                    </div>
+                    <div class="col-4">
+                        <button onclick=hideModal() class="btn btn-md btn-block red accent-4 text-white" style="font-size:16px;" id="closemodal">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------------------------------------------ DELETE Image MODAL ------------------------------------------------------->
+<div class="modal fade " id="deleteImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-family: 'Kanit', sans-serif;" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+        <div class="modal-content z-depth-2" style="padding-inline-end: 20px;  padding-inline-start: 20px;">
+            <div class="modal-body text-center">
+                <br />
+                <a class="font-weight-bolder" style="font-size:24px;"> ลบรูป</a>
+            </div>
+            <span class="spanCateError" id="spanCateError"></span>
+            <div class="modal-body text-center">
+                <div class="row justify-content-center mb-3">
+                    <div class="col-4">
+                        <button id="confDelImg" class="btn btn-md btn-block green accent-3 text-white" style="font-size:16px;">ยืนยัน</button>
+                    </div>
+                    <div class="col-4">
+                        <button onclick=hideModal() class="btn btn-md btn-block red accent-4 text-white" style="font-size:16px;" id="closemodal">ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------------------------------------------ DELETE Folder MODAL ------------------------------------------------------->
+<div class="modal fade " id="deleteFolderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-family: 'Kanit', sans-serif;" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px;">
+        <div class="modal-content z-depth-2" style="padding-inline-end: 20px;  padding-inline-start: 20px;">
+            <div class="modal-body text-center">
+                <br />
+                <a class="font-weight-bolder" style="font-size:24px;"> ลบอัลบั้ม</a>
+            </div>
+            <span class="spanCateError" id="spanCateError"></span>
+            <div class="modal-body text-center">
+                <div class="row justify-content-center mb-3">
+                    <div class="col-4">
+                        <button id="confDelFolder" class="btn btn-md btn-block green accent-3 text-white" style="font-size:16px;">ยืนยัน</button>
                     </div>
                     <div class="col-4">
                         <button onclick=hideModal() class="btn btn-md btn-block red accent-4 text-white" style="font-size:16px;" id="closemodal">ยกเลิก</button>

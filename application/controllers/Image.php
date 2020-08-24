@@ -100,4 +100,22 @@ Class Image extends CI_Controller {
 		}
 		echo json_encode('');
 	}
+	// ------------------------------------------- Delete Image ------------------------------------------------
+	function deleteImage(){
+		$imgId = $this->input->post('imgId');
+		$imgName = $this->input->post('imgName');
+		$imgCategory = $this->input->post('imgCategory');			
+		unlink('./image_db/'.$imgCategory.'/'.$imgName);
+		$this->db->where('id',$imgId);
+		$this->db->delete('image_database');
+		echo json_encode(true);
+	}
+	function deleteCategory(){
+		$folderName = $this->input->post('folderName');
+		rmdir('./image_db/'.$folderName);
+		$this->db->where('category',$folderName);
+		$this->db->delete('image_category');
+		// $this->db->delete('image_database');
+		echo json_encode(true);
+	}
 }
