@@ -2,6 +2,7 @@
 const area = document.getElementById("spaceArea");
 const spinner = document.querySelector(".spinner");
 const BASE_URL = 'http://localhost/codeig/';
+// const BASE_URL = 'https://mis-cit.com/';
 var spinnerValue = false;
 
 /* ------------------------ Spinner ------------------------- */
@@ -41,7 +42,7 @@ const toolNav = (status, title) => {
 
 const loadContent = () => {
     spinnerStatus(true);    
-    axios.get("./folderList")
+    axios.get( BASE_URL + "Image/folderList" )
     .then((res) => {
         // console.log(res.data);
 
@@ -124,7 +125,7 @@ const getImgFiles = (title) => {
 /* ---------------------------------------------------- Load Content : on click folder ------------------------------------------------- */
 function loadInsideData(id, title) {  
     spinnerStatus(true);
-    axios.post('./fetchAlbum',{ folderName: title })
+    axios.post( BASE_URL + "Image/fetchAlbum" ,{ folderName: title })
     .then(res => {        
         toolNav(true, title);
         $('#spaceArea').html('');
@@ -158,7 +159,6 @@ function loadInsideData(id, title) {
                                 '<a href="'+imgUrl+'" target="_blank"><i class="fas fa-external-link-square-alt"></i></a>'+
                                 '<i class="fas fa-link" id="'+img.id+'" onclick="copyLink(id)"></i>'+
                                 '<i class="fas fa-minus-circle minus-circle" onclick=deleteImageModal('+img.id+',"'+img.name+'","'+img.category+'")></i>'+
-                                // '<i class="fas fa-minus-circle minus-circle" onclick=deleteImage('+img.id+',"'+img.name+'","'+img.category+'")></i>'+
                                 '</div>'+
                             '<div><input value="'+imgUrl+'" id="picInput'+img.id+'"></input></div>'+
                         '</div>'+                                
@@ -192,10 +192,10 @@ function loadInsideData(id, title) {
 	confirmBtn.onclick = async () => {		
         // --------------- Validate Image's name and exist ---------------
         const imgName = getImgName();
-        await axios.post("./imgCheck", {imgName: imgName, folderName: title})
+        await axios.post( BASE_URL + "Image/imgCheck", {imgName: imgName, folderName: title})
         .then((res) => {
             const data = res.data;
-            console.log(data)
+            // console.log(data)
             if(!data.status){
                 $('#fileError').html(data.text);
                 return;
@@ -211,13 +211,11 @@ function loadInsideData(id, title) {
             if(data.status){
                 // --------------- Upload Image ---------------
                 const imgFiles = getImgFiles(title);
-                axios.post('./imgUpload',imgFiles)
-                .then( () => {
-                    $("#fileError").html("");
-                    document.getElementById("confirmBtn").disabled = true;
-                    document.getElementById("closemodal").disabled = true;
-                    document.querySelector('.spinner2').style.display = "block";
-                })
+                $("#fileError").html("");
+                document.getElementById("confirmBtn").disabled = true;
+                document.getElementById("closemodal").disabled = true;
+                document.querySelector('.spinner2').style.display = "block";
+                axios.post(BASE_URL + "Image/imgUpload",imgFiles)
                 .then(res => {
                     document.getElementById("confirmBtn").disabled = false;
                     document.getElementById("closemodal").disabled = false;
@@ -225,11 +223,11 @@ function loadInsideData(id, title) {
                     hideModal();
                     // console.log(res)
                 })
+                .then(()=>{
+                    loadInsideData(null, title);
+                })
             }
         })
-        await setTimeout(()=>{
-            loadInsideData(null, title)
-        },500);
     };
 }
 
@@ -255,14 +253,14 @@ async function deleteImage(imgId, imgName, imgCategory) {
     data.append('imgId',imgId);
     data.append('imgName',imgName);
     data.append('imgCategory',imgCategory);
-    await axios.post('./deleteImage',data)
+    await axios.post(BASE_URL + "Image/deleteImage",data)
     .then(res => {
         if(res.data){
             hideModal();
-            setTimeout(() => {
-                loadInsideData(null, imgCategory)
-            },500);
-        }
+        }        
+    })
+    .then(()=>{
+        loadInsideData(null, imgCategory)
     })
 }
 
@@ -294,7 +292,7 @@ const cateConbtn = document.getElementById("cateConbtn");
 cateConbtn.addEventListener("click", () => {
 	const value = document.getElementById("grp_name_val").value;
 	$.ajax({
-		url: "./cateCheck",
+		url: BASE_URL + "Image/cateCheck",
 		method: "POST",
 		dataType: "JSON",
 		data: { cateName: value },
@@ -316,7 +314,7 @@ document.getElementById('delGrp').onclick = () => {
     document.getElementById('confDelFolder').onclick = () => {
         const data = new FormData();
         data.append('folderName',title);
-        axios.post('./deleteCategory',data)
+        axios.post(BASE_URL + "Image/deleteCategory",data)
         .then(res => {
             hideModal();
             if(res.data){

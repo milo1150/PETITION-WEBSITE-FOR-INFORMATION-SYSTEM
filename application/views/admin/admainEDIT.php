@@ -33,7 +33,7 @@
 		
 	<!-------- Sidebar CSS + Custom CSS ------------>
 	<link href="<?php echo base_url(); ?>/mdbootstrap/css/dashboard.css" rel="stylesheet">	
-	<link href="<?php echo base_url(); ?>/mdbootstrap/css/utility.css" rel="stylesheet">		
+	<link href="<?php echo base_url(); ?>/mdbootstrap/css/utility.css" rel="stylesheet">	
 
 	<!-------- Axios --------->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>

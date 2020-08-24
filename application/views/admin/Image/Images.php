@@ -3,7 +3,7 @@
 <meta charset="utf8">
 
 <head>
-    <link href="<?php echo base_url(); ?>/mdbootstrap/css/ImageEdit.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>mdbootstrap/css/imageEdit.css" rel="stylesheet">
 </head>
 <div class="wrapper">
     <?php $this->load->view('admin/admainEDIT'); ?>
