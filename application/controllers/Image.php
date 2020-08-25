@@ -1,5 +1,11 @@
 <?php
 Class Image extends CI_Controller {
+	function __construct(){
+        parent::__construct();
+		if($this->session->userdata('username') == ''){
+			redirect(base_url().'ad_login');
+		} 
+    }
     function index() {
         $this->load->view('admin/Image/Images');
     }

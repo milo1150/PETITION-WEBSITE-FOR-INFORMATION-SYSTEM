@@ -46,16 +46,16 @@
 				<li class="content-item"><a href="<?php echo base_url();?>">หน้าแรก</a></li>
 				<li class="content-item" id="ct1"><a>สำนักงาน</a>
                     <ul class=" content-item-row" id="content-item-1">
-				<li><a href="">เกี่ยวกับสำนักงาน</a>
+				<li><a href="<?php echo base_url();?>office/about">เกี่ยวกับสำนักงาน</a>
 					<hr>
 				</li>
-				<li><a>โครงสร้างองค์กร</a>
+				<li><a href="<?php echo base_url();?>office/organization">โครงสร้างองค์กร</a>
 					<hr>
 				</li>
-				<li><a>นโยบาย</a>
+				<li><a href="<?php echo base_url();?>office/actionplan">นโยบาย</a>
 					<hr>
 				</li>
-				<li><a>บุคลากร</a></li>
+				<li><a href="<?php echo base_url();?>office/personnel">บุคลากร</a></li>
 			</ul>
 			</li>
 			<!-- <li class="content-item" id="ct2"><a>งานบริการ</a>

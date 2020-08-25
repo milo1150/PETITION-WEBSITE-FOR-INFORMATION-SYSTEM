@@ -183,6 +183,9 @@
 			<li>
 				<a href="<?php echo base_url();?>Admin_upload"><i class="fas fa-file-pdf"></i>   เอกสารดาวน์โหลด</a>
 			</li>
+			<li>
+				<a href="<?php echo base_url();?>office/edit"><i class="far fa-building"></i>   สำนักงาน</a>
+			</li>
 
 			
 			<li class="nav-item">
