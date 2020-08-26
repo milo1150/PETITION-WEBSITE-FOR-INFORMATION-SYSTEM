@@ -106,10 +106,15 @@ window.onload = () => {
 const fileInput = document.getElementById("fileInput");
 const getImgName = () => {   
     const imgName = [];
+    let error = 0;
     for(const i of fileInput.files){
-        imgName.push(i.name);
+        let name = i.name;
+        name = name.slice(0, -4);
+        const reg = RegExp(/[.!@#$%^&*\s]/g);
+        reg.test(name) ? error++ : imgName.push(i.name);
     }
-    return imgName;
+    if(error == 0 ){return imgName};
+    if(error != 0){ return false};
 }
 const getImgFiles = (title) => {
     const fileCount = fileInput.files.length
@@ -122,7 +127,7 @@ const getImgFiles = (title) => {
 }
 
 
-/* ---------------------------------------------------- Load Content : on click folder ------------------------------------------------- */
+/* ---------------------------------------------- Load Content : on click album folder & album ----------------------------------------------- */
 function loadInsideData(id, title) {  
     spinnerStatus(true);
     axios.post( BASE_URL + "Image/fetchAlbum" ,{ folderName: title })
@@ -192,6 +197,9 @@ function loadInsideData(id, title) {
 	confirmBtn.onclick = async () => {		
         // --------------- Validate Image's name and exist ---------------
         const imgName = getImgName();
+        if(!imgName){            
+            return $('#fileError').html('ชื่อไฟล์ไม่ถูกต้อง');            
+        }
         await axios.post( BASE_URL + "Image/imgCheck", {imgName: imgName, folderName: title})
         .then((res) => {
             const data = res.data;

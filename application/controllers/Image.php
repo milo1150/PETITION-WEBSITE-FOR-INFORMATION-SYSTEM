@@ -91,7 +91,8 @@ Class Image extends CI_Controller {
 		$folderName = $this->input->post('folderName');
 		/* ----------- Config ---------- */
         $config['upload_path']          = './image_db/'.$folderName.'/';
-        $config['allowed_types']        = 'png|jpg|jpeg|gif';
+		$config['allowed_types']        = 'png|jpg|jpeg|gif|tif';
+		$config['max_size'] 			= '100000';
 		$this->load->library('upload', $config);
 		$count = count($_FILES);
 		for($i=0;$i<$count;$i++){
