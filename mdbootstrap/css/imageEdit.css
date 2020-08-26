@@ -241,7 +241,8 @@ i.contentDel {
 /* ------ IMG BOX CONTENT ---------*/
 .folderRowImg {
 	display: flex;
-    justify-content: center;
+	justify-content: center;
+	margin-bottom: 5px;
 }
 .ImgBox{
 	text-align: center;
@@ -288,3 +289,4 @@ i.contentDel {
     font-size: 3rem;
     color: black;
 }
+

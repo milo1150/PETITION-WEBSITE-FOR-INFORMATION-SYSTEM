@@ -62,7 +62,7 @@
                 <form id="formFile" enctype="multipart/form-data">
                     <p>เลือกไฟล์ :</p>
                     <input type="file" accept="image/*" id="fileInput" multiple></input>
-                </form>
+                </form>               
             </div>
             <span id="fileError" value="0"></span>
             <div class="modal-body text-center">

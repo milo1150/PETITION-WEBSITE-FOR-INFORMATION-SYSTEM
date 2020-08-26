@@ -515,8 +515,8 @@ span.noticss {
 /* Scrollbar */
 
 ::-webkit-scrollbar {
-    /*width: 0px;*/
-    display: none;
+    width: 6px;
+    display: block;
 }
 
 
