@@ -50,8 +50,8 @@
 	<!-- Sidebar  -->	
 	<nav id="sidebar">
 		<div class="sidebar-header text-center" onclick="homeicon()">
-			<img type="submit" src="https://mis-cit.com/files_download/isVLx8.png"
-				style="width: 110px;" onclick="homeicon()">
+			<img type="submit" src="https://mis-cit.com/image_db/Logo/IT-CITbanner.png"
+				style="width: 150px;  height: 150px;  margin-bottom: -20px; margin-top: -20px;" onclick="homeicon()">
 		</div>		
 		<ul class="list-unstyled components">
 			<li>
@@ -169,25 +169,26 @@
 			<li name="member" id="member">
 				<a href="<?php echo base_url();?>ad_admanage/ad_list"><i class="fas fa-user-edit"></i>   จัดการสมาชิก</a>
 			</li>
-			<!--	
-			<li>
-				<a href="<?php echo base_url();?>updatelog">   Update Log</a>
-			</li>
-				  -->
 			<li>
 				<a href="<?php echo base_url();?>Image"><i class="fas fa-image"></i></i>   รูปภาพ</a>
 			</li>
 			<li>
-				<a href="<?php echo base_url();?>ad_news"><i class="fas fa-globe"></i>   อัพเดทหน้าข่าว</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url();?>Admin_upload"><i class="fas fa-file-pdf"></i>   เอกสารดาวน์โหลด</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url();?>office/edit"><i class="far fa-building"></i>   สำนักงาน</a>
-			</li>
-
-			
+				<a href="#adNews" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-globe"></i>   แก้ไขหน้าข่าว</a>
+				<ul class="collapse list-unstyled" id="adNews">
+					<li>
+						<a href="<?php echo base_url();?>ad_news">อัพเดทหน้าข่าว</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url();?>Admin_upload">เอกสารดาวน์โหลด</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url();?>office/edit">สำนักงาน</a>
+					</li>	
+					<li>
+						<a href="<?php echo base_url();?>banner/edit">แบนเนอร์ข่าว</a>
+					</li>				
+				</ul>
+			</li>			
 			<li class="nav-item">
 				<a class="nav-link" href="<?php echo base_url('ad_login/logout')?>">ออกจากระบบ
 				<i class="fas fa-sign-out-alt"></i> </a>

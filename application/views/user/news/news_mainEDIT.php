@@ -31,10 +31,10 @@
 <header>
 	<!------------------------------------------------ TopBanner ---------------------------------------------------->
 	<div class="banner-box">
-		<img src="https://mis-cit.com/uploads/miscit-logo.jpg" class="img-fluid" alt="Responsive image">
+		<img src="https://mis-cit.com/image_db/Logo/IT-CIT.png" class="img-fluid" alt="Responsive image">
 		<div class="banner-text">
 			<p class="p1">หน่วยสารสนเทศและประชาสัมพันธ์</p>
-			<p class="p2">Management Information System of Computer and Information Technology</p>
+			<p class="p2">Information Technology of Computer and Information Technology</p>
 		</div>
 	</div>
 	<!------------------------------------------------ TopNavbar ---------------------------------------------------->

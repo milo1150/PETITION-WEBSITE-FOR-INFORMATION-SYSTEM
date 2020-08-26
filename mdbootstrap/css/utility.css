@@ -67,6 +67,7 @@ body {
 }
 
 .mrq_content {
+    overflow-x: hidden;
     /*--- size ---*/
     margin-top: 20px;
     /* margin-bottom: 40px; */

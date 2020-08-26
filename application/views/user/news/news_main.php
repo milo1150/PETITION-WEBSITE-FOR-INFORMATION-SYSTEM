@@ -14,35 +14,16 @@
 				<!--/.Indicators-->
 				<!--Slides-->
 				<div class="carousel-inner" role="listbox">
-
-					<div class="carousel-item active">
+				<?php foreach($carousel as $row){?>
+					
+					<div class="carousel-item <?php if($row->slide_order == 'order1'){echo 'active';}?>">
 						<img class="d-block w-100" style="
-                        background-image:url('http://kmutnb.ac.th/KMUTNB/media/kmutnb/board/administrators/Online-Course4.jpg?resizemode=1');
-						
+                        background-image:url('<?php echo $row->img_name;?>');						
                         background-size:cover;
                         background-position: center;
-                    ">
-					</div>
-
-
-					<div class="carousel-item ">
-						<img class="d-block w-100" style="
-                        background-image:url('https://kmutnb.ac.th/getattachment/12ccbb72-98f2-4d00-ae49-c7dd65ccfd48/banner-นวตกรรม-covid-19.jpg.aspx?lang=th-TH?resizemode=1');                    
-                        background-size:cover;
-                        background-position: center;
-                    ">
-					</div>
-
-
-					<div class="carousel-item ">
-						<img class="d-block w-100" style="
-                        background-image:url('https://kmutnb.ac.th/getattachment/Banners/Hero-Banner/COVID-2019/banner-covid2019.jpg.aspx');                    
-                        background-size:cover;
-                        background-position: center;
-                    ">
-					</div>
-
+                    ">			
 				</div>
+				<?php } ?>
 				<!------- Controls ------->
 				<a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
